@@ -1,6 +1,9 @@
 package ruslan.simakov.pforportugues
 
 import android.os.Bundle
+import android.widget.ArrayAdapter
+import android.widget.ListView
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
@@ -15,32 +18,19 @@ import ruslan.simakov.pforportugues.ui.theme.PforportuguesTheme
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent {
-            PforportuguesTheme {
-                // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    Greeting("Android")
-                }
-            }
+        setContentView(R.layout.activity_main)
+
+        // Sample lesson names
+        val lessonNames = arrayOf("Lesson 1", "Lesson 2", "Lesson 3")
+
+        val listView: ListView = findViewById(R.id.listView)
+        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, lessonNames)
+        listView.adapter = adapter
+
+        // Set click listener for lesson items
+        listView.setOnItemClickListener { parent, view, position, id ->
+            val selectedLesson = lessonNames[position]
+            Toast.makeText(this@MainActivity, "Selected lesson: $selectedLesson", Toast.LENGTH_SHORT).show()
         }
-    }
-}
-
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
-
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    PforportuguesTheme {
-        Greeting("Android")
     }
 }
