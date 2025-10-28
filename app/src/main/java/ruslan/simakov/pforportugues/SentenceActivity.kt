@@ -3,6 +3,8 @@ package ruslan.simakov.pforportugues
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.speech.tts.TextToSpeech
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.GridLayout
@@ -11,8 +13,9 @@ import android.widget.TextView
 import androidx.activity.ComponentActivity
 import androidx.core.content.ContextCompat
 import ruslan.simakov.pforportugues.data.Sentence
+import java.util.*
 
-class SentenceActivity : ComponentActivity() {
+class SentenceActivity : ComponentActivity(), TextToSpeech.OnInitListener {
 
     private lateinit var ukrainianSentenceTextView: TextView
     private lateinit var portugueseSentenceTextView: TextView
@@ -21,6 +24,8 @@ class SentenceActivity : ComponentActivity() {
     private lateinit var checkButton: Button
     private lateinit var nextButton: Button
     private lateinit var backButton: Button
+
+    private lateinit var tts: TextToSpeech
 
     private var sentences: List<Sentence>? = null
     private var currentSentenceIndex = 0
@@ -39,6 +44,8 @@ class SentenceActivity : ComponentActivity() {
         checkButton = findViewById(R.id.checkButton)
         nextButton = findViewById(R.id.nextButton)
         backButton = findViewById(R.id.backButton)
+
+        tts = TextToSpeech(this, this)
 
         sentences = intent.getSerializableExtra("sentences") as? List<Sentence>
 
@@ -64,6 +71,17 @@ class SentenceActivity : ComponentActivity() {
                 portugueseWords.removeLast()
                 updatePortugueseSentence()
             }
+        }
+    }
+
+    override fun onInit(status: Int) {
+        if (status == TextToSpeech.SUCCESS) {
+            val result = tts.setLanguage(Locale("pt", "PT"))
+            if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
+                Log.e("TTS", "The Language specified is not supported!")
+            }
+        } else {
+            Log.e("TTS", "Initialization Failed!")
         }
     }
 
@@ -118,6 +136,7 @@ class SentenceActivity : ComponentActivity() {
                 nextButton.visibility = View.VISIBLE
             }
             checkButton.visibility = View.GONE
+            tts.speak(portugueseSentenceTextView.text.toString(), TextToSpeech.QUEUE_FLUSH, null, "")
         }
     }
 
@@ -128,5 +147,13 @@ class SentenceActivity : ComponentActivity() {
 
     private fun updatePortugueseSentence() {
         portugueseSentenceTextView.text = portugueseWords.joinToString(" ")
+    }
+
+    override fun onDestroy() {
+        if (::tts.isInitialized) {
+            tts.stop()
+            tts.shutdown()
+        }
+        super.onDestroy()
     }
 }
