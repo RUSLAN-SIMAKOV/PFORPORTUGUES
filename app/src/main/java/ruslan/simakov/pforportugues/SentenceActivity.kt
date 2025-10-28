@@ -26,6 +26,7 @@ class SentenceActivity : ComponentActivity() {
     private var currentSentenceIndex = 0
     private var correctAnswers = 0
     private val portugueseWords = mutableListOf<String>()
+    private val clickedWordButtons = mutableListOf<Button>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,6 +56,15 @@ class SentenceActivity : ComponentActivity() {
             setResult(Activity.RESULT_CANCELED)
             finish()
         }
+
+        portugueseSentenceTextView.setOnClickListener {
+            if (clickedWordButtons.isNotEmpty()) {
+                val lastClickedButton = clickedWordButtons.removeLast()
+                lastClickedButton.isEnabled = true
+                portugueseWords.removeLast()
+                updatePortugueseSentence()
+            }
+        }
     }
 
     private fun loadSentence() {
@@ -64,6 +74,7 @@ class SentenceActivity : ComponentActivity() {
                 ukrainianSentenceTextView.text = sentence.ukrainianSentence
                 portugueseSentenceTextView.text = ""
                 portugueseWords.clear()
+                clickedWordButtons.clear()
                 resultImageView.visibility = View.GONE
                 nextButton.visibility = View.GONE
                 checkButton.visibility = View.VISIBLE
@@ -75,9 +86,11 @@ class SentenceActivity : ComponentActivity() {
                     val button = Button(this)
                     button.text = word
                     button.setOnClickListener {
+                        val clickedButton = it as Button
                         portugueseWords.add(word)
+                        clickedWordButtons.add(clickedButton)
                         updatePortugueseSentence()
-                        it.isEnabled = false
+                        clickedButton.isEnabled = false
                     }
                     wordBankGridLayout.addView(button)
                 }
