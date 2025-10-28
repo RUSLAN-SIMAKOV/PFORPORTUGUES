@@ -1,5 +1,7 @@
 package ruslan.simakov.pforportugues
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
@@ -22,6 +24,7 @@ class SentenceActivity : ComponentActivity() {
 
     private var sentences: List<Sentence>? = null
     private var currentSentenceIndex = 0
+    private var correctAnswers = 0
     private val portugueseWords = mutableListOf<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,6 +52,7 @@ class SentenceActivity : ComponentActivity() {
         }
 
         backButton.setOnClickListener {
+            setResult(Activity.RESULT_CANCELED)
             finish()
         }
     }
@@ -77,6 +81,12 @@ class SentenceActivity : ComponentActivity() {
                     }
                     wordBankGridLayout.addView(button)
                 }
+            } else {
+                val resultIntent = Intent()
+                resultIntent.putExtra("correctAnswers", correctAnswers)
+                resultIntent.putExtra("totalSentences", it.size)
+                setResult(Activity.RESULT_OK, resultIntent)
+                finish()
             }
         }
     }
@@ -86,11 +96,12 @@ class SentenceActivity : ComponentActivity() {
             val sentence = it[currentSentenceIndex]
             if (portugueseWords == sentence.correctPortugueseWords) {
                 resultImageView.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_correct))
+                correctAnswers++
             } else {
                 resultImageView.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_wrong))
             }
             resultImageView.visibility = View.VISIBLE
-            if (currentSentenceIndex < it.size - 1) {
+            if (currentSentenceIndex < it.size) {
                 nextButton.visibility = View.VISIBLE
             }
             checkButton.visibility = View.GONE
