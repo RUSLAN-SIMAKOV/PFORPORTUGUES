@@ -17,6 +17,7 @@ import java.util.*
 
 class SentenceActivity : ComponentActivity(), TextToSpeech.OnInitListener {
 
+    private lateinit var sentenceCounterTextView: TextView
     private lateinit var ukrainianSentenceTextView: TextView
     private lateinit var portugueseSentenceTextView: TextView
     private lateinit var wordBankGridLayout: GridLayout
@@ -37,6 +38,7 @@ class SentenceActivity : ComponentActivity(), TextToSpeech.OnInitListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_sentence)
 
+        sentenceCounterTextView = findViewById(R.id.sentenceCounterTextView)
         ukrainianSentenceTextView = findViewById(R.id.ukrainianSentenceTextView)
         portugueseSentenceTextView = findViewById(R.id.portugueseSentenceTextView)
         wordBankGridLayout = findViewById(R.id.wordBankGridLayout)
@@ -89,6 +91,7 @@ class SentenceActivity : ComponentActivity(), TextToSpeech.OnInitListener {
         sentences?.let {
             if (currentSentenceIndex < it.size) {
                 val sentence = it[currentSentenceIndex]
+                sentenceCounterTextView.text = "${currentSentenceIndex + 1} / ${it.size}"
                 ukrainianSentenceTextView.text = sentence.ukrainianSentence
                 portugueseSentenceTextView.text = ""
                 portugueseWords.clear()
