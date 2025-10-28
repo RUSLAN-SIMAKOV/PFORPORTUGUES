@@ -5,10 +5,10 @@ import android.os.Bundle
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import androidx.activity.ComponentActivity
-import ruslan.simakov.pforportugues.data.Sentence
 import ruslan.simakov.pforportugues.data.lessons.Lesson1
 import ruslan.simakov.pforportugues.data.lessons.Lesson2
 import ruslan.simakov.pforportugues.data.lessons.Lesson3
+import java.io.Serializable
 
 class MainActivity : ComponentActivity() {
 
@@ -24,15 +24,15 @@ class MainActivity : ComponentActivity() {
 
         listView.setOnItemClickListener { _, _, position, _ ->
             val selectedLesson = lessonNames[position]
-            val sentence = when (selectedLesson) {
-                "Lesson 1" -> Lesson1.get()
-                "Lesson 2" -> Lesson2.get()
-                "Lesson 3" -> Lesson3.get()
+            val sentences = when (selectedLesson) {
+                "Lesson 1" -> Lesson1.getSentences()
+                "Lesson 2" -> Lesson2.getSentences()
+                "Lesson 3" -> Lesson3.getSentences()
                 else -> throw IllegalArgumentException("Invalid lesson name")
             }
 
             val intent = Intent(this@MainActivity, SentenceActivity::class.java).apply {
-                putExtra("sentence", sentence)
+                putExtra("sentences", sentences as Serializable)
             }
             startActivity(intent)
         }

@@ -17,9 +17,11 @@ class SentenceActivity : ComponentActivity() {
     private lateinit var wordBankGridLayout: GridLayout
     private lateinit var resultImageView: ImageView
     private lateinit var checkButton: Button
+    private lateinit var nextButton: Button
     private lateinit var backButton: Button
 
-    private var sentence: Sentence? = null
+    private var sentences: List<Sentence>? = null
+    private var currentSentenceIndex = 0
     private val portugueseWords = mutableListOf<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,39 +33,73 @@ class SentenceActivity : ComponentActivity() {
         wordBankGridLayout = findViewById(R.id.wordBankGridLayout)
         resultImageView = findViewById(R.id.resultImageView)
         checkButton = findViewById(R.id.checkButton)
+        nextButton = findViewById(R.id.nextButton)
         backButton = findViewById(R.id.backButton)
 
-        sentence = intent.getSerializableExtra("sentence") as? Sentence
+        sentences = intent.getSerializableExtra("sentences") as? List<Sentence>
 
-        sentence?.let { sen ->
-            ukrainianSentenceTextView.text = sen.ukrainianSentence
+        loadSentence()
 
-            val wordBank = sen.correctPortugueseWords.shuffled()
+        checkButton.setOnClickListener {
+            checkAnswer()
+        }
 
-            for (word in wordBank) {
-                val button = Button(this)
-                button.text = word
-                button.setOnClickListener {
-                    portugueseWords.add(word)
-                    updatePortugueseSentence()
-                    it.isEnabled = false
-                }
-                wordBankGridLayout.addView(button)
-            }
-
-            checkButton.setOnClickListener {
-                if (portugueseWords == sen.correctPortugueseWords) {
-                    resultImageView.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_correct))
-                } else {
-                    resultImageView.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_wrong))
-                }
-                resultImageView.visibility = View.VISIBLE
-            }
+        nextButton.setOnClickListener {
+            loadNextSentence()
         }
 
         backButton.setOnClickListener {
             finish()
         }
+    }
+
+    private fun loadSentence() {
+        sentences?.let {
+            if (currentSentenceIndex < it.size) {
+                val sentence = it[currentSentenceIndex]
+                ukrainianSentenceTextView.text = sentence.ukrainianSentence
+                portugueseSentenceTextView.text = ""
+                portugueseWords.clear()
+                resultImageView.visibility = View.GONE
+                nextButton.visibility = View.GONE
+                checkButton.visibility = View.VISIBLE
+
+                wordBankGridLayout.removeAllViews()
+                val wordBank = sentence.correctPortugueseWords.shuffled()
+
+                for (word in wordBank) {
+                    val button = Button(this)
+                    button.text = word
+                    button.setOnClickListener {
+                        portugueseWords.add(word)
+                        updatePortugueseSentence()
+                        it.isEnabled = false
+                    }
+                    wordBankGridLayout.addView(button)
+                }
+            }
+        }
+    }
+
+    private fun checkAnswer() {
+        sentences?.let {
+            val sentence = it[currentSentenceIndex]
+            if (portugueseWords == sentence.correctPortugueseWords) {
+                resultImageView.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_correct))
+                if (currentSentenceIndex < it.size - 1) {
+                    nextButton.visibility = View.VISIBLE
+                }
+                checkButton.visibility = View.GONE
+            } else {
+                resultImageView.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_wrong))
+            }
+            resultImageView.visibility = View.VISIBLE
+        }
+    }
+
+    private fun loadNextSentence() {
+        currentSentenceIndex++
+        loadSentence()
     }
 
     private fun updatePortugueseSentence() {
