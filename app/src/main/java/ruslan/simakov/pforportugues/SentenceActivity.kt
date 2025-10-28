@@ -86,14 +86,14 @@ class SentenceActivity : ComponentActivity() {
             val sentence = it[currentSentenceIndex]
             if (portugueseWords == sentence.correctPortugueseWords) {
                 resultImageView.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_correct))
-                if (currentSentenceIndex < it.size - 1) {
-                    nextButton.visibility = View.VISIBLE
-                }
-                checkButton.visibility = View.GONE
             } else {
                 resultImageView.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_wrong))
             }
             resultImageView.visibility = View.VISIBLE
+            if (currentSentenceIndex < it.size - 1) {
+                nextButton.visibility = View.VISIBLE
+            }
+            checkButton.visibility = View.GONE
         }
     }
 
