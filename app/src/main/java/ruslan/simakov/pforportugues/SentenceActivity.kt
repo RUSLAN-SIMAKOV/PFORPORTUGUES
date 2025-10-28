@@ -128,6 +128,7 @@ class SentenceActivity : ComponentActivity(), TextToSpeech.OnInitListener {
             if (portugueseWords == sentence.correctPortugueseWords) {
                 resultImageView.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_correct))
                 correctAnswers++
+                tts.speak(portugueseSentenceTextView.text.toString(), TextToSpeech.QUEUE_FLUSH, null, "")
             } else {
                 resultImageView.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_wrong))
             }
@@ -136,7 +137,6 @@ class SentenceActivity : ComponentActivity(), TextToSpeech.OnInitListener {
                 nextButton.visibility = View.VISIBLE
             }
             checkButton.visibility = View.GONE
-            tts.speak(portugueseSentenceTextView.text.toString(), TextToSpeech.QUEUE_FLUSH, null, "")
         }
     }
 
