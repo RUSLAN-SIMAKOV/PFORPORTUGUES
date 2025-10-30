@@ -34,7 +34,7 @@ class MainActivity : ComponentActivity() {
                 "Lesson 3" -> Lesson3.getSentences()
                 "Lesson 4" -> Lesson4.getSentences()
                 else -> throw IllegalArgumentException("Invalid lesson name")
-            }
+            }.shuffled()
 
             val intent = Intent(this@MainActivity, SentenceActivity::class.java).apply {
                 putExtra("sentences", sentences as Serializable)
