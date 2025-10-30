@@ -134,6 +134,7 @@ class SentenceActivity : ComponentActivity(), TextToSpeech.OnInitListener {
                 tts.speak(portugueseSentenceTextView.text.toString(), TextToSpeech.QUEUE_FLUSH, null, "")
             } else {
                 resultImageView.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_wrong))
+                portugueseSentenceTextView.text = sentence.correctPortugueseWords.joinToString(" ")
             }
             resultImageView.visibility = View.VISIBLE
             if (currentSentenceIndex < it.size) {
