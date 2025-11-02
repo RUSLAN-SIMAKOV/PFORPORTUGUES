@@ -25,6 +25,8 @@ class SentenceActivity : ComponentActivity(), TextToSpeech.OnInitListener {
     private lateinit var checkButton: Button
     private lateinit var nextButton: Button
     private lateinit var backButton: Button
+    private lateinit var helpButton: Button
+    private lateinit var ruleImageView: ImageView
 
     private lateinit var tts: TextToSpeech
 
@@ -46,6 +48,8 @@ class SentenceActivity : ComponentActivity(), TextToSpeech.OnInitListener {
         checkButton = findViewById(R.id.checkButton)
         nextButton = findViewById(R.id.nextButton)
         backButton = findViewById(R.id.backButton)
+        helpButton = findViewById(R.id.helpButton)
+        ruleImageView = findViewById(R.id.ruleImageView)
 
         tts = TextToSpeech(this, this)
 
@@ -64,6 +68,14 @@ class SentenceActivity : ComponentActivity(), TextToSpeech.OnInitListener {
         backButton.setOnClickListener {
             setResult(Activity.RESULT_CANCELED)
             finish()
+        }
+
+        helpButton.setOnClickListener {
+            ruleImageView.visibility = View.VISIBLE
+        }
+
+        ruleImageView.setOnClickListener {
+            ruleImageView.visibility = View.GONE
         }
 
         portugueseSentenceTextView.setOnClickListener {
