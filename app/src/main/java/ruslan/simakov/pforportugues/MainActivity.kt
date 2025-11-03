@@ -13,7 +13,7 @@ import java.io.Serializable
 
 class MainActivity : ComponentActivity() {
 
-    private val lessonNames = arrayOf("Lesson 1", "Lesson 2", "Lesson 3", "Lesson 4")
+    private val lessonNames = arrayOf("Lesson 1: Теперішній час", "Lesson 2: Минулий час", "Lesson 3", "Lesson 4")
     private lateinit var adapter: LessonAdapter
     private var selectedLessonPosition: Int = -1
 
@@ -29,8 +29,8 @@ class MainActivity : ComponentActivity() {
             selectedLessonPosition = position
             val selectedLesson = lessonNames[position]
             val sentences = when (selectedLesson) {
-                "Lesson 1" -> Lesson1.getSentences()
-                "Lesson 2" -> Lesson2.getSentences()
+                "Lesson 1: Теперішній час" -> Lesson1.getSentences()
+                "Lesson 2: Минулий час" -> Lesson2.getSentences()
                 "Lesson 3" -> Lesson3.getSentences()
                 "Lesson 4" -> Lesson4.getSentences()
                 else -> throw IllegalArgumentException("Invalid lesson name")
