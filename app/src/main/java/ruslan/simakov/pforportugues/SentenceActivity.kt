@@ -54,6 +54,7 @@ class SentenceActivity : ComponentActivity(), TextToSpeech.OnInitListener {
         tts = TextToSpeech(this, this)
 
         sentences = intent.getSerializableExtra("sentences") as? List<Sentence>
+        val lesson = intent.getIntExtra("lesson", 1)
 
         loadSentence()
 
@@ -71,6 +72,12 @@ class SentenceActivity : ComponentActivity(), TextToSpeech.OnInitListener {
         }
 
         helpButton.setOnClickListener {
+            val ruleImage = when (lesson) {
+                1 -> R.drawable.less1
+                2 -> R.drawable.less2
+                else -> R.drawable.less1 // Default image
+            }
+            ruleImageView.setImageResource(ruleImage)
             ruleImageView.visibility = View.VISIBLE
         }
 

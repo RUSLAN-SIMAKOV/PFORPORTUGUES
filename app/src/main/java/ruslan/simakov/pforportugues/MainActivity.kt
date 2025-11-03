@@ -38,6 +38,7 @@ class MainActivity : ComponentActivity() {
 
             val intent = Intent(this@MainActivity, SentenceActivity::class.java).apply {
                 putExtra("sentences", sentences as Serializable)
+                putExtra("lesson", position + 1)
             }
             startActivityForResult(intent, 1)
         }
