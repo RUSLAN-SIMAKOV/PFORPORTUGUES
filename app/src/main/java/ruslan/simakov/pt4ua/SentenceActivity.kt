@@ -88,6 +88,8 @@ class SentenceActivity : ComponentActivity(), TextToSpeech.OnInitListener {
             val ruleImage = when (lesson) {
                 1 -> R.drawable.less1
                 2 -> R.drawable.less2
+                3 -> R.drawable.less3
+                4 -> R.drawable.less4
                 else -> R.drawable.less1 // Default image
             }
             ruleImageView.setImageResource(ruleImage)

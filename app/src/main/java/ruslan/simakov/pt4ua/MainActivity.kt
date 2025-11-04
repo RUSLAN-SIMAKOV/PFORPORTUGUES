@@ -9,12 +9,12 @@ import ruslan.simakov.pt4ua.data.lessons.Lesson1
 import ruslan.simakov.pt4ua.data.lessons.Lesson2
 import ruslan.simakov.pt4ua.data.lessons.Lesson3
 import ruslan.simakov.pt4ua.data.lessons.Lesson4
-import ruslan.simakov.pt4ua.data.lessons.Lesson5
+// import ruslan.simakov.pt4ua.data.lessons.Lesson5
 import java.io.Serializable
 
 class MainActivity : ComponentActivity() {
 
-    private val lessonNames = arrayOf("Lesson 1: Теперішній час", "Lesson 2: Минулий час", "Lesson 3", "Lesson 4", "Lesson 5")
+    private val lessonNames = arrayOf("Lesson 1: Теперішній час", "Lesson 2: Минулий час", "Lesson 3: SER/ESTAR/TER", "Lesson 4: Питання")
     private lateinit var adapter: LessonAdapter
     private var selectedLessonPosition: Int = -1
 
@@ -32,9 +32,9 @@ class MainActivity : ComponentActivity() {
             val sentences = when (selectedLesson) {
                 "Lesson 1: Теперішній час" -> Lesson1.getSentences()
                 "Lesson 2: Минулий час" -> Lesson2.getSentences()
-                "Lesson 3" -> Lesson3.getSentences()
-                "Lesson 4" -> Lesson4.getSentences()
-                "Lesson 5" -> Lesson5.getSentences()
+                "Lesson 3: SER/ESTAR/TER" -> Lesson3.getSentences()
+                "Lesson 4: Питання" -> Lesson4.getSentences()
+                // "Lesson 5" -> Lesson5.getSentences()
                 else -> throw IllegalArgumentException("Invalid lesson name")
             }.shuffled()
 

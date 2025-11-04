@@ -72,15 +72,15 @@ object Lesson4 {
             Sentence("Як вони (чоловіки) роблять?", listOf("Como", "eles", "fazem?")),
             Sentence("Як вони (жінки) роблять?", listOf("Como", "elas", "fazem?")),
 
-// POR QUE – чому
-            Sentence("Чому я допомагаю?", listOf("Por que", "eu", "ajudo?")),
-            Sentence("Чому ти допомагаєш?", listOf("Por que", "tu", "ajudas?")),
-            Sentence("Чому він допомагає?", listOf("Por que", "ele", "ajuda?")),
-            Sentence("Чому вона допомагає?", listOf("Por que", "ela", "ajuda?")),
-            Sentence("Чому ми допомагаємо?", listOf("Por que", "nós", "ajudamos?")),
-            Sentence("Чому ви допомагаєте?", listOf("Por que", "vocês", "ajudam?")),
-            Sentence("Чому вони (чоловіки) допомагають?", listOf("Por que", "eles", "ajudam?")),
-            Sentence("Чому вони (жінки) допомагають?", listOf("Por que", "elas", "ajudam?")),
+// PORQUE – чому
+            Sentence("Чому я допомагаю?", listOf("Porque", "eu", "ajudo?")),
+            Sentence("Чому ти допомагаєш?", listOf("Porque", "tu", "ajudas?")),
+            Sentence("Чому він допомагає?", listOf("Porque", "ele", "ajuda?")),
+            Sentence("Чому вона допомагає?", listOf("Porque", "ela", "ajuda?")),
+            Sentence("Чому ми допомагаємо?", listOf("Porque", "nós", "ajudamos?")),
+            Sentence("Чому ви допомагаєте?", listOf("Porque", "vocês", "ajudam?")),
+            Sentence("Чому вони (чоловіки) допомагають?", listOf("Porque", "eles", "ajudam?")),
+            Sentence("Чому вони (жінки) допомагають?", listOf("Porque", "elas", "ajudam?")),
 
 // QUAL – який
             Sentence("Який я обираю?", listOf("Qual", "eu", "escolho?")),
