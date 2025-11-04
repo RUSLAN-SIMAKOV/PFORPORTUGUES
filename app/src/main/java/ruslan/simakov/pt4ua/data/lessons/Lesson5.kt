@@ -7,6 +7,8 @@ object Lesson5 {
     fun getSentences(): List<Sentence> {
         return listOf(
             Sentence("Що я роблю?", listOf("O que", "eu", "faço?")),
-            )
+            Sentence("я роблю?", listOf("eu", "faço?")),
+            Sentence("роблю?", listOf("faço?")),
+        )
     }
 }

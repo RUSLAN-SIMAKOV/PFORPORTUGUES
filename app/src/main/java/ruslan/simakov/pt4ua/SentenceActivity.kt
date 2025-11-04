@@ -35,9 +35,11 @@ class SentenceActivity : ComponentActivity(), TextToSpeech.OnInitListener {
     private lateinit var sharedPreferences: SharedPreferences
 
     private var sentences: List<Sentence>? = null
+    private var incorrectSentences = mutableListOf<Sentence>()
     private var currentSentenceIndex = 0
     private var correctAnswers = 0
     private var lesson = 1
+    private var totalSentencesInLesson = 0
     private val portugueseWords = mutableListOf<String>()
     private val clickedWordButtons = mutableListOf<Button>()
 
@@ -60,7 +62,10 @@ class SentenceActivity : ComponentActivity(), TextToSpeech.OnInitListener {
         tts = TextToSpeech(this, this)
         sharedPreferences = getSharedPreferences("LessonState", Context.MODE_PRIVATE)
 
-        sentences = intent.getSerializableExtra("sentences") as? List<Sentence>
+        val originalSentences = intent.getSerializableExtra("sentences") as? List<Sentence>
+        sentences = originalSentences?.shuffled()
+        totalSentencesInLesson = sentences?.size ?: 0
+
         lesson = intent.getIntExtra("lesson", 1)
         currentSentenceIndex = sharedPreferences.getInt("lesson_${lesson}_progress", 0)
 
@@ -123,43 +128,49 @@ class SentenceActivity : ComponentActivity(), TextToSpeech.OnInitListener {
     }
 
     private fun loadSentence() {
-        sentences?.let {
-            if (currentSentenceIndex < it.size) {
-                with(sharedPreferences.edit()) {
-                    putInt("lesson_${lesson}_progress", currentSentenceIndex)
-                    apply()
+        val currentList = sentences
+        if (currentList != null && currentSentenceIndex < currentList.size) {
+            with(sharedPreferences.edit()) {
+                putInt("lesson_${lesson}_progress", currentSentenceIndex)
+                apply()
+            }
+
+            clickInterceptor.visibility = View.VISIBLE
+            wordBankGridLayout.visibility = View.GONE
+            checkButton.visibility = View.GONE
+            nextButton.visibility = View.GONE
+            backButton.visibility = View.GONE
+            helpButton.visibility = View.GONE
+            resultImageView.visibility = View.GONE
+
+            val sentence = currentList[currentSentenceIndex]
+            sentenceCounterTextView.text = "${currentSentenceIndex + 1} / ${currentList.size}"
+            ukrainianSentenceTextView.text = sentence.ukrainianSentence
+            portugueseSentenceTextView.text = ""
+            portugueseWords.clear()
+            clickedWordButtons.clear()
+
+            wordBankGridLayout.removeAllViews()
+            val wordBank = sentence.correctPortugueseWords.shuffled()
+
+            for (word in wordBank) {
+                val button = Button(this)
+                button.text = word
+                button.setOnClickListener {
+                    val clickedButton = it as Button
+                    portugueseWords.add(word)
+                    clickedWordButtons.add(clickedButton)
+                    updatePortugueseSentence()
+                    clickedButton.isEnabled = false
                 }
-
-                clickInterceptor.visibility = View.VISIBLE
-                wordBankGridLayout.visibility = View.GONE
-                checkButton.visibility = View.GONE
-                nextButton.visibility = View.GONE
-                backButton.visibility = View.GONE
-                helpButton.visibility = View.GONE
-                resultImageView.visibility = View.GONE
-
-                val sentence = it[currentSentenceIndex]
-                sentenceCounterTextView.text = "${currentSentenceIndex + 1} / ${it.size}"
-                ukrainianSentenceTextView.text = sentence.ukrainianSentence
-                portugueseSentenceTextView.text = ""
-                portugueseWords.clear()
-                clickedWordButtons.clear()
-
-                wordBankGridLayout.removeAllViews()
-                val wordBank = sentence.correctPortugueseWords.shuffled()
-
-                for (word in wordBank) {
-                    val button = Button(this)
-                    button.text = word
-                    button.setOnClickListener {
-                        val clickedButton = it as Button
-                        portugueseWords.add(word)
-                        clickedWordButtons.add(clickedButton)
-                        updatePortugueseSentence()
-                        clickedButton.isEnabled = false
-                    }
-                    wordBankGridLayout.addView(button)
-                }
+                wordBankGridLayout.addView(button)
+            }
+        } else {
+            if (incorrectSentences.isNotEmpty()) {
+                sentences = incorrectSentences.shuffled()
+                incorrectSentences = mutableListOf()
+                currentSentenceIndex = 0
+                loadSentence()
             } else {
                 with(sharedPreferences.edit()) {
                     remove("lesson_${lesson}_progress")
@@ -167,8 +178,8 @@ class SentenceActivity : ComponentActivity(), TextToSpeech.OnInitListener {
                 }
 
                 val resultIntent = Intent()
-                resultIntent.putExtra("correctAnswers", correctAnswers)
-                resultIntent.putExtra("totalSentences", it.size)
+                resultIntent.putExtra("correctAnswers", totalSentencesInLesson)
+                resultIntent.putExtra("totalSentences", totalSentencesInLesson)
                 setResult(Activity.RESULT_OK, resultIntent)
                 finish()
             }
@@ -185,11 +196,10 @@ class SentenceActivity : ComponentActivity(), TextToSpeech.OnInitListener {
             } else {
                 resultImageView.setImageDrawable(ContextCompat.getDrawable(this, R.drawable.ic_wrong))
                 portugueseSentenceTextView.text = sentence.correctPortugueseWords.joinToString(" ")
+                incorrectSentences.add(sentence)
             }
             resultImageView.visibility = View.VISIBLE
-            if (currentSentenceIndex < it.size -1) {
-                nextButton.visibility = View.VISIBLE
-            }
+            nextButton.visibility = View.VISIBLE
             checkButton.visibility = View.GONE
         }
     }
