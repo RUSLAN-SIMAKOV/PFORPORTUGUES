@@ -1,4 +1,4 @@
-package ruslan.simakov.pforportugues
+package ruslan.simakov.pt4ua
 
 import android.app.Activity
 import android.content.Intent
@@ -12,7 +12,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.activity.ComponentActivity
 import androidx.core.content.ContextCompat
-import ruslan.simakov.pforportugues.data.Sentence
+import ruslan.simakov.pt4ua.data.Sentence
 import java.util.*
 
 class SentenceActivity : ComponentActivity(), TextToSpeech.OnInitListener {

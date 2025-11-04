@@ -1,11 +1,10 @@
-package ruslan.simakov.pforportugues.data.lessons
+package ruslan.simakov.pt4ua.data.lessons
 
-import ruslan.simakov.pforportugues.data.Sentence
+import ruslan.simakov.pt4ua.data.Sentence
 
-object Lesson3 {
+object Lesson4 {
     fun getSentences(): List<Sentence> {
         return listOf(
-            // O QUE – що
             Sentence("Що я роблю?", listOf("O que", "eu", "faço?")),
             Sentence("Що я не роблю?", listOf("O que", "eu", "não", "faço?")),
             Sentence("Що ти робиш?", listOf("O que", "tu", "faz?")),

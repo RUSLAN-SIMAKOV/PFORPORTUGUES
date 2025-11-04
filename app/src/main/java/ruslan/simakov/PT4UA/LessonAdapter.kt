@@ -1,4 +1,4 @@
-package ruslan.simakov.pforportugues
+package ruslan.simakov.pt4ua
 
 import android.content.Context
 import android.graphics.Color

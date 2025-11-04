@@ -19,6 +19,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "pforportugues"
+rootProject.name = "PT4UA"
 include(":app")
- 

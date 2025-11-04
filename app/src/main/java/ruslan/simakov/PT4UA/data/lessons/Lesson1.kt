@@ -1,6 +1,6 @@
-package ruslan.simakov.pforportugues.data.lessons
+package ruslan.simakov.pt4ua.data.lessons
 
-import ruslan.simakov.pforportugues.data.Sentence
+import ruslan.simakov.pt4ua.data.Sentence
 
 object Lesson1 {
     // á

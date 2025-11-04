@@ -1,15 +1,15 @@
-package ruslan.simakov.pforportugues
+package ruslan.simakov.pt4ua
 
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.widget.ListView
 import androidx.activity.ComponentActivity
-import ruslan.simakov.pforportugues.data.lessons.Lesson1
-import ruslan.simakov.pforportugues.data.lessons.Lesson2
-import ruslan.simakov.pforportugues.data.lessons.Lesson3
-import ruslan.simakov.pforportugues.data.lessons.Lesson4
-import ruslan.simakov.pforportugues.data.lessons.Lesson5
+import ruslan.simakov.pt4ua.data.lessons.Lesson1
+import ruslan.simakov.pt4ua.data.lessons.Lesson2
+import ruslan.simakov.pt4ua.data.lessons.Lesson3
+import ruslan.simakov.pt4ua.data.lessons.Lesson4
+import ruslan.simakov.pt4ua.data.lessons.Lesson5
 import java.io.Serializable
 
 class MainActivity : ComponentActivity() {

@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "ruslan.simakov.pforportugues"
+    namespace = "ruslan.simakov.pt4ua"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "ruslan.simakov.pforportugues"
+        applicationId = "ruslan.simakov.pt4ua"
         minSdk = 26
         targetSdk = 34
         versionCode = 1

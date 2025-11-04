@@ -1,4 +1,4 @@
-package ruslan.simakov.pforportugues.data
+package ruslan.simakov.pt4ua.data
 
 import java.io.Serializable
 
