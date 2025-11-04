@@ -29,6 +29,7 @@ class SentenceActivity : ComponentActivity(), TextToSpeech.OnInitListener {
     private lateinit var backButton: Button
     private lateinit var helpButton: Button
     private lateinit var ruleImageView: ImageView
+    private lateinit var clickInterceptor: View
 
     private lateinit var tts: TextToSpeech
     private lateinit var sharedPreferences: SharedPreferences
@@ -54,6 +55,7 @@ class SentenceActivity : ComponentActivity(), TextToSpeech.OnInitListener {
         backButton = findViewById(R.id.backButton)
         helpButton = findViewById(R.id.helpButton)
         ruleImageView = findViewById(R.id.ruleImageView)
+        clickInterceptor = findViewById(R.id.clickInterceptor)
 
         tts = TextToSpeech(this, this)
         sharedPreferences = getSharedPreferences("LessonState", Context.MODE_PRIVATE)
@@ -99,6 +101,14 @@ class SentenceActivity : ComponentActivity(), TextToSpeech.OnInitListener {
                 updatePortugueseSentence()
             }
         }
+
+        clickInterceptor.setOnClickListener {
+            wordBankGridLayout.visibility = View.VISIBLE
+            checkButton.visibility = View.VISIBLE
+            backButton.visibility = View.VISIBLE
+            helpButton.visibility = View.VISIBLE
+            clickInterceptor.visibility = View.GONE
+        }
     }
 
     override fun onInit(status: Int) {
@@ -120,15 +130,20 @@ class SentenceActivity : ComponentActivity(), TextToSpeech.OnInitListener {
                     apply()
                 }
 
+                clickInterceptor.visibility = View.VISIBLE
+                wordBankGridLayout.visibility = View.GONE
+                checkButton.visibility = View.GONE
+                nextButton.visibility = View.GONE
+                backButton.visibility = View.GONE
+                helpButton.visibility = View.GONE
+                resultImageView.visibility = View.GONE
+
                 val sentence = it[currentSentenceIndex]
                 sentenceCounterTextView.text = "${currentSentenceIndex + 1} / ${it.size}"
                 ukrainianSentenceTextView.text = sentence.ukrainianSentence
                 portugueseSentenceTextView.text = ""
                 portugueseWords.clear()
                 clickedWordButtons.clear()
-                resultImageView.visibility = View.GONE
-                nextButton.visibility = View.GONE
-                checkButton.visibility = View.VISIBLE
 
                 wordBankGridLayout.removeAllViews()
                 val wordBank = sentence.correctPortugueseWords.shuffled()
@@ -172,7 +187,7 @@ class SentenceActivity : ComponentActivity(), TextToSpeech.OnInitListener {
                 portugueseSentenceTextView.text = sentence.correctPortugueseWords.joinToString(" ")
             }
             resultImageView.visibility = View.VISIBLE
-            if (currentSentenceIndex < it.size) {
+            if (currentSentenceIndex < it.size -1) {
                 nextButton.visibility = View.VISIBLE
             }
             checkButton.visibility = View.GONE

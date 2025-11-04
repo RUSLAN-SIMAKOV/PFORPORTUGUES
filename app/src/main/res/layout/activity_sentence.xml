@@ -25,6 +25,7 @@
                 android:id="@+id/helpButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:text="Help" />
         </LinearLayout>
 
@@ -49,6 +50,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:columnCount="4"
+            android:visibility="gone"
             android:rowCount="4" />
 
         <ImageView
@@ -64,6 +66,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:visibility="gone"
             android:text="Check" />
 
         <Button
@@ -79,6 +82,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:visibility="gone"
             android:text="Back to Lessons" />
     </LinearLayout>
 
@@ -88,6 +92,14 @@
         android:layout_height="match_parent"
         android:visibility="gone"
         android:background="?android:attr/windowBackground"
+        android:clickable="true"
+        android:focusable="true" />
+
+    <View
+        android:id="@+id/clickInterceptor"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/transparent"
         android:clickable="true"
         android:focusable="true" />
 </RelativeLayout>
