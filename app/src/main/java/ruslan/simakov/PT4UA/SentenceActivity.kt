@@ -1,7 +1,9 @@
 package ruslan.simakov.pt4ua
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.speech.tts.TextToSpeech
 import android.util.Log
@@ -29,10 +31,12 @@ class SentenceActivity : ComponentActivity(), TextToSpeech.OnInitListener {
     private lateinit var ruleImageView: ImageView
 
     private lateinit var tts: TextToSpeech
+    private lateinit var sharedPreferences: SharedPreferences
 
     private var sentences: List<Sentence>? = null
     private var currentSentenceIndex = 0
     private var correctAnswers = 0
+    private var lesson = 1
     private val portugueseWords = mutableListOf<String>()
     private val clickedWordButtons = mutableListOf<Button>()
 
@@ -52,9 +56,11 @@ class SentenceActivity : ComponentActivity(), TextToSpeech.OnInitListener {
         ruleImageView = findViewById(R.id.ruleImageView)
 
         tts = TextToSpeech(this, this)
+        sharedPreferences = getSharedPreferences("LessonState", Context.MODE_PRIVATE)
 
         sentences = intent.getSerializableExtra("sentences") as? List<Sentence>
-        val lesson = intent.getIntExtra("lesson", 1)
+        lesson = intent.getIntExtra("lesson", 1)
+        currentSentenceIndex = sharedPreferences.getInt("lesson_${lesson}_progress", 0)
 
         loadSentence()
 
@@ -109,6 +115,11 @@ class SentenceActivity : ComponentActivity(), TextToSpeech.OnInitListener {
     private fun loadSentence() {
         sentences?.let {
             if (currentSentenceIndex < it.size) {
+                with(sharedPreferences.edit()) {
+                    putInt("lesson_${lesson}_progress", currentSentenceIndex)
+                    apply()
+                }
+
                 val sentence = it[currentSentenceIndex]
                 sentenceCounterTextView.text = "${currentSentenceIndex + 1} / ${it.size}"
                 ukrainianSentenceTextView.text = sentence.ukrainianSentence
@@ -135,6 +146,11 @@ class SentenceActivity : ComponentActivity(), TextToSpeech.OnInitListener {
                     wordBankGridLayout.addView(button)
                 }
             } else {
+                with(sharedPreferences.edit()) {
+                    remove("lesson_${lesson}_progress")
+                    apply()
+                }
+
                 val resultIntent = Intent()
                 resultIntent.putExtra("correctAnswers", correctAnswers)
                 resultIntent.putExtra("totalSentences", it.size)
