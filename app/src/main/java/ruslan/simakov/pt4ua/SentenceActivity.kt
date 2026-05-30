@@ -102,9 +102,9 @@ class SentenceActivity : ComponentActivity(), TextToSpeech.OnInitListener {
 
         portugueseSentenceTextView.setOnClickListener {
             if (clickedWordButtons.isNotEmpty()) {
-                val lastClickedButton = clickedWordButtons.removeLast()
-                lastClickedButton.isEnabled = true
-                portugueseWords.removeLast()
+        val lastClickedButton = clickedWordButtons.removeAt(clickedWordButtons.lastIndex)
+        lastClickedButton.isEnabled = true
+        portugueseWords.removeAt(portugueseWords.lastIndex)
                 updatePortugueseSentence()
             }
         }
@@ -158,6 +158,9 @@ class SentenceActivity : ComponentActivity(), TextToSpeech.OnInitListener {
             for (word in wordBank) {
                 val button = Button(this)
                 button.text = word
+                button.isAllCaps = false
+                button.textSize = 14f
+                button.setPadding(8, 0, 8, 0)
                 button.setOnClickListener {
                     val clickedButton = it as Button
                     portugueseWords.add(word)
@@ -165,7 +168,12 @@ class SentenceActivity : ComponentActivity(), TextToSpeech.OnInitListener {
                     updatePortugueseSentence()
                     clickedButton.isEnabled = false
                 }
-                wordBankGridLayout.addView(button)
+                val params = GridLayout.LayoutParams()
+                params.width = 0
+                params.height = GridLayout.LayoutParams.WRAP_CONTENT
+                params.columnSpec = GridLayout.spec(GridLayout.UNDEFINED, 1f)
+                params.setMargins(4, 4, 4, 4)
+                wordBankGridLayout.addView(button, params)
             }
         } else {
             if (incorrectSentences.isNotEmpty()) {
