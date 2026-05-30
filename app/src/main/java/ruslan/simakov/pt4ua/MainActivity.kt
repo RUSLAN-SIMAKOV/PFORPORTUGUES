@@ -93,7 +93,7 @@ fun LessonListScreen(lessons: Array<String>, onLessonClick: (Int) -> Unit) {
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text("PFORPORTUGUES", fontWeight = FontWeight.Bold) },
+                title = { Text("PT4UA", fontWeight = FontWeight.Bold) },
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = MaterialTheme.colorScheme.primary,
                     titleContentColor = Color.White

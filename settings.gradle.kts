@@ -13,5 +13,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "PFORPORTUGUES"
+rootProject.name = "PT4UA"
 include(":app")
