@@ -1,60 +1,156 @@
 package ruslan.simakov.pt4ua
 
-import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.widget.ListView
 import androidx.activity.ComponentActivity
+import androidx.activity.compose.setContent
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.CheckCircle
+import androidx.compose.material.icons.filled.PlayArrow
+import androidx.compose.material3.*
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import ruslan.simakov.pt4ua.data.lessons.Lesson1
 import ruslan.simakov.pt4ua.data.lessons.Lesson2
 import ruslan.simakov.pt4ua.data.lessons.Lesson3
 import ruslan.simakov.pt4ua.data.lessons.Lesson4
-// import ruslan.simakov.pt4ua.data.lessons.Lesson5
 import java.io.Serializable
 
 class MainActivity : ComponentActivity() {
 
-    private val lessonNames = arrayOf("Lesson 1: Теперішній час", "Lesson 2: Минулий час", "Lesson 3: SER/ESTAR/TER", "Lesson 4: Питання")
-    private lateinit var adapter: LessonAdapter
-    private var selectedLessonPosition: Int = -1
+    private val lessonNames = arrayOf(
+        "Lesson 1: Теперішній час",
+        "Lesson 2: Минулий час",
+        "Lesson 3: SER / ESTAR / TER",
+        "Lesson 4: Питання"
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
-        val listView: ListView = findViewById(R.id.listView)
-        adapter = LessonAdapter(this, lessonNames)
-        listView.adapter = adapter
-
-        listView.setOnItemClickListener { _, _, position, _ ->
-            selectedLessonPosition = position
-            val selectedLesson = lessonNames[position]
-            val sentences = when (selectedLesson) {
-                "Lesson 1: Теперішній час" -> Lesson1.getSentences()
-                "Lesson 2: Минулий час" -> Lesson2.getSentences()
-                "Lesson 3: SER/ESTAR/TER" -> Lesson3.getSentences()
-                "Lesson 4: Питання" -> Lesson4.getSentences()
-                // "Lesson 5" -> Lesson5.getSentences()
-                else -> throw IllegalArgumentException("Invalid lesson name")
-            }.shuffled()
-
-            val intent = Intent(this@MainActivity, SentenceActivity::class.java).apply {
-                putExtra("sentences", sentences as Serializable)
-                putExtra("lesson", position + 1)
+        setContent {
+            MaterialTheme(
+                colorScheme = lightColorScheme(
+                    primary = Color(0xFF006633), // Portuguese Green
+                    secondary = Color(0xFFFF0000), // Portuguese Red
+                    tertiary = Color(0xFFFFCC00) // Portuguese Gold
+                )
+            ) {
+                Surface(
+                    modifier = Modifier.fillMaxSize(),
+                    color = MaterialTheme.colorScheme.background
+                ) {
+                    LessonListScreen(lessonNames) { position ->
+                        startLesson(position)
+                    }
+                }
             }
-            startActivityForResult(intent, 1)
         }
     }
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-        if (requestCode == 1 && resultCode == Activity.RESULT_OK) {
-            val correctAnswers = data?.getIntExtra("correctAnswers", 0) ?: 0
-            val totalSentences = data?.getIntExtra("totalSentences", 0) ?: 0
+    private fun startLesson(position: Int) {
+        val sentences = when (position) {
+            0 -> Lesson1.getSentences()
+            1 -> Lesson2.getSentences()
+            2 -> Lesson3.getSentences()
+            3 -> Lesson4.getSentences()
+            else -> throw IllegalArgumentException("Invalid lesson")
+        }.shuffled()
 
-            if (correctAnswers == totalSentences) {
-                adapter.setLessonCompleted(lessonNames[selectedLessonPosition])
+        val intent = Intent(this, SentenceActivity::class.java).apply {
+            putExtra("sentences", sentences as Serializable)
+            putExtra("lesson", position + 1)
+        }
+        startActivity(intent)
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun LessonListScreen(lessons: Array<String>, onLessonClick: (Int) -> Unit) {
+    val context = androidx.compose.ui.platform.LocalContext.current
+    val sharedPreferences = remember { context.getSharedPreferences("LessonState", Context.MODE_PRIVATE) }
+    
+    var completedLessons by remember { 
+        mutableStateOf(sharedPreferences.getStringSet("completedLessons", emptySet()) ?: emptySet()) 
+    }
+
+    Scaffold(
+        topBar = {
+            CenterAlignedTopAppBar(
+                title = { Text("PFORPORTUGUES", fontWeight = FontWeight.Bold) },
+                colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.primary,
+                    titleContentColor = Color.White
+                )
+            )
+        }
+    ) { padding ->
+        LazyColumn(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(padding),
+            contentPadding = PaddingValues(16.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp)
+        ) {
+            itemsIndexed(lessons) { index, lesson ->
+                LessonCard(
+                    title = lesson,
+                    isCompleted = completedLessons.contains(lesson),
+                    onClick = { onLessonClick(index) }
+                )
             }
+        }
+    }
+}
+
+@Composable
+fun LessonCard(title: String, isCompleted: Boolean, onClick: () -> Unit) {
+    ElevatedCard(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable(onClick = onClick),
+        shape = RoundedCornerShape(16.dp),
+        colors = CardDefaults.elevatedCardColors(
+            containerColor = if (isCompleted) Color(0xFFE8F5E9) else Color.White
+        )
+    ) {
+        Row(
+            modifier = Modifier
+                .padding(20.dp)
+                .fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    text = title,
+                    fontSize = 18.sp,
+                    fontWeight = FontWeight.SemiBold,
+                    color = if (isCompleted) Color(0xFF2E7D32) else Color.Black
+                )
+                Text(
+                    text = if (isCompleted) "Завершено" else "Натисніть, щоб почати",
+                    fontSize = 14.sp,
+                    color = if (isCompleted) Color(0xFF4CAF50) else Color.Gray
+                )
+            }
+            Icon(
+                imageVector = if (isCompleted) Icons.Default.CheckCircle else Icons.Default.PlayArrow,
+                contentDescription = null,
+                tint = if (isCompleted) Color(0xFF4CAF50) else MaterialTheme.colorScheme.primary,
+                modifier = Modifier.size(32.dp)
+            )
         }
     }
 }
