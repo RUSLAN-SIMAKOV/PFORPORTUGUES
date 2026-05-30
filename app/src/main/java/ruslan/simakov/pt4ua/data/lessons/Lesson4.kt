@@ -5,96 +5,91 @@ import ruslan.simakov.pt4ua.data.Sentence
 object Lesson4 {
     fun getSentences(): List<Sentence> {
         return listOf(
+            // O QUE – що
             Sentence("Що я роблю?", listOf("O que", "eu", "faço?")),
             Sentence("Що я не роблю?", listOf("O que", "eu", "não", "faço?")),
-            Sentence("Що ти робиш?", listOf("O que", "tu", "faz?")),
-            Sentence("Що ти не робиш?", listOf("O que", "tu", "não", "faz?")),
+            Sentence("Що ти робиш?", listOf("O que", "tu", "fazes?")),
+            Sentence("Що Ви робите? (ввічливо)", listOf("O que", "você", "faz?")),
             Sentence("Що він робить?", listOf("O que", "ele", "faz?")),
-            Sentence("Що він не робить?", listOf("O que", "ele", "não", "faz?")),
             Sentence("Що вона робить?", listOf("O que", "ela", "faz?")),
-            Sentence("Що вона не робить?", listOf("O que", "ela", "não", "faz?")),
             Sentence("Що ми робимо?", listOf("O que", "nós", "fazemos?")),
-            Sentence("Що ми не робимо?", listOf("O que", "nós", "não", "fazemos?")),
-            Sentence("Що ви робите?", listOf("O que", "vocês", "fazem?")),
-            Sentence("Що ви не робите?", listOf("O que", "vocês", "não", "fazem?")),
-            Sentence("Що вони роблять (чоловіки)?", listOf("O que", "eles", "fazem?")),
-            Sentence("Що вони не роблять (чоловіки)?", listOf("O que", "eles", "não", "fazem?")),
-            Sentence("Що вони роблять (жінки)?", listOf("O que", "elas", "fazem?")),
-            Sentence("Що вони не роблять (жінки)?", listOf("O que", "elas", "não", "fazem?")),
+            Sentence("Що ви робите? (множина)", listOf("O que", "vocês", "fazem?")),
+            Sentence("Що вони роблять? (чоловіки)", listOf("O que", "eles", "fazem?")),
+            Sentence("Що вони роблять? (жінки)", listOf("O que", "elas", "fazem?")),
 
-// QUEM – хто
+            // QUEM – хто
             Sentence("Хто я?", listOf("Quem", "eu", "sou?")),
             Sentence("Хто ти?", listOf("Quem", "tu", "és?")),
+            Sentence("Хто Ви? (ввічливо)", listOf("Quem", "você", "é?")),
             Sentence("Хто він?", listOf("Quem", "ele", "é?")),
             Sentence("Хто вона?", listOf("Quem", "ela", "é?")),
             Sentence("Хто ми?", listOf("Quem", "nós", "somos?")),
-            Sentence("Хто ви?", listOf("Quem", "vocês", "são?")),
-            Sentence("Хто вони (чоловіки)?", listOf("Quem", "eles", "são?")),
-            Sentence("Хто вони (жінки)?", listOf("Quem", "elas", "são?")),
+            Sentence("Хто ви? (множина)", listOf("Quem", "vocês", "são?")),
+            Sentence("Хто вони? (чоловіки)", listOf("Quem", "eles", "são?")),
+            Sentence("Хто вони? (жінки)", listOf("Quem", "elas", "são?")),
 
-// ONDE – де
-            Sentence("Де я є?", listOf("Onde", "eu", "estou?")),
-            Sentence("Де ти є?", listOf("Onde", "tu", "estás?")),
-            Sentence("Де він є?", listOf("Onde", "ele", "está?")),
-            Sentence("Де вона є?", listOf("Onde", "ela", "está?")),
-            Sentence("Де ми є?", listOf("Onde", "nós", "estamos?")),
-            Sentence("Де ви є?", listOf("Onde", "vocês", "estão?")),
-            Sentence("Де вони (чоловіки)?", listOf("Onde", "eles", "estão?")),
-            Sentence("Де вони (жінки)?", listOf("Onde", "elas", "estão?")),
+            // ONDE – де
+            Sentence("Де я?", listOf("Onde", "eu", "estou?")),
+            Sentence("Де ти?", listOf("Onde", "tu", "estás?")),
+            Sentence("Де Ви? (ввічливо)", listOf("Onde", "você", "está?")),
+            Sentence("Де він?", listOf("Onde", "ele", "está?")),
+            Sentence("Де вона?", listOf("Onde", "ela", "está?")),
+            Sentence("Де ми?", listOf("Onde", "nós", "estamos?")),
+            Sentence("Де ви? (множина)", listOf("Onde", "vocês", "estão?")),
+            Sentence("Де вони? (чоловіки)", listOf("Onde", "eles", "estão?")),
+            Sentence("Де вони? (жінки)", listOf("Onde", "elas", "estão?")),
 
-// QUANDO – коли
+            // QUANDO – коли
             Sentence("Коли я приходжу?", listOf("Quando", "eu", "chego?")),
             Sentence("Коли ти приходиш?", listOf("Quando", "tu", "chegas?")),
+            Sentence("Коли Ви приходите? (ввічливо)", listOf("Quando", "você", "chega?")),
             Sentence("Коли він приходить?", listOf("Quando", "ele", "chega?")),
             Sentence("Коли вона приходить?", listOf("Quando", "ela", "chega?")),
             Sentence("Коли ми приходимо?", listOf("Quando", "nós", "chegamos?")),
-            Sentence("Коли ви приходите?", listOf("Quando", "vocês", "chegam?")),
-            Sentence("Коли вони (чоловіки) приходять?", listOf("Quando", "eles", "chegam?")),
-            Sentence("Коли вони (жінки) приходять?", listOf("Quando", "elas", "chegam?")),
+            Sentence("Коли ви приходите? (множина)", listOf("Quando", "vocês", "chegam?")),
+            Sentence("Коли вони приходять? (чоловіки)", listOf("Quando", "eles", "chegam?")),
+            Sentence("Коли вони приходять? (жінки)", listOf("Quando", "elas", "chegam?")),
 
-// QUANTO – скільки
+            // QUANTO – скільки
             Sentence("Скільки я маю?", listOf("Quanto", "eu", "tenho?")),
             Sentence("Скільки ти маєш?", listOf("Quanto", "tu", "tens?")),
+            Sentence("Скільки Ви маєте? (ввічливо)", listOf("Quanto", "você", "tem?")),
             Sentence("Скільки він має?", listOf("Quanto", "ele", "tem?")),
             Sentence("Скільки вона має?", listOf("Quanto", "ela", "tem?")),
             Sentence("Скільки ми маємо?", listOf("Quanto", "nós", "temos?")),
-            Sentence("Скільки ви маєте?", listOf("Quanto", "vocês", "têm?")),
-            Sentence("Скільки вони (чоловіки) мають?", listOf("Quanto", "eles", "têm?")),
-            Sentence("Скільки вони (жінки) мають?", listOf("Quanto", "elas", "têm?")),
+            Sentence("Скільки ви маєте? (множина)", listOf("Quanto", "vocês", "têm?")),
+            Sentence("Скільки вони мають? (чоловіки)", listOf("Quanto", "eles", "têm?")),
+            Sentence("Скільки вони мають? (жінки)", listOf("Quanto", "elas", "têm?")),
 
-// COMO – як
-            Sentence("Як я роблю?", listOf("Como", "eu", "faço?")),
-            Sentence("Як ти робиш?", listOf("Como", "tu", "faz?")),
-            Sentence("Як він робить?", listOf("Como", "ele", "faz?")),
-            Sentence("Як вона робить?", listOf("Como", "ela", "faz?")),
-            Sentence("Як ми робимо?", listOf("Como", "nós", "fazemos?")),
-            Sentence("Як ви робите?", listOf("Como", "vocês", "fazem?")),
-            Sentence("Як вони (чоловіки) роблять?", listOf("Como", "eles", "fazem?")),
-            Sentence("Як вони (жінки) роблять?", listOf("Como", "elas", "fazem?")),
+            // COMO – як
+            Sentence("Як я це роблю?", listOf("Como", "eu", "faço", "isso?")),
+            Sentence("Як ти це робиш?", listOf("Como", "tu", "fazes", "isso?")),
+            Sentence("Як Ви це робите? (ввічливо)", listOf("Como", "você", "faz", "isso?")),
+            Sentence("Як він це робить?", listOf("Como", "ele", "faz", "isso?")),
+            Sentence("Як ми це робимо?", listOf("Como", "nós", "fazemos", "isso?")),
+            Sentence("Як вони це роблять? (чоловіки)", listOf("Como", "eles", "fazem", "isso?")),
 
-// PORQUE – чому
+            // PORQUE – чому
             Sentence("Чому я допомагаю?", listOf("Porque", "eu", "ajudo?")),
             Sentence("Чому ти допомагаєш?", listOf("Porque", "tu", "ajudas?")),
+            Sentence("Чому Ви допомагаєте? (ввічливо)", listOf("Porque", "você", "ajuda?")),
             Sentence("Чому він допомагає?", listOf("Porque", "ele", "ajuda?")),
-            Sentence("Чому вона допомагає?", listOf("Porque", "ela", "ajuda?")),
             Sentence("Чому ми допомагаємо?", listOf("Porque", "nós", "ajudamos?")),
-            Sentence("Чому ви допомагаєте?", listOf("Porque", "vocês", "ajudam?")),
-            Sentence("Чому вони (чоловіки) допомагають?", listOf("Porque", "eles", "ajudam?")),
-            Sentence("Чому вони (жінки) допомагають?", listOf("Porque", "elas", "ajudam?")),
+            Sentence("Чому вони допомагають? (чоловіки)", listOf("Porque", "eles", "ajudam?")),
 
-// QUAL – який
+            // QUAL – який / яка
             Sentence("Який я обираю?", listOf("Qual", "eu", "escolho?")),
             Sentence("Який ти обираєш?", listOf("Qual", "tu", "escolhes?")),
+            Sentence("Який Ви обираєте? (ввічливо)", listOf("Qual", "você", "escolhe?")),
             Sentence("Який він обирає?", listOf("Qual", "ele", "escolhe?")),
-            Sentence("Який вона обирає?", listOf("Qual", "ela", "escolhe?")),
+            Sentence("Яка вона обирає?", listOf("Qual", "ela", "escolhe?")),
             Sentence("Який ми обираємо?", listOf("Qual", "nós", "escolhemos?")),
-            Sentence("Який ви обираєте?", listOf("Qual", "vocês", "escolhem?")),
-            Sentence("Який вони (чоловіки) обирають?", listOf("Qual", "eles", "escolhem?")),
-            Sentence("Який вони (жінки) обирають?", listOf("Qual", "elas", "escolhem?")),
+            Sentence("Які вони обирають? (чоловіки)", listOf("Qual", "eles", "escolhem?")),
 
-// ISSO – це
-            Sentence("Що це означає?", listOf("Isso", "significa?")),
-            Sentence("Чи це корисно?", listOf("Isso", "é", "útil?"))
+            // ISSO – це
+            Sentence("Що це означає?", listOf("O", "que", "isso", "significa?")),
+            Sentence("Це корисно?", listOf("Isso", "é", "útil?")),
+            Sentence("Це важливо?", listOf("Isso", "é", "importante?"))
         )
     }
 }
