@@ -62,6 +62,7 @@ class SentenceActivity : ComponentActivity(), TextToSpeech.OnInitListener {
                     SentencePracticeScreen(
                         originalSentences = originalSentences ?: emptyList(),
                         lesson = lesson,
+                        sharedPreferences = sharedPreferences,
                         onFinish = { correct, total ->
                             val resultIntent = Intent().apply {
                                 putExtra("correctAnswers", correct)
@@ -103,12 +104,15 @@ class SentenceActivity : ComponentActivity(), TextToSpeech.OnInitListener {
 fun SentencePracticeScreen(
     originalSentences: List<Sentence>,
     lesson: Int,
+    sharedPreferences: SharedPreferences,
     onFinish: (Int, Int) -> Unit,
     onBack: () -> Unit,
     speak: (String) -> Unit
 ) {
     var sentences by remember { mutableStateOf(originalSentences.shuffled()) }
-    var currentSentenceIndex by remember { mutableStateOf(0) }
+    var currentSentenceIndex by remember { 
+        mutableStateOf(sharedPreferences.getInt("lesson_${lesson}_progress", 0)) 
+    }
     var userWords by remember { mutableStateOf(mutableListOf<String>()) }
     var isChecked by remember { mutableStateOf(false) }
     var isCorrect by remember { mutableStateOf(false) }
@@ -121,176 +125,218 @@ fun SentencePracticeScreen(
         currentSentence?.correctPortugueseWords?.shuffled() ?: emptyList() 
     }
 
+    // Save progress whenever index changes
+    LaunchedEffect(currentSentenceIndex) {
+        sharedPreferences.edit().putInt("lesson_${lesson}_progress", currentSentenceIndex).apply()
+    }
+
     BackHandler(onBack = onBack)
 
-    Scaffold(
-        topBar = {
-            CenterAlignedTopAppBar(
-                title = { Text("Урок $lesson", fontWeight = FontWeight.Bold) },
-                navigationIcon = {
-                    IconButton(onClick = onBack) {
-                        Icon(Icons.Default.ArrowBack, contentDescription = null)
-                    }
-                },
-                actions = {
-                    IconButton(onClick = { showHelp = true }) {
-                        Icon(Icons.Default.Info, contentDescription = "Допомога")
-                    }
-                },
-                colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.primary,
-                    titleContentColor = Color.White,
-                    navigationIconContentColor = Color.White,
-                    actionIconContentColor = Color.White
-                )
-            )
-        },
-        bottomBar = {
-            Surface(tonalElevation = 8.dp) {
-                Box(modifier = Modifier.padding(16.dp).fillMaxWidth()) {
-                    if (!isChecked) {
-                        Button(
-                            onClick = {
-                                isChecked = true
-                                isCorrect = userWords == currentSentence?.correctPortugueseWords
-                                if (isCorrect) {
-                                    correctCount++
-                                    speak(userWords.joinToString(" "))
-                                } else {
-                                    currentSentence?.let { incorrectSentences.add(it) }
-                                }
-                            },
-                            modifier = Modifier.fillMaxWidth(),
-                            enabled = userWords.isNotEmpty(),
-                            shape = RoundedCornerShape(12.dp)
-                        ) {
-                            Text("ПЕРЕВІРИТИ", fontWeight = FontWeight.Bold)
+    Box {
+        Scaffold(
+            topBar = {
+                CenterAlignedTopAppBar(
+                    title = { Text("Урок $lesson", fontWeight = FontWeight.Bold) },
+                    navigationIcon = {
+                        IconButton(onClick = onBack) {
+                            Icon(Icons.Default.ArrowBack, contentDescription = null)
                         }
-                    } else {
-                        Column {
-                            FeedbackSection(isCorrect, currentSentence?.correctPortugueseWords?.joinToString(" ") ?: "")
-                            Spacer(Modifier.height(8.dp))
+                    },
+                    actions = {
+                        IconButton(onClick = { showHelp = true }) {
+                            Icon(Icons.Default.Info, contentDescription = "Допомога")
+                        }
+                    },
+                    colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
+                        containerColor = MaterialTheme.colorScheme.primary,
+                        titleContentColor = Color.White,
+                        navigationIconContentColor = Color.White,
+                        actionIconContentColor = Color.White
+                    )
+                )
+            },
+            bottomBar = {
+                Surface(tonalElevation = 8.dp) {
+                    Box(modifier = Modifier.padding(16.dp).fillMaxWidth()) {
+                        if (!isChecked) {
                             Button(
                                 onClick = {
-                                    if (currentSentenceIndex < sentences.size - 1) {
-                                        currentSentenceIndex++
-                                        userWords = mutableListOf()
-                                        isChecked = false
+                                    isChecked = true
+                                    isCorrect = userWords == currentSentence?.correctPortugueseWords
+                                    if (isCorrect) {
+                                        correctCount++
+                                        speak(userWords.joinToString(" "))
                                     } else {
-                                        if (incorrectSentences.isNotEmpty()) {
-                                            sentences = incorrectSentences.shuffled()
-                                            incorrectSentences = mutableListOf()
-                                            currentSentenceIndex = 0
-                                            userWords = mutableListOf()
-                                            isChecked = false
-                                        } else {
-                                            onFinish(sentences.size, sentences.size)
-                                        }
+                                        currentSentence?.let { incorrectSentences.add(it) }
                                     }
                                 },
                                 modifier = Modifier.fillMaxWidth(),
-                                shape = RoundedCornerShape(12.dp),
-                                colors = ButtonDefaults.buttonColors(
-                                    containerColor = if (isCorrect) Color(0xFF4CAF50) else Color(0xFFF44336)
-                                )
+                                enabled = userWords.isNotEmpty(),
+                                shape = RoundedCornerShape(12.dp)
                             ) {
-                                Text("ПРОДОВЖИТИ", fontWeight = FontWeight.Bold)
+                                Text("ПЕРЕВІРИТИ", fontWeight = FontWeight.Bold)
+                            }
+                        } else {
+                            Column {
+                                FeedbackSection(isCorrect, currentSentence?.correctPortugueseWords?.joinToString(" ") ?: "")
+                                Spacer(Modifier.height(8.dp))
+                                Button(
+                                    onClick = {
+                                        if (currentSentenceIndex < sentences.size - 1) {
+                                            currentSentenceIndex++
+                                            userWords = mutableListOf()
+                                            isChecked = false
+                                        } else {
+                                            if (incorrectSentences.isNotEmpty()) {
+                                                sentences = incorrectSentences.shuffled()
+                                                incorrectSentences = mutableListOf()
+                                                currentSentenceIndex = 0
+                                                userWords = mutableListOf()
+                                                isChecked = false
+                                            } else {
+                                                // Reset progress on completion
+                                                sharedPreferences.edit().remove("lesson_${lesson}_progress").apply()
+                                                onFinish(sentences.size, sentences.size)
+                                            }
+                                        }
+                                    },
+                                    modifier = Modifier.fillMaxWidth(),
+                                    shape = RoundedCornerShape(12.dp),
+                                    colors = ButtonDefaults.buttonColors(
+                                        containerColor = if (isCorrect) Color(0xFF4CAF50) else Color(0xFFF44336)
+                                    )
+                                ) {
+                                    Text("ПРОДОВЖИТИ", fontWeight = FontWeight.Bold)
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        ) { padding ->
+            Column(
+                modifier = Modifier
+                    .padding(padding)
+                    .fillMaxSize()
+                    .padding(16.dp)
+                    .verticalScroll(rememberScrollState()),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                // Progress Bar and Counter
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    LinearProgressIndicator(
+                        progress = { (currentSentenceIndex + 1).toFloat() / sentences.size },
+                        modifier = Modifier
+                            .weight(1f)
+                            .height(10.dp)
+                            .clip(RoundedCornerShape(5.dp)),
+                        color = MaterialTheme.colorScheme.primary,
+                        trackColor = Color.LightGray
+                    )
+                    Spacer(Modifier.width(12.dp))
+                    Text(
+                        text = "${currentSentenceIndex + 1} / ${sentences.size}",
+                        fontWeight = FontWeight.Bold,
+                        color = Color.Gray,
+                        fontSize = 14.sp
+                    )
+                }
+                
+                Spacer(Modifier.height(24.dp))
+
+                Text(
+                    text = currentSentence?.ukrainianSentence ?: "",
+                    fontSize = 22.sp,
+                    fontWeight = FontWeight.Bold,
+                    textAlign = TextAlign.Center
+                )
+
+                Spacer(Modifier.height(32.dp))
+
+                FlowRow(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .heightIn(min = 64.dp)
+                        .background(Color(0xFFF5F5F5), RoundedCornerShape(12.dp))
+                        .padding(8.dp),
+                    horizontalArrangement = Arrangement.Center
+                ) {
+                    userWords.forEachIndexed { index, word ->
+                        WordChip(word, isEnabled = !isChecked) {
+                            if (!isChecked) {
+                                userWords = userWords.toMutableList().apply { removeAt(index) }
+                            }
+                        }
+                    }
+                }
+
+                Spacer(Modifier.height(32.dp))
+
+                if (!isChecked) {
+                    FlowRow(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.Center
+                    ) {
+                        wordBank.forEach { word ->
+                            val isUsed = userWords.count { it == word } >= wordBank.count { it == word }
+                            WordChip(word, isEnabled = !isUsed && !isChecked) {
+                                userWords = userWords.toMutableList().apply { add(word) }
                             }
                         }
                     }
                 }
             }
         }
-    ) { padding ->
-        Column(
-            modifier = Modifier
-                .padding(padding)
-                .fillMaxSize()
-                .padding(16.dp)
-                .verticalScroll(rememberScrollState()),
-            horizontalAlignment = Alignment.CenterHorizontally
+
+        // Full Screen Help Overlay
+        AnimatedVisibility(
+            visible = showHelp,
+            enter = fadeIn() + slideInVertically(initialOffsetY = { it }),
+            exit = fadeOut() + slideOutVertically(targetOffsetY = { it })
         ) {
-            LinearProgressIndicator(
-                progress = { (currentSentenceIndex + 1).toFloat() / sentences.size },
-                modifier = Modifier.fillMaxWidth().height(8.dp).clip(RoundedCornerShape(4.dp)),
-                color = MaterialTheme.colorScheme.primary,
-                trackColor = Color.LightGray
-            )
-            
-            Spacer(Modifier.height(24.dp))
+            val helpImage = when (lesson) {
+                1 -> R.drawable.less1
+                2 -> R.drawable.less2
+                3 -> R.drawable.less3
+                4 -> R.drawable.less4
+                else -> R.drawable.less1
+            }
 
-            Text(
-                text = currentSentence?.ukrainianSentence ?: "",
-                fontSize = 22.sp,
-                fontWeight = FontWeight.Bold,
-                textAlign = TextAlign.Center
-            )
-
-            Spacer(Modifier.height(32.dp))
-
-            FlowRow(
+            Box(
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .heightIn(min = 64.dp)
-                    .background(Color(0xFFF5F5F5), RoundedCornerShape(12.dp))
-                    .padding(8.dp),
-                horizontalArrangement = Arrangement.Center
+                    .fillMaxSize()
+                    .background(Color.White)
+                    .clickable { /* Block clicks to Scaffold underneath */ }
             ) {
-                userWords.forEachIndexed { index, word ->
-                    WordChip(word, isEnabled = !isChecked) {
-                        if (!isChecked) {
-                            userWords = userWords.toMutableList().apply { removeAt(index) }
-                        }
+                Column(modifier = Modifier.fillMaxSize()) {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .weight(1f)
+                            .padding(16.dp)
+                    ) {
+                        Image(
+                            painter = painterResource(id = helpImage),
+                            contentDescription = null,
+                            modifier = Modifier.fillMaxSize(),
+                            contentScale = ContentScale.Fit
+                        )
                     }
-                }
-            }
-
-            Spacer(Modifier.height(32.dp))
-
-            if (!isChecked) {
-                FlowRow(
-                    modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.Center
-                ) {
-                    wordBank.forEach { word ->
-                        val isUsed = userWords.count { it == word } >= wordBank.count { it == word }
-                        WordChip(word, isEnabled = !isUsed && !isChecked) {
-                            userWords = userWords.toMutableList().apply { add(word) }
-                        }
+                    Button(
+                        onClick = { showHelp = false },
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(16.dp),
+                        shape = RoundedCornerShape(12.dp)
+                    ) {
+                        Text("ЗРОЗУМІЛО", fontWeight = FontWeight.Bold)
                     }
                 }
             }
         }
-    }
-
-    if (showHelp) {
-        val helpImage = when (lesson) {
-            1 -> R.drawable.less1
-            2 -> R.drawable.less2
-            3 -> R.drawable.less3
-            4 -> R.drawable.less4
-            else -> R.drawable.less1
-        }
-        
-        AlertDialog(
-            onDismissRequest = { showHelp = false },
-            confirmButton = { 
-                TextButton(onClick = { showHelp = false }) { 
-                    Text("ЗРОЗУМІЛО", fontWeight = FontWeight.Bold) 
-                } 
-            },
-            title = { Text("Правила уроку") },
-            text = {
-                Box(modifier = Modifier.fillMaxWidth().height(400.dp)) {
-                    Image(
-                        painter = painterResource(id = helpImage),
-                        contentDescription = null,
-                        modifier = Modifier.fillMaxSize(),
-                        contentScale = ContentScale.Fit
-                    )
-                }
-            }
-        )
     }
 }
 
