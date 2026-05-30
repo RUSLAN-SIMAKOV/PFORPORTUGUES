@@ -53,9 +53,14 @@ class SentenceActivity : ComponentActivity(), TextToSpeech.OnInitListener {
         setContent {
             MaterialTheme(
                 colorScheme = lightColorScheme(
-                    primary = Color(0xFF006633),
-                    secondary = Color(0xFFFF0000),
-                    tertiary = Color(0xFFFFCC00)
+                    primary = Color(0xFF2196F3), // Friendly Blue
+                    onPrimary = Color.White,
+                    secondary = Color(0xFF4CAF50), // Soft Green
+                    onSecondary = Color.White,
+                    background = Color.White,
+                    surface = Color.White,
+                    onSurface = Color(0xFF212121),
+                    surfaceVariant = Color(0xFFF1F1F1)
                 )
             ) {
                 Surface(color = MaterialTheme.colorScheme.background) {
@@ -125,7 +130,6 @@ fun SentencePracticeScreen(
         currentSentence?.correctPortugueseWords?.shuffled() ?: emptyList() 
     }
 
-    // Save progress whenever index changes
     LaunchedEffect(currentSentenceIndex) {
         sharedPreferences.edit().putInt("lesson_${lesson}_progress", currentSentenceIndex).apply()
     }
@@ -194,7 +198,6 @@ fun SentencePracticeScreen(
                                                 userWords = mutableListOf()
                                                 isChecked = false
                                             } else {
-                                                // Reset progress on completion
                                                 sharedPreferences.edit().remove("lesson_${lesson}_progress").apply()
                                                 onFinish(sentences.size, sentences.size)
                                             }
@@ -222,7 +225,6 @@ fun SentencePracticeScreen(
                     .verticalScroll(rememberScrollState()),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                // Progress Bar and Counter
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     verticalAlignment = Alignment.CenterVertically
@@ -291,7 +293,6 @@ fun SentencePracticeScreen(
             }
         }
 
-        // Full Screen Help Overlay
         AnimatedVisibility(
             visible = showHelp,
             enter = fadeIn() + slideInVertically(initialOffsetY = { it }),
@@ -309,7 +310,7 @@ fun SentencePracticeScreen(
                 modifier = Modifier
                     .fillMaxSize()
                     .background(Color.White)
-                    .clickable { /* Block clicks to Scaffold underneath */ }
+                    .clickable { }
             ) {
                 Column(modifier = Modifier.fillMaxSize()) {
                     Box(

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="Theme.Pt4ua" parent="android:Theme.Material.Light.NoActionBar">
-        <item name="android:statusBarColor">@color/pt_green</item>
+        <item name="android:statusBarColor">@color/friendly_primary</item>
+        <item name="android:windowBackground">@color/friendly_background</item>
     </style>
 </resources>

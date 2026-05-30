@@ -1,13 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="pt_green">#006633</color>
+    <!-- Friendly Palette (Calm Blue & Soft Green) -->
+    <color name="friendly_primary">#2196F3</color> <!-- Material Blue -->
+    <color name="friendly_primary_light">#E3F2FD</color>
+    <color name="friendly_secondary">#4CAF50</color> <!-- Material Green -->
+    <color name="friendly_secondary_light">#E8F5E9</color>
+    <color name="friendly_background">#FFFFFF</color>
+    <color name="friendly_surface">#F8F9FA</color>
+
+    <!-- Standard mapped to Friendly -->
+    <color name="pt_green">#4CAF50</color>
     <color name="pt_green_light">#E8F5E9</color>
-    <color name="pt_red">#FF0000</color>
-    <color name="pt_gold">#FFCC00</color>
-    <color name="pt_gold_dark">#E6B800</color>
+    <color name="pt_red">#F44336</color>
+    <color name="pt_gold">#FFC107</color>
+    <color name="pt_gold_dark">#FFA000</color>
     <color name="surface_variant">#F5F5F5</color>
     <color name="correct_green">#4CAF50</color>
     <color name="wrong_red">#F44336</color>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="black">#212121</color>
+    <color name="white">#FFFFFF</color>
 </resources>

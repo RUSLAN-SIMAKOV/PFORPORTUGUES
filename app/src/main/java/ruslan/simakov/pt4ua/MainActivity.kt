@@ -41,9 +41,14 @@ class MainActivity : ComponentActivity() {
         setContent {
             MaterialTheme(
                 colorScheme = lightColorScheme(
-                    primary = Color(0xFF006633), // Portuguese Green
-                    secondary = Color(0xFFFF0000), // Portuguese Red
-                    tertiary = Color(0xFFFFCC00) // Portuguese Gold
+                    primary = Color(0xFF2196F3), // Friendly Blue
+                    onPrimary = Color.White,
+                    secondary = Color(0xFF4CAF50), // Soft Green
+                    onSecondary = Color.White,
+                    background = Color.White,
+                    surface = Color.White,
+                    onSurface = Color(0xFF212121),
+                    surfaceVariant = Color(0xFFF1F1F1)
                 )
             ) {
                 Surface(
@@ -87,9 +92,9 @@ fun LessonListScreen(lessons: Array<String>, onLessonClick: (Int) -> Unit) {
 
     Scaffold(
         topBar = {
-            CenterAlignedTopAppBar(
+            TopAppBar(
                 title = { Text("PFORPORTUGUES", fontWeight = FontWeight.Bold) },
-                colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
+                colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = MaterialTheme.colorScheme.primary,
                     titleContentColor = Color.White
                 )
@@ -137,7 +142,7 @@ fun LessonCard(title: String, isCompleted: Boolean, onClick: () -> Unit) {
                     text = title,
                     fontSize = 18.sp,
                     fontWeight = FontWeight.SemiBold,
-                    color = if (isCompleted) Color(0xFF2E7D32) else Color.Black
+                    color = if (isCompleted) Color(0xFF2E7D32) else Color(0xFF212121)
                 )
                 Text(
                     text = if (isCompleted) "Завершено" else "Натисніть, щоб почати",
