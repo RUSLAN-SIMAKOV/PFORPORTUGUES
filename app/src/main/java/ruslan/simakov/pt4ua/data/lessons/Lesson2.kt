@@ -97,7 +97,7 @@ object Lesson2 {
             Sentence("Ти купив", listOf("Tu", "compraste")),
             Sentence("Ти не купив", listOf("Tu", "não", "compraste")),
             Sentence("Ви купили (ввічливо)", listOf("Você", "comprou")),
-            Sentence("Ви не купили (ввічливо)", listOf("Ви", "não", "comprou")),
+            Sentence("Ви не купили (ввічливо)", listOf("Você", "não", "comprou")),
             Sentence("Він купив", listOf("Ele", "comprou")),
             Sentence("Він не купив", listOf("Ele", "não", "comprou")),
             Sentence("Вона купила", listOf("Ela", "comprou")),

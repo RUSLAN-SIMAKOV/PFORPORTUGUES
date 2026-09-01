@@ -78,6 +78,7 @@ object Lesson4 {
             Sentence("Чому вони допомагають? (чоловіки)", listOf("Porque", "eles", "ajudam?")),
 
             // QUAL – який / яка
+            Sentence("Як Вас звати?", listOf("Qual", "é", "o", "seu", "nome?")),
             Sentence("Який я обираю?", listOf("Qual", "eu", "escolho?")),
             Sentence("Який ти обираєш?", listOf("Qual", "tu", "escolhes?")),
             Sentence("Який Ви обираєте? (ввічливо)", listOf("Qual", "você", "escolhe?")),

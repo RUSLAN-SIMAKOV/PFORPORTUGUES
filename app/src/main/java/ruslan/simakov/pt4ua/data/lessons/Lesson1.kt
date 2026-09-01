@@ -18,6 +18,8 @@ object Lesson1 {
             Sentence("Будь ласка", listOf("Por", "favor")),
             Sentence("Вибачте", listOf("Com", "licença")),
             Sentence("З вашого дозволу", listOf("Com", "licença")),
+            Sentence("Так", listOf("Sim")),
+            Sentence("Ні", listOf("Não")),
             Sentence("До побачення", listOf("Até", "logo")),
             Sentence("Бувай", listOf("Tchau")),
 
@@ -78,7 +80,7 @@ object Lesson1 {
 
             // PERGUNTAR – питати
             Sentence("Я питаю", listOf("Eu", "pergunto")),
-            Sentence("Ти питаєш", listOf("Tu", "pergunto")),
+            Sentence("Ти питаєш", listOf("Tu", "perguntas")),
             Sentence("Ви питаєте", listOf("Você", "pergunta")),
             Sentence("Він питає", listOf("Ele", "pergunta")),
             Sentence("Вона питає", listOf("Ela", "pergunta")),

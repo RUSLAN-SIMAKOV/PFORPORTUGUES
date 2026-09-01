@@ -45,6 +45,7 @@ object Lesson3 {
             Sentence("Ви маєте роботу (множина)", listOf("Vocês", "têm", "trabalho")),
             Sentence("Вони мають дітей (чоловіки)", listOf("Eles", "têm", "filhos")),
             Sentence("Вони мають дітей (жінки)", listOf("Elas", "têm", "filhos")),
+            Sentence("Мені двадцять років", listOf("Eu", "tenho", "vinte", "anos")),
             Sentence("Скільки ти маєш грошей?", listOf("Quanto", "dinheiro", "tens?")),
 
             // VER – бачити

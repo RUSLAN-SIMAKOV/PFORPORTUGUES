@@ -25,6 +25,7 @@ import ruslan.simakov.pt4ua.data.lessons.Lesson1
 import ruslan.simakov.pt4ua.data.lessons.Lesson2
 import ruslan.simakov.pt4ua.data.lessons.Lesson3
 import ruslan.simakov.pt4ua.data.lessons.Lesson4
+import ruslan.simakov.pt4ua.data.lessons.Lesson5
 import java.io.Serializable
 
 class MainActivity : ComponentActivity() {
@@ -33,7 +34,8 @@ class MainActivity : ComponentActivity() {
         "Lesson 1: Теперішній час",
         "Lesson 2: Минулий час",
         "Lesson 3: SER / ESTAR / TER",
-        "Lesson 4: Питання"
+        "Lesson 4: Питання",
+        "Lesson 5: Дієслова -ER / -IR"
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -69,6 +71,7 @@ class MainActivity : ComponentActivity() {
             1 -> Lesson2.getSentences()
             2 -> Lesson3.getSentences()
             3 -> Lesson4.getSentences()
+            4 -> Lesson5.getSentences()
             else -> throw IllegalArgumentException("Invalid lesson")
         }.shuffled()
 
