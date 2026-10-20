@@ -4,6 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
+import android.content.res.Configuration
 import android.os.Bundle
 import android.speech.tts.TextToSpeech
 import androidx.activity.ComponentActivity
@@ -30,6 +31,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -127,6 +129,8 @@ fun SentencePracticeScreen(
     var incorrectSentences by rememberSaveable { mutableStateOf(mutableListOf<Sentence>()) }
     var correctCount by rememberSaveable { mutableStateOf(0) }
 
+    val isLandscape = LocalConfiguration.current.orientation == Configuration.ORIENTATION_LANDSCAPE
+
     val currentSentence = sentences.getOrNull(currentSentenceIndex)
     val wordBank = rememberSaveable(currentSentence) {
         currentSentence?.correctPortugueseWords?.shuffled() ?: emptyList()
@@ -183,12 +187,13 @@ fun SentencePracticeScreen(
                                 Text("ПЕРЕВІРИТИ", fontWeight = FontWeight.Bold)
                             }
                         } else {
-                            Column {
+                            val feedback: @Composable () -> Unit = {
                                 FeedbackSection(
                                     isCorrect,
                                     currentSentence?.correctPortugueseWords?.joinToString(" ") ?: ""
                                 )
-                                Spacer(Modifier.height(8.dp))
+                            }
+                            val continueButton: @Composable (Modifier) -> Unit = { buttonModifier ->
                                 Button(
                                     onClick = {
                                         if (currentSentenceIndex < sentences.size - 1) {
@@ -209,7 +214,7 @@ fun SentencePracticeScreen(
                                             }
                                         }
                                     },
-                                    modifier = Modifier.fillMaxWidth(),
+                                    modifier = buttonModifier,
                                     shape = RoundedCornerShape(12.dp),
                                     colors = ButtonDefaults.buttonColors(
                                         containerColor = if (isCorrect) Color(0xFF4CAF50) else Color(
@@ -220,19 +225,27 @@ fun SentencePracticeScreen(
                                     Text("ПРОДОВЖИТИ", fontWeight = FontWeight.Bold)
                                 }
                             }
+
+                            // In landscape the feedback sits next to the button to leave height for the answer
+                            if (isLandscape) {
+                                Row(verticalAlignment = Alignment.CenterVertically) {
+                                    Box(Modifier.weight(1f)) { feedback() }
+                                    Spacer(Modifier.width(16.dp))
+                                    continueButton(Modifier.weight(1f))
+                                }
+                            } else {
+                                Column {
+                                    feedback()
+                                    Spacer(Modifier.height(8.dp))
+                                    continueButton(Modifier.fillMaxWidth())
+                                }
+                            }
                         }
                     }
                 }
             }
         ) { padding ->
-            Column(
-                modifier = Modifier
-                    .padding(padding)
-                    .fillMaxSize()
-                    .padding(16.dp)
-                    .verticalScroll(rememberScrollState()),
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
+            val sentenceAndAnswer: @Composable () -> Unit = {
                 Row(
                     modifier = Modifier.fillMaxWidth(),
                     verticalAlignment = Alignment.CenterVertically
@@ -255,7 +268,7 @@ fun SentencePracticeScreen(
                     )
                 }
 
-                Spacer(Modifier.height(24.dp))
+                Spacer(Modifier.height(if (isLandscape) 16.dp else 24.dp))
 
                 Text(
                     text = currentSentence?.ukrainianSentence ?: "",
@@ -264,7 +277,7 @@ fun SentencePracticeScreen(
                     textAlign = TextAlign.Center
                 )
 
-                Spacer(Modifier.height(32.dp))
+                Spacer(Modifier.height(if (isLandscape) 16.dp else 32.dp))
 
                 FlowRow(
                     modifier = Modifier
@@ -282,9 +295,9 @@ fun SentencePracticeScreen(
                         }
                     }
                 }
+            }
 
-                Spacer(Modifier.height(32.dp))
-
+            val wordBankChips: @Composable () -> Unit = {
                 if (!isChecked) {
                     FlowRow(
                         modifier = Modifier.fillMaxWidth(),
@@ -298,6 +311,48 @@ fun SentencePracticeScreen(
                             }
                         }
                     }
+                }
+            }
+
+            // Landscape is too short for one column, so the word bank gets its own column on the right
+            if (isLandscape) {
+                Row(
+                    modifier = Modifier
+                        .padding(padding)
+                        .fillMaxSize()
+                        .padding(16.dp)
+                ) {
+                    Column(
+                        modifier = Modifier
+                            .weight(1f)
+                            .fillMaxHeight()
+                            .verticalScroll(rememberScrollState()),
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        sentenceAndAnswer()
+                    }
+                    Spacer(Modifier.width(16.dp))
+                    Column(
+                        modifier = Modifier
+                            .weight(1f)
+                            .fillMaxHeight()
+                            .verticalScroll(rememberScrollState())
+                    ) {
+                        wordBankChips()
+                    }
+                }
+            } else {
+                Column(
+                    modifier = Modifier
+                        .padding(padding)
+                        .fillMaxSize()
+                        .padding(16.dp)
+                        .verticalScroll(rememberScrollState()),
+                    horizontalAlignment = Alignment.CenterHorizontally
+                ) {
+                    sentenceAndAnswer()
+                    Spacer(Modifier.height(32.dp))
+                    wordBankChips()
                 }
             }
         }
