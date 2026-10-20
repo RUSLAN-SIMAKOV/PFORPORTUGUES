@@ -24,6 +24,7 @@ import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -114,20 +115,21 @@ fun SentencePracticeScreen(
     onBack: () -> Unit,
     speak: (String) -> Unit
 ) {
-    var sentences by remember { mutableStateOf(originalSentences.shuffled()) }
-    var currentSentenceIndex by remember { 
-        mutableStateOf(sharedPreferences.getInt("lesson_${lesson}_progress", 0)) 
+    // rememberSaveable keeps the order, answer and chips when the activity is recreated (rotation, theme change)
+    var sentences by rememberSaveable { mutableStateOf(originalSentences.shuffled()) }
+    var currentSentenceIndex by rememberSaveable {
+        mutableStateOf(sharedPreferences.getInt("lesson_${lesson}_progress", 0))
     }
-    var userWords by remember { mutableStateOf(mutableListOf<String>()) }
-    var isChecked by remember { mutableStateOf(false) }
-    var isCorrect by remember { mutableStateOf(false) }
-    var showHelp by remember { mutableStateOf(false) }
-    var incorrectSentences by remember { mutableStateOf(mutableListOf<Sentence>()) }
-    var correctCount by remember { mutableStateOf(0) }
-    
+    var userWords by rememberSaveable { mutableStateOf(mutableListOf<String>()) }
+    var isChecked by rememberSaveable { mutableStateOf(false) }
+    var isCorrect by rememberSaveable { mutableStateOf(false) }
+    var showHelp by rememberSaveable { mutableStateOf(false) }
+    var incorrectSentences by rememberSaveable { mutableStateOf(mutableListOf<Sentence>()) }
+    var correctCount by rememberSaveable { mutableStateOf(0) }
+
     val currentSentence = sentences.getOrNull(currentSentenceIndex)
-    val wordBank = remember(currentSentence) { 
-        currentSentence?.correctPortugueseWords?.shuffled() ?: emptyList() 
+    val wordBank = rememberSaveable(currentSentence) {
+        currentSentence?.correctPortugueseWords?.shuffled() ?: emptyList()
     }
 
     LaunchedEffect(currentSentenceIndex) {
@@ -182,7 +184,10 @@ fun SentencePracticeScreen(
                             }
                         } else {
                             Column {
-                                FeedbackSection(isCorrect, currentSentence?.correctPortugueseWords?.joinToString(" ") ?: "")
+                                FeedbackSection(
+                                    isCorrect,
+                                    currentSentence?.correctPortugueseWords?.joinToString(" ") ?: ""
+                                )
                                 Spacer(Modifier.height(8.dp))
                                 Button(
                                     onClick = {
@@ -198,7 +203,8 @@ fun SentencePracticeScreen(
                                                 userWords = mutableListOf()
                                                 isChecked = false
                                             } else {
-                                                sharedPreferences.edit().remove("lesson_${lesson}_progress").apply()
+                                                sharedPreferences.edit()
+                                                    .remove("lesson_${lesson}_progress").apply()
                                                 onFinish(sentences.size, sentences.size)
                                             }
                                         }
@@ -206,7 +212,9 @@ fun SentencePracticeScreen(
                                     modifier = Modifier.fillMaxWidth(),
                                     shape = RoundedCornerShape(12.dp),
                                     colors = ButtonDefaults.buttonColors(
-                                        containerColor = if (isCorrect) Color(0xFF4CAF50) else Color(0xFFF44336)
+                                        containerColor = if (isCorrect) Color(0xFF4CAF50) else Color(
+                                            0xFFF44336
+                                        )
                                     )
                                 ) {
                                     Text("ПРОДОВЖИТИ", fontWeight = FontWeight.Bold)
@@ -246,7 +254,7 @@ fun SentencePracticeScreen(
                         fontSize = 14.sp
                     )
                 }
-                
+
                 Spacer(Modifier.height(24.dp))
 
                 Text(
@@ -283,7 +291,8 @@ fun SentencePracticeScreen(
                         horizontalArrangement = Arrangement.Center
                     ) {
                         wordBank.forEach { word ->
-                            val isUsed = userWords.count { it == word } >= wordBank.count { it == word }
+                            val isUsed =
+                                userWords.count { it == word } >= wordBank.count { it == word }
                             WordChip(word, isEnabled = !isUsed && !isChecked) {
                                 userWords = userWords.toMutableList().apply { add(word) }
                             }
