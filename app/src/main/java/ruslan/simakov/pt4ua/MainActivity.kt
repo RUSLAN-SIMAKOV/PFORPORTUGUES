@@ -5,142 +5,291 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.compose.foundation.clickable
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.CheckCircle
+import androidx.compose.material.icons.automirrored.filled.KeyboardArrowRight
+import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import ruslan.simakov.pt4ua.data.Progress
+import ruslan.simakov.pt4ua.data.lessons.LessonSection
 import ruslan.simakov.pt4ua.data.lessons.Lessons
+import ruslan.simakov.pt4ua.ui.*
 import java.io.Serializable
 
 class MainActivity : ComponentActivity() {
 
-    private val lessonNames = Lessons.all.map { it.title }.toTypedArray()
+    // Bumped on every resume so the list re-reads progress after returning from a lesson
+    private var resumeCount by mutableIntStateOf(0)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        enableAppEdgeToEdge()
         setContent {
-            MaterialTheme(
-                colorScheme = lightColorScheme(
-                    primary = Color(0xFF2196F3), // Friendly Blue
-                    onPrimary = Color.White,
-                    secondary = Color(0xFF4CAF50), // Soft Green
-                    onSecondary = Color.White,
-                    background = Color.White,
-                    surface = Color.White,
-                    onSurface = Color(0xFF212121),
-                    surfaceVariant = Color(0xFFF1F1F1)
-                )
-            ) {
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-                    LessonListScreen(lessonNames) { position ->
-                        startLesson(position)
-                    }
-                }
+            Pt4uaTheme {
+                LessonListScreen(refreshKey = resumeCount, onLessonClick = { startLesson(it) })
             }
         }
     }
 
-    private fun startLesson(position: Int) {
-        val sentences = Lessons.all[position].sentences().shuffled()
+    override fun onResume() {
+        super.onResume()
+        resumeCount++
+    }
 
+    private fun startLesson(lessonNumber: Int) {
+        getSharedPreferences(Progress.PREFS_NAME, Context.MODE_PRIVATE)
+            .edit().putInt(Progress.KEY_LAST_LESSON, lessonNumber).apply()
+
+        val sentences = Lessons.all[lessonNumber - 1].sentences().shuffled()
         val intent = Intent(this, SentenceActivity::class.java).apply {
             putExtra("sentences", sentences as Serializable)
-            putExtra("lesson", position + 1)
+            putExtra("lesson", lessonNumber)
         }
         startActivity(intent)
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
-@Composable
-fun LessonListScreen(lessons: Array<String>, onLessonClick: (Int) -> Unit) {
-    val context = androidx.compose.ui.platform.LocalContext.current
-    val sharedPreferences = remember { context.getSharedPreferences("LessonState", Context.MODE_PRIVATE) }
-    
-    var completedLessons by remember { 
-        mutableStateOf(sharedPreferences.getStringSet("completedLessons", emptySet()) ?: emptySet()) 
-    }
+private data class LessonState(val done: Int, val completed: Boolean)
 
-    Scaffold(
-        topBar = {
-            TopAppBar(
-                title = { Text("PT4UA", fontWeight = FontWeight.Bold) },
-                colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor = MaterialTheme.colorScheme.primary,
-                    titleContentColor = Color.White
-                )
+private val sectionColors = listOf(AppColors.Indigo, AppColors.Violet, AppColors.Teal)
+
+@Composable
+fun LessonListScreen(refreshKey: Int, onLessonClick: (Int) -> Unit) {
+    val context = LocalContext.current
+    val prefs = remember { context.getSharedPreferences(Progress.PREFS_NAME, Context.MODE_PRIVATE) }
+    val sentenceCounts = remember { Lessons.all.map { it.sentences().size } }
+    val states = remember(refreshKey) {
+        Lessons.all.indices.map { index ->
+            LessonState(
+                done = prefs.getInt(Progress.progressKey(index + 1), 0),
+                completed = prefs.getBoolean(Progress.completedKey(index + 1), false)
             )
         }
-    ) { padding ->
-        LazyColumn(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(padding),
-            contentPadding = PaddingValues(16.dp),
-            verticalArrangement = Arrangement.spacedBy(12.dp)
-        ) {
-            itemsIndexed(lessons) { index, lesson ->
-                LessonCard(
-                    title = lesson,
-                    isCompleted = completedLessons.contains(lesson),
-                    onClick = { onLessonClick(index) }
+    }
+    val lastLesson = remember(refreshKey) {
+        prefs.getInt(Progress.KEY_LAST_LESSON, 0).takeIf { it in 1..Lessons.all.size }
+    }
+    val bottomInset = WindowInsets.navigationBars.asPaddingValues().calculateBottomPadding()
+
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .background(MaterialTheme.colorScheme.background)
+    ) {
+        LazyColumn(contentPadding = PaddingValues(bottom = bottomInset + 24.dp)) {
+            item {
+                ListHeader(
+                    completedCount = states.count { it.completed },
+                    totalLessons = Lessons.all.size,
+                    continueLesson = lastLesson,
+                    continueSubtitle = lastLesson?.let {
+                        lessonStatus(states[it - 1], sentenceCounts[it - 1])
+                    }.orEmpty(),
+                    onContinue = { lastLesson?.let(onLessonClick) }
                 )
+            }
+            Lessons.sections.forEachIndexed { sectionIndex, section ->
+                item(key = "section_$sectionIndex") { SectionHeader(section) }
+                items(section.lessons.toList(), key = { it }) { number ->
+                    LessonCard(
+                        number = number,
+                        title = Lessons.all[number - 1].title,
+                        accent = sectionColors[sectionIndex % sectionColors.size],
+                        state = states[number - 1],
+                        total = sentenceCounts[number - 1],
+                        onClick = { onLessonClick(number) }
+                    )
+                }
+            }
+        }
+
+        // Keeps the light status bar icons readable once the header scrolls away
+        Box(
+            modifier = Modifier
+                .align(Alignment.TopCenter)
+                .fillMaxWidth()
+                .windowInsetsTopHeight(WindowInsets.statusBars)
+                .background(HeaderGradient)
+        )
+    }
+}
+
+private fun lessonStatus(state: LessonState, total: Int): String = when {
+    state.completed -> "Завершено · ${sentencesLabel(total)}"
+    state.done > 0 -> "Пройдено ${state.done} з $total"
+    else -> sentencesLabel(total)
+}
+
+@Composable
+private fun ListHeader(
+    completedCount: Int,
+    totalLessons: Int,
+    continueLesson: Int?,
+    continueSubtitle: String,
+    onContinue: () -> Unit
+) {
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(bottomStart = 32.dp, bottomEnd = 32.dp))
+            .background(HeaderGradient)
+            .statusBarsPadding()
+            .padding(start = 24.dp, end = 24.dp, top = 20.dp, bottom = 24.dp)
+    ) {
+        Text("Olá! 👋", color = Color.White.copy(alpha = 0.85f), fontSize = 16.sp)
+        Text("PT4UA", color = Color.White, fontSize = 34.sp, fontWeight = FontWeight.ExtraBold)
+        Text(
+            "Європейська португальська для українців",
+            color = Color.White.copy(alpha = 0.9f),
+            fontSize = 15.sp
+        )
+
+        Spacer(Modifier.height(20.dp))
+        Row(verticalAlignment = Alignment.CenterVertically) {
+            Text(
+                "Завершено уроків",
+                color = Color.White.copy(alpha = 0.9f),
+                fontSize = 14.sp,
+                modifier = Modifier.weight(1f)
+            )
+            Text("$completedCount з $totalLessons", color = Color.White, fontSize = 14.sp, fontWeight = FontWeight.Bold)
+        }
+        Spacer(Modifier.height(8.dp))
+        ProgressBar(
+            fraction = completedCount / totalLessons.toFloat(),
+            color = Color.White,
+            trackColor = Color.White.copy(alpha = 0.25f),
+            height = 8.dp
+        )
+
+        if (continueLesson != null) {
+            Spacer(Modifier.height(20.dp))
+            Surface(
+                onClick = onContinue,
+                shape = RoundedCornerShape(18.dp),
+                color = Color.White,
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Row(modifier = Modifier.padding(14.dp), verticalAlignment = Alignment.CenterVertically) {
+                    Column(modifier = Modifier.weight(1f)) {
+                        Text("Продовжити", fontSize = 12.sp, fontWeight = FontWeight.SemiBold, color = AppColors.Indigo)
+                        Text(
+                            "Урок $continueLesson · ${Lessons.all[continueLesson - 1].title}",
+                            fontSize = 16.sp,
+                            fontWeight = FontWeight.Bold,
+                            color = AppColors.Ink,
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis
+                        )
+                        Text(continueSubtitle, fontSize = 13.sp, color = AppColors.Muted)
+                    }
+                    Spacer(Modifier.width(12.dp))
+                    Box(
+                        modifier = Modifier
+                            .size(44.dp)
+                            .clip(CircleShape)
+                            .background(HeaderGradient),
+                        contentAlignment = Alignment.Center
+                    ) {
+                        Icon(Icons.Default.PlayArrow, contentDescription = "Продовжити", tint = Color.White)
+                    }
+                }
             }
         }
     }
 }
 
 @Composable
-fun LessonCard(title: String, isCompleted: Boolean, onClick: () -> Unit) {
-    ElevatedCard(
+private fun SectionHeader(section: LessonSection) {
+    Row(
+        modifier = Modifier.padding(start = 20.dp, end = 20.dp, top = 24.dp, bottom = 8.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Text(section.emoji, fontSize = 24.sp)
+        Spacer(Modifier.width(10.dp))
+        Column {
+            Text(section.title, fontSize = 19.sp, fontWeight = FontWeight.Bold, color = AppColors.Ink)
+            Text(section.subtitle, fontSize = 13.sp, color = AppColors.Muted)
+        }
+    }
+}
+
+@Composable
+private fun LessonCard(
+    number: Int,
+    title: String,
+    accent: Color,
+    state: LessonState,
+    total: Int,
+    onClick: () -> Unit
+) {
+    val badgeColor = if (state.completed) AppColors.Success else accent
+    Surface(
+        onClick = onClick,
         modifier = Modifier
             .fillMaxWidth()
-            .clickable(onClick = onClick),
-        shape = RoundedCornerShape(16.dp),
-        colors = CardDefaults.elevatedCardColors(
-            containerColor = if (isCompleted) Color(0xFFE8F5E9) else Color.White
-        )
+            .padding(horizontal = 16.dp, vertical = 6.dp),
+        shape = RoundedCornerShape(20.dp),
+        color = Color.White,
+        shadowElevation = 2.dp,
+        border = if (state.completed) BorderStroke(1.5.dp, AppColors.Success.copy(alpha = 0.35f)) else null
     ) {
-        Row(
-            modifier = Modifier
-                .padding(20.dp)
-                .fillMaxWidth(),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.SpaceBetween
-        ) {
+        Row(modifier = Modifier.padding(16.dp), verticalAlignment = Alignment.CenterVertically) {
+            Box(
+                modifier = Modifier
+                    .size(48.dp)
+                    .clip(CircleShape)
+                    .background(badgeColor),
+                contentAlignment = Alignment.Center
+            ) {
+                if (state.completed) {
+                    Icon(Icons.Default.Check, contentDescription = "Завершено", tint = Color.White)
+                } else {
+                    Text("$number", color = Color.White, fontSize = 18.sp, fontWeight = FontWeight.Bold)
+                }
+            }
+            Spacer(Modifier.width(16.dp))
             Column(modifier = Modifier.weight(1f)) {
+                Text("Урок $number", fontSize = 12.sp, fontWeight = FontWeight.SemiBold, color = badgeColor)
+                Text(title, fontSize = 17.sp, fontWeight = FontWeight.SemiBold, color = AppColors.Ink)
+                Spacer(Modifier.height(6.dp))
+                if (!state.completed && state.done > 0) {
+                    ProgressBar(
+                        fraction = state.done / total.toFloat(),
+                        color = accent,
+                        trackColor = accent.copy(alpha = 0.15f),
+                        height = 6.dp
+                    )
+                    Spacer(Modifier.height(4.dp))
+                }
                 Text(
-                    text = title,
-                    fontSize = 18.sp,
-                    fontWeight = FontWeight.SemiBold,
-                    color = if (isCompleted) Color(0xFF2E7D32) else Color(0xFF212121)
-                )
-                Text(
-                    text = if (isCompleted) "Завершено" else "Натисніть, щоб почати",
-                    fontSize = 14.sp,
-                    color = if (isCompleted) Color(0xFF4CAF50) else Color.Gray
+                    lessonStatus(state, total),
+                    fontSize = 13.sp,
+                    color = if (state.completed) AppColors.Success else AppColors.Muted
                 )
             }
+            Spacer(Modifier.width(8.dp))
             Icon(
-                imageVector = if (isCompleted) Icons.Default.CheckCircle else Icons.Default.PlayArrow,
+                Icons.AutoMirrored.Filled.KeyboardArrowRight,
                 contentDescription = null,
-                tint = if (isCompleted) Color(0xFF4CAF50) else MaterialTheme.colorScheme.primary,
-                modifier = Modifier.size(32.dp)
+                tint = AppColors.Muted
             )
         }
     }

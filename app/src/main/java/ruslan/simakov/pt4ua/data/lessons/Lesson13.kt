@@ -3,7 +3,7 @@ package ruslan.simakov.pt4ua.data.lessons
 import ruslan.simakov.pt4ua.data.RuleTable
 import ruslan.simakov.pt4ua.data.Sentence
 
-// Ще шість частих неправильних дієслів у базовій схемі Петрова
+// Ще одинадцять частих неправильних дієслів у базовій схемі
 object Lesson13 {
 
     private val header = listOf("", "Минулий", "Теперішній", "Майбутній")

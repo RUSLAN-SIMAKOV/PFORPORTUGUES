@@ -3,7 +3,7 @@ package ruslan.simakov.pt4ua.data.lessons
 import ruslan.simakov.pt4ua.data.RuleTable
 import ruslan.simakov.pt4ua.data.Sentence
 
-// Займенники за Петровим: хто? кого? кому? з ким? чий?
+// Займенники: хто? кого? кому? з ким? чий?
 object Lesson10 {
 
     val rules = listOf(

@@ -3,7 +3,7 @@ package ruslan.simakov.pt4ua.data.lessons
 import ruslan.simakov.pt4ua.data.RuleTable
 import ruslan.simakov.pt4ua.data.Sentence
 
-// Зворотні дієслова (-ся) у базовій схемі Петрова
+// Зворотні дієслова (-ся) у базовій схемі
 object Lesson11 {
 
     val rules = listOf(

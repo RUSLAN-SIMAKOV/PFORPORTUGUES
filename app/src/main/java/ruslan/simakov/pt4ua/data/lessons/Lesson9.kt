@@ -3,7 +3,7 @@ package ruslan.simakov.pt4ua.data.lessons
 import ruslan.simakov.pt4ua.data.RuleTable
 import ruslan.simakov.pt4ua.data.Sentence
 
-// Модальні дієслова + інфінітив у базовій схемі Петрова
+// Модальні дієслова + інфінітив у базовій схемі
 object Lesson9 {
 
     val rules = listOf(

@@ -3,7 +3,7 @@ package ruslan.simakov.pt4ua.data.lessons
 import ruslan.simakov.pt4ua.data.RuleTable
 import ruslan.simakov.pt4ua.data.Sentence
 
-// Базова схема Петрова для дієслів на -ER та -IR
+// Базова схема для дієслів на -ER та -IR
 object Lesson7 {
 
     val rules = listOf(

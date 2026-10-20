@@ -3,7 +3,7 @@ package ruslan.simakov.pt4ua.data.lessons
 import ruslan.simakov.pt4ua.data.RuleTable
 import ruslan.simakov.pt4ua.data.Sentence
 
-// Найчастіші неправильні дієслова в базовій схемі Петрова + розмовне майбутнє IR + інфінітив
+// Найчастіші неправильні дієслова в базовій схемі + розмовне майбутнє IR + інфінітив
 object Lesson8 {
 
     private val header = listOf("", "Минулий", "Теперішній", "Майбутній")

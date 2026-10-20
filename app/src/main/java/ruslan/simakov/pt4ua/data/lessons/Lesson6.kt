@@ -3,12 +3,12 @@ package ruslan.simakov.pt4ua.data.lessons
 import ruslan.simakov.pt4ua.data.RuleTable
 import ruslan.simakov.pt4ua.data.Sentence
 
-// Базова схема Петрова: 3 часи (минулий, теперішній, майбутній) × 3 форми (питання, ствердження, заперечення)
+// Базова схема: 3 часи (минулий, теперішній, майбутній) × 3 форми (питання, ствердження, заперечення)
 object Lesson6 {
 
     val rules = listOf(
         RuleTable(
-            "Базова схема Петрова (FALAR)",
+            "Базова схема (FALAR)",
             listOf(
                 listOf("", "Минулий", "Теперішній", "Майбутній"),
                 listOf("?", "Eu falei?", "Eu falo?", "Eu falarei?"),
