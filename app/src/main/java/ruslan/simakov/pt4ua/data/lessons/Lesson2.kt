@@ -1,8 +1,58 @@
 package ruslan.simakov.pt4ua.data.lessons
 
+import ruslan.simakov.pt4ua.data.RuleTable
 import ruslan.simakov.pt4ua.data.Sentence
 
 object Lesson2 {
+
+    val rules = listOf(
+        RuleTable(
+            "Минулий час: дієслова на -AR",
+            listOf(
+                listOf("", "Закінчення", "AMAR", "TRABALHAR"),
+                listOf("eu", "-ei", "amei", "trabalhei"),
+                listOf("tu", "-aste", "amaste", "trabalhaste"),
+                listOf("você, ele, ela", "-ou", "amou", "trabalhou"),
+                listOf("nós", "-amos", "amamos", "trabalhamos"),
+                listOf("vocês, eles, elas", "-aram", "amaram", "trabalharam")
+            ),
+            note = "Форма nós однакова в теперішньому й минулому часі: trabalhamos. " +
+                "Що це минуле, підказують слова ontem, no ano passado."
+        ),
+        RuleTable(
+            "Заперечення",
+            listOf(
+                listOf("+", "–"),
+                listOf("Eu trabalhei ontem", "Eu não trabalhei ontem"),
+                listOf("Ela comprou pão", "Ela não comprou pão"),
+                listOf("Tu ajudaste-me", "Tu não me ajudaste")
+            ),
+            note = "Não стоїть перед дієсловом. Займенник (me, te, nos) після não переходить перед дієслово."
+        ),
+        RuleTable(
+            "Особливості написання (форма eu)",
+            listOf(
+                listOf("Закінчення", "Приклад"),
+                listOf("-car → -quei", "explicar → expliquei"),
+                listOf("-gar → -guei", "pagar → paguei"),
+                listOf("-çar → -cei", "começar → comecei")
+            )
+        ),
+        RuleTable(
+            "Коли?",
+            listOf(
+                listOf("Українською", "Português"),
+                listOf("учора", "ontem"),
+                listOf("учора ввечері", "ontem à noite"),
+                listOf("сьогодні вранці", "esta manhã"),
+                listOf("минулої суботи", "no sábado passado"),
+                listOf("минулого тижня", "na semana passada"),
+                listOf("минулого місяця", "no mês passado"),
+                listOf("минулого року", "no ano passado"),
+                listOf("два дні тому", "há dois dias")
+            )
+        )
+    )
     fun getSentences(): List<Sentence> {
         return listOf(
             Sentence(

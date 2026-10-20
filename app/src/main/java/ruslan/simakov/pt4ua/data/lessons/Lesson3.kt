@@ -1,8 +1,56 @@
 package ruslan.simakov.pt4ua.data.lessons
 
+import ruslan.simakov.pt4ua.data.RuleTable
 import ruslan.simakov.pt4ua.data.Sentence
 
 object Lesson3 {
+
+    val rules = listOf(
+        RuleTable(
+            "SER і ESTAR – бути",
+            listOf(
+                listOf("", "SER", "ESTAR"),
+                listOf("eu", "sou", "estou"),
+                listOf("tu", "és", "estás"),
+                listOf("você, ele, ela", "é", "está"),
+                listOf("nós", "somos", "estamos"),
+                listOf("vocês, eles, elas", "são", "estão")
+            ),
+            note = "В українській «бути» в теперішньому часі пропускаємо (Я вчитель), у португальській – ні: Eu sou professor."
+        ),
+        RuleTable(
+            "SER – постійне",
+            listOf(
+                listOf("Що?", "Приклад"),
+                listOf("професія", "Eu sou professor"),
+                listOf("походження", "Eu sou da Ucrânia"),
+                listOf("характер", "Ele é simpático"),
+                listOf("хто це", "Quem és tu?")
+            )
+        ),
+        RuleTable(
+            "ESTAR – тимчасове",
+            listOf(
+                listOf("Що?", "Приклад"),
+                listOf("місце", "Eu estou em casa"),
+                listOf("стан", "Elas estão cansadas"),
+                listOf("самопочуття", "Como estás?")
+            )
+        ),
+        RuleTable(
+            "TER – мати, VER – бачити",
+            listOf(
+                listOf("", "TER", "VER"),
+                listOf("eu", "tenho", "vejo"),
+                listOf("tu", "tens", "vês"),
+                listOf("você, ele, ela", "tem", "vê"),
+                listOf("nós", "temos", "vemos"),
+                listOf("vocês, eles, elas", "têm", "veem")
+            ),
+            note = "Вік – через TER: Eu tenho trinta anos (Мені тридцять років). " +
+                "Займенник після дієслова через дефіс: vejo-te, vês-me, veem-nos. Після não – перед дієсловом: não te vejo."
+        )
+    )
     fun getSentences(): List<Sentence> {
         return listOf(
             // SER – бути (постійна характеристика: професія, національність, ім'я)

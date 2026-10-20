@@ -7,27 +7,38 @@ object Lesson5 {
 
     val rules = listOf(
         RuleTable(
-            "COMER (-ER) – їсти",
+            "Теперішній час: -AR, -ER, -IR",
             listOf(
-                listOf("", "Минулий", "Теперішній"),
-                listOf("eu", "comi", "como"),
-                listOf("tu", "comeste", "comes"),
-                listOf("você, ele, ela", "comeu", "come"),
-                listOf("nós", "comemos", "comemos"),
-                listOf("vocês, eles, elas", "comeram", "comem")
-            )
+                listOf("", "-AR (falar)", "-ER (comer)", "-IR (abrir)"),
+                listOf("eu", "falo", "como", "abro"),
+                listOf("tu", "falas", "comes", "abres"),
+                listOf("você, ele, ela", "fala", "come", "abre"),
+                listOf("nós", "falamos", "comemos", "abrimos"),
+                listOf("vocês, eles, elas", "falam", "comem", "abrem")
+            ),
+            note = "Відрізняється лише голосна: -a- для -AR, -e- для -ER та -IR (крім nós: -imos)."
         ),
         RuleTable(
-            "ABRIR (-IR) – відкривати",
+            "Минулий час: -AR, -ER, -IR",
             listOf(
-                listOf("", "Минулий", "Теперішній"),
-                listOf("eu", "abri", "abro"),
-                listOf("tu", "abriste", "abres"),
-                listOf("você, ele, ela", "abriu", "abre"),
-                listOf("nós", "abrimos", "abrimos"),
-                listOf("vocês, eles, elas", "abriram", "abrem")
+                listOf("", "-AR (falar)", "-ER (comer)", "-IR (abrir)"),
+                listOf("eu", "falei", "comi", "abri"),
+                listOf("tu", "falaste", "comeste", "abriste"),
+                listOf("você, ele, ela", "falou", "comeu", "abriu"),
+                listOf("nós", "falamos", "comemos", "abrimos"),
+                listOf("vocês, eles, elas", "falaram", "comeram", "abriram")
             ),
             note = "Форма nós однакова в теперішньому і минулому часі: comemos, abrimos."
+        ),
+        RuleTable(
+            "Дієслова уроку",
+            listOf(
+                listOf("Português", "Українською"),
+                listOf("comer", "їсти"),
+                listOf("beber", "пити"),
+                listOf("partir", "від'їжджати"),
+                listOf("abrir", "відкривати, відчиняти")
+            )
         )
     )
 

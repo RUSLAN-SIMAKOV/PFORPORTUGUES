@@ -1,8 +1,46 @@
 package ruslan.simakov.pt4ua.data.lessons
 
+import ruslan.simakov.pt4ua.data.RuleTable
 import ruslan.simakov.pt4ua.data.Sentence
 
 object Lesson4 {
+
+    val rules = listOf(
+        RuleTable(
+            "Питальні слова",
+            listOf(
+                listOf("Українською", "Português", "Приклад"),
+                listOf("Що?", "O que?", "O que fazes?"),
+                listOf("Хто?", "Quem?", "Quem é ele?"),
+                listOf("Де?", "Onde?", "Onde ele está?"),
+                listOf("Коли?", "Quando?", "Quando chegas?"),
+                listOf("Скільки?", "Quanto? Quantos?", "Quanto custa?"),
+                listOf("Як?", "Como?", "Como eu faço isso?"),
+                listOf("Чому?", "Porque?", "Porque eu ajudo?"),
+                listOf("Який? Які?", "Qual? Quais?", "Qual é o seu nome?")
+            )
+        ),
+        RuleTable(
+            "Як побудувати питання",
+            listOf(
+                listOf("Тип", "Приклад"),
+                listOf("так / ні – та сама фраза з інтонацією", "Tu falas português?"),
+                listOf("питальне слово + хто + дієслово", "Onde ele trabalha?"),
+                listOf("з QUEM – дієслово перед займенником", "Quem é ele? Quem és tu?")
+            ),
+            note = "Quantos / quantas – перед іменником: Quantos filhos tens? Qual – один, quais – кілька. " +
+                "Відповідь «тому що» – porque, в кінці питання – porquê?"
+        ),
+        RuleTable(
+            "ISSO – це",
+            listOf(
+                listOf("Українською", "Português"),
+                listOf("Що це означає?", "O que significa isso?"),
+                listOf("Це корисно?", "Isso é útil?"),
+                listOf("Це (тут, поруч)", "Isto")
+            )
+        )
+    )
     fun getSentences(): List<Sentence> {
         return listOf(
             // O QUE – що

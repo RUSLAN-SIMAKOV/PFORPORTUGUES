@@ -1,8 +1,68 @@
 package ruslan.simakov.pt4ua.data.lessons
 
+import ruslan.simakov.pt4ua.data.RuleTable
 import ruslan.simakov.pt4ua.data.Sentence
 
 object Lesson1 {
+
+    val rules = listOf(
+        RuleTable(
+            "Привітання та ввічливі слова",
+            listOf(
+                listOf("Українською", "Português"),
+                listOf("Привіт", "Olá"),
+                listOf("Доброго ранку (до обіду)", "Bom dia"),
+                listOf("Добрий день (після обіду)", "Boa tarde"),
+                listOf("Добрий вечір / На добраніч", "Boa noite"),
+                listOf("Дякую (чоловік / жінка)", "Obrigado / Obrigada"),
+                listOf("Будь ласка", "Por favor"),
+                listOf("Вибачте", "Desculpe"),
+                listOf("Перепрошую, дозвольте", "Com licença"),
+                listOf("Дуже приємно", "Muito prazer"),
+                listOf("До побачення / Бувай", "Adeus / Tchau"),
+                listOf("До завтра", "Até amanhã")
+            )
+        ),
+        RuleTable(
+            "Хто?",
+            listOf(
+                listOf("Українською", "Português"),
+                listOf("я", "eu"),
+                listOf("ти", "tu"),
+                listOf("Ви (ввічливо)", "você"),
+                listOf("він / вона", "ele / ela"),
+                listOf("ми", "nós"),
+                listOf("ви (множина)", "vocês"),
+                listOf("вони", "eles / elas")
+            ),
+            note = "Eles – чоловіки або змішана група, elas – тільки жінки."
+        ),
+        RuleTable(
+            "Теперішній час: дієслова на -AR",
+            listOf(
+                listOf("", "Закінчення", "AMAR", "FALAR"),
+                listOf("eu", "-o", "amo", "falo"),
+                listOf("tu", "-as", "amas", "falas"),
+                listOf("você, ele, ela", "-a", "ama", "fala"),
+                listOf("nós", "-amos", "amamos", "falamos"),
+                listOf("vocês, eles, elas", "-am", "amam", "falam")
+            ),
+            note = "Відкиньте -ar і додайте закінчення: trabalhar → trabalh + o = trabalho. " +
+                "Заперечення – não перед дієсловом: Eu não falo inglês."
+        ),
+        RuleTable(
+            "GOSTAR DE – подобатися",
+            listOf(
+                listOf("Українською", "Português"),
+                listOf("Мені подобається", "Eu gosto de"),
+                listOf("Тобі подобається", "Tu gostas de"),
+                listOf("Йому / їй / Вам подобається", "Ele / ela / você gosta de"),
+                listOf("Нам подобається", "Nós gostamos de"),
+                listOf("Їм / вам подобається", "Eles / elas / vocês gostam de")
+            ),
+            note = "de + o = do, de + a = da: gosto do café, gosto da música, gosto de ler."
+        )
+    )
     fun getSentences(): List<Sentence> {
         return listOf(
             // ПРИВІТАННЯ ТА ВВІЧЛИВІ СЛОВА (GREETINGS & COURTESY)
