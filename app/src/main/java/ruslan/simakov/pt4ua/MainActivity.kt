@@ -21,22 +21,12 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import ruslan.simakov.pt4ua.data.lessons.Lesson1
-import ruslan.simakov.pt4ua.data.lessons.Lesson2
-import ruslan.simakov.pt4ua.data.lessons.Lesson3
-import ruslan.simakov.pt4ua.data.lessons.Lesson4
-import ruslan.simakov.pt4ua.data.lessons.Lesson5
+import ruslan.simakov.pt4ua.data.lessons.Lessons
 import java.io.Serializable
 
 class MainActivity : ComponentActivity() {
 
-    private val lessonNames = arrayOf(
-        "Lesson 1: Теперішній час",
-        "Lesson 2: Минулий час",
-        "Lesson 3: SER / ESTAR / TER",
-        "Lesson 4: Питання",
-        "Lesson 5: Дієслова -ER / -IR"
-    )
+    private val lessonNames = Lessons.all.map { it.title }.toTypedArray()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -66,14 +56,7 @@ class MainActivity : ComponentActivity() {
     }
 
     private fun startLesson(position: Int) {
-        val sentences = when (position) {
-            0 -> Lesson1.getSentences()
-            1 -> Lesson2.getSentences()
-            2 -> Lesson3.getSentences()
-            3 -> Lesson4.getSentences()
-            4 -> Lesson5.getSentences()
-            else -> throw IllegalArgumentException("Invalid lesson")
-        }.shuffled()
+        val sentences = Lessons.all[position].sentences().shuffled()
 
         val intent = Intent(this, SentenceActivity::class.java).apply {
             putExtra("sentences", sentences as Serializable)

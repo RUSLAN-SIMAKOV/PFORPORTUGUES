@@ -13,6 +13,7 @@ import androidx.activity.compose.setContent
 import androidx.compose.animation.*
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -38,7 +39,9 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import ruslan.simakov.pt4ua.data.RuleTable
 import ruslan.simakov.pt4ua.data.Sentence
+import ruslan.simakov.pt4ua.data.lessons.Lessons
 import java.util.*
 
 class SentenceActivity : ComponentActivity(), TextToSpeech.OnInitListener {
@@ -365,13 +368,7 @@ fun SentencePracticeScreen(
             enter = fadeIn() + slideInVertically(initialOffsetY = { it }),
             exit = fadeOut() + slideOutVertically(targetOffsetY = { it })
         ) {
-            val helpImage = when (lesson) {
-                1 -> R.drawable.less1
-                2 -> R.drawable.less2
-                3 -> R.drawable.less3
-                4 -> R.drawable.less4
-                else -> R.drawable.less1
-            }
+            val lessonInfo = Lessons.all.getOrNull(lesson - 1)
 
             Box(
                 modifier = Modifier
@@ -387,12 +384,24 @@ fun SentencePracticeScreen(
                             .weight(1f)
                             .padding(16.dp)
                     ) {
-                        Image(
-                            painter = painterResource(id = helpImage),
-                            contentDescription = null,
-                            modifier = Modifier.fillMaxSize(),
-                            contentScale = ContentScale.Fit
-                        )
+                        val helpImage = lessonInfo?.helpImage
+                        if (helpImage != null) {
+                            Image(
+                                painter = painterResource(id = helpImage),
+                                contentDescription = null,
+                                modifier = Modifier.fillMaxSize(),
+                                contentScale = ContentScale.Fit
+                            )
+                        } else {
+                            // Top padding keeps the tables clear of the close button
+                            RulesContent(
+                                rules = lessonInfo?.rules.orEmpty(),
+                                modifier = Modifier
+                                    .fillMaxSize()
+                                    .statusBarsPadding()
+                                    .padding(top = 48.dp)
+                            )
+                        }
                     }
                     Button(
                         onClick = { showHelp = false },
@@ -434,6 +443,55 @@ fun WordChip(word: String, isEnabled: Boolean, onClick: () -> Unit) {
             modifier = Modifier.padding(horizontal = 12.dp, vertical = 8.dp),
             fontSize = 16.sp
         )
+    }
+}
+
+@Composable
+fun RulesContent(rules: List<RuleTable>, modifier: Modifier = Modifier) {
+    Column(modifier = modifier.verticalScroll(rememberScrollState())) {
+        rules.forEach { table ->
+            Text(
+                text = table.title,
+                fontSize = 18.sp,
+                fontWeight = FontWeight.Bold,
+                modifier = Modifier.padding(bottom = 8.dp)
+            )
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clip(RoundedCornerShape(8.dp))
+                    .border(1.dp, Color.LightGray, RoundedCornerShape(8.dp))
+            ) {
+                table.rows.forEachIndexed { rowIndex, row ->
+                    if (rowIndex > 0) HorizontalDivider(color = Color.LightGray)
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .background(if (rowIndex == 0) Color(0xFFE3F2FD) else Color.White)
+                    ) {
+                        row.forEachIndexed { columnIndex, cell ->
+                            Text(
+                                text = cell,
+                                modifier = Modifier
+                                    .weight(1f)
+                                    .padding(horizontal = 6.dp, vertical = 8.dp),
+                                fontSize = 14.sp,
+                                fontWeight = if (rowIndex == 0 || columnIndex == 0) FontWeight.Bold else FontWeight.Normal
+                            )
+                        }
+                    }
+                }
+            }
+            table.note?.let {
+                Text(
+                    text = it,
+                    fontSize = 14.sp,
+                    color = Color.DarkGray,
+                    modifier = Modifier.padding(top = 8.dp)
+                )
+            }
+            Spacer(Modifier.height(24.dp))
+        }
     }
 }
 

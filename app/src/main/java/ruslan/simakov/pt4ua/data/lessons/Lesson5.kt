@@ -1,8 +1,35 @@
 package ruslan.simakov.pt4ua.data.lessons
 
+import ruslan.simakov.pt4ua.data.RuleTable
 import ruslan.simakov.pt4ua.data.Sentence
 
 object Lesson5 {
+
+    val rules = listOf(
+        RuleTable(
+            "COMER (-ER) – їсти",
+            listOf(
+                listOf("", "Минулий", "Теперішній"),
+                listOf("eu", "comi", "como"),
+                listOf("tu", "comeste", "comes"),
+                listOf("você, ele, ela", "comeu", "come"),
+                listOf("nós", "comemos", "comemos"),
+                listOf("vocês, eles, elas", "comeram", "comem")
+            )
+        ),
+        RuleTable(
+            "ABRIR (-IR) – відкривати",
+            listOf(
+                listOf("", "Минулий", "Теперішній"),
+                listOf("eu", "abri", "abro"),
+                listOf("tu", "abriste", "abres"),
+                listOf("você, ele, ela", "abriu", "abre"),
+                listOf("nós", "abrimos", "abrimos"),
+                listOf("vocês, eles, elas", "abriram", "abrem")
+            ),
+            note = "Форма nós однакова в теперішньому і минулому часі: comemos, abrimos."
+        )
+    )
 
     fun getSentences(): List<Sentence> {
         return listOf(
