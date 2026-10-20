@@ -6,12 +6,13 @@ plugins {
 
 android {
     namespace = "ruslan.simakov.pt4ua"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "ruslan.simakov.pt4ua"
         minSdk = 26
-        targetSdk = 35
+        // Google Play requires API 36 for new apps since 31 August 2026
+        targetSdk = 36
         versionCode = 1
         versionName = "1.0"
 
