@@ -24,6 +24,11 @@ object Lessons {
         LessonInfo("Lesson 8: SER, ESTAR, TER, IR, FAZER", Lesson8::getSentences, rules = Lesson8.rules),
         LessonInfo("Lesson 9: Модальні дієслова", Lesson9::getSentences, rules = Lesson9.rules),
         LessonInfo("Lesson 10: Займенники", Lesson10::getSentences, rules = Lesson10.rules),
-        LessonInfo("Lesson 11: Зворотні дієслова", Lesson11::getSentences, rules = Lesson11.rules)
+        LessonInfo("Lesson 11: Зворотні дієслова", Lesson11::getSentences, rules = Lesson11.rules),
+        LessonInfo("Lesson 12: Числа, час і дати", Lesson12::getSentences, rules = Lesson12.rules),
+        LessonInfo("Lesson 13: DIZER, DAR, VIR, VER, PÔR, TRAZER", Lesson13::getSentences, rules = Lesson13.rules),
+        LessonInfo("Lesson 14: Тривалі дії та імперфект", Lesson14::getSentences, rules = Lesson14.rules),
+        LessonInfo("Lesson 15: Наказовий спосіб і конжунтив", Lesson15::getSentences, rules = Lesson15.rules),
+        LessonInfo("Lesson 16: Умовний спосіб і порівняння", Lesson16::getSentences, rules = Lesson16.rules)
     )
 }
