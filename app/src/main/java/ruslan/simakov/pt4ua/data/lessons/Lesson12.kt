@@ -107,7 +107,72 @@ object Lesson12 {
             Sentence("Ми бачимося двічі на місяць", listOf("Nós", "vemo-nos", "duas", "vezes", "por", "mês")),
             Sentence("Я працюю п'ять днів на тиждень", listOf("Eu", "trabalho", "cinco", "dias", "por", "semana")),
             Sentence("Два тижні тому я був у Порту", listOf("Há", "duas", "semanas", "eu", "estive", "no", "Porto")),
-            Sentence("Через три дні ми їдемо у відпустку", listOf("Daqui", "a", "três", "dias", "nós", "vamos", "de", "férias"))
+            Sentence("Через три дні ми їдемо у відпустку", listOf("Daqui", "a", "três", "dias", "nós", "vamos", "de", "férias")),
+
+            // ЩЕ ЦІНИ
+            Sentence("Скільки коштує квиток на метро?", listOf("Quanto", "custa", "o", "bilhete", "de", "metro?")),
+            Sentence("Це коштує дванадцять євро", listOf("Isto", "custa", "doze", "euros")),
+            Sentence("Хліб коштує вісімдесят центів", listOf("O", "pão", "custa", "oitenta", "cêntimos")),
+            Sentence("Оренда – дев'ятсот євро на місяць", listOf("A", "renda", "é", "novecentos", "euros", "por", "mês")),
+            Sentence("Кілограм яблук коштує два євро", listOf("Um", "quilo", "de", "maçãs", "custa", "dois", "euros")),
+            Sentence("Я заплатив сорок п'ять євро за черевики", listOf("Paguei", "quarenta", "e", "cinco", "euros", "pelos", "sapatos")),
+            Sentence("У мене лише двадцять євро", listOf("Só", "tenho", "vinte", "euros")),
+            Sentence("Решта – п'ять євро тридцять", listOf("O", "troco", "são", "cinco", "euros", "e", "trinta")),
+            Sentence("Квартира коштує триста тисяч євро", listOf("O", "apartamento", "custa", "trezentos", "mil", "euros")),
+            Sentence("Зарплата – тисяча двісті євро", listOf("O", "salário", "é", "mil", "e", "duzentos", "euros")),
+
+            // ЩЕ ВІК І КІЛЬКІСТЬ
+            Sentence("Моєму синові сім років", listOf("O", "meu", "filho", "tem", "sete", "anos")),
+            Sentence("Моїй бабусі вісімдесят три роки", listOf("A", "minha", "avó", "tem", "oitenta", "e", "três", "anos")),
+            Sentence("У класі двадцять чотири учні", listOf("Na", "turma", "há", "vinte", "e", "quatro", "alunos")),
+            Sentence("Ми купили шість пляшок води", listOf("Nós", "compramos", "seis", "garrafas", "de", "água")),
+            Sentence("Мені потрібно три квитки", listOf("Preciso", "de", "três", "bilhetes")),
+            Sentence("У Португалії живе десять мільйонів людей", listOf("Em", "Portugal", "vivem", "dez", "milhões", "de", "pessoas")),
+            Sentence("Я живу в квартирі номер п'ятнадцять", listOf("Eu", "moro", "no", "apartamento", "número", "quinze")),
+            Sentence("Автобус номер сімсот тридцять два", listOf("O", "autocarro", "setecentos", "e", "trinta", "e", "dois")),
+
+            // ЩЕ ЧАС
+            Sentence("Зараз десята година ранку", listOf("São", "dez", "horas", "da", "manhã")),
+            Sentence("Зараз 2:20", listOf("São", "duas", "e", "vinte")),
+            Sentence("Зараз 8:40", listOf("São", "nove", "menos", "vinte")),
+            Sentence("Зараз полудень, ходімо обідати", listOf("É", "meio-dia,", "vamos", "almoçar")),
+            Sentence("Я працюю з дев'ятої до п'ятої", listOf("Eu", "trabalho", "das", "nove", "às", "cinco")),
+            Sentence("Магазин відкривається о 10:00", listOf("A", "loja", "abre", "às", "dez")),
+            Sentence("Мій потяг о 18:15", listOf("O", "meu", "comboio", "é", "às", "seis", "e", "um", "quarto")),
+            Sentence("Зустріч о пів на третю", listOf("A", "reunião", "é", "às", "duas", "e", "meia")),
+            Sentence("Я прокидаюся о 7:00 щодня", listOf("Eu", "acordo", "às", "sete", "todos", "os", "dias")),
+            Sentence("Урок триває півтори години", listOf("A", "aula", "dura", "uma", "hora", "e", "meia")),
+            Sentence("Ми чекаємо вже сорок хвилин", listOf("Estamos", "à", "espera", "há", "quarenta", "minutos")),
+            Sentence("Я приїду через десять хвилин", listOf("Eu", "chego", "daqui", "a", "dez", "minutos")),
+            Sentence("Ти запізнився на п'ятнадцять хвилин", listOf("Tu", "chegaste", "quinze", "minutos", "atrasado")),
+            Sentence("Ресторан працює до опівночі", listOf("O", "restaurante", "está", "aberto", "até", "à", "meia-noite")),
+
+            // ЩЕ ДАТИ, ДНІ, МІСЯЦІ
+            Sentence("Сьогодні двадцять четверте серпня", listOf("Hoje", "é", "dia", "vinte", "e", "quatro", "de", "agosto")),
+            Sentence("Мій син народився першого червня", listOf("O", "meu", "filho", "nasceu", "no", "dia", "um", "de", "junho")),
+            Sentence("День Незалежності України – двадцять четвертого серпня", listOf("O", "Dia", "da", "Independência", "da", "Ucrânia", "é", "a", "vinte", "e", "quatro", "de", "agosto")),
+            Sentence("Я приїхав до Португалії у квітні", listOf("Eu", "cheguei", "a", "Portugal", "em", "abril")),
+            Sentence("У жовтні починаються дощі", listOf("Em", "outubro", "começam", "as", "chuvas")),
+            Sentence("Улітку дуже жарко, особливо в серпні", listOf("No", "verão", "está", "muito", "calor,", "sobretudo", "em", "agosto")),
+            Sentence("По понеділках і середах у мене уроки", listOf("Às", "segundas", "e", "às", "quartas", "eu", "tenho", "aulas")),
+            Sentence("Вихідні – це субота і неділя", listOf("O", "fim", "de", "semana", "é", "sábado", "e", "domingo")),
+            Sentence("Наступного вівторка свято", listOf("Na", "próxima", "terça-feira", "é", "feriado")),
+            Sentence("Минулої п'ятниці я був у лікаря", listOf("Na", "sexta-feira", "passada", "eu", "estive", "no", "médico")),
+            Sentence("Ми одружилися у 2015 році", listOf("Nós", "casamos", "em", "dois", "mil", "e", "quinze")),
+            Sentence("Моя донька пішла до школи у вересні", listOf("A", "minha", "filha", "entrou", "na", "escola", "em", "setembro")),
+            Sentence("Новий рік – першого січня", listOf("O", "Ano", "Novo", "é", "no", "dia", "um", "de", "janeiro")),
+
+            // ЯК ЧАСТО І ЯК ДОВГО
+            Sentence("Я ходжу в спортзал тричі на тиждень", listOf("Vou", "ao", "ginásio", "três", "vezes", "por", "semana")),
+            Sentence("Ми їздимо в Україну раз на рік", listOf("Nós", "vamos", "à", "Ucrânia", "uma", "vez", "por", "ano")),
+            Sentence("Він дзвонить мамі щодня", listOf("Ele", "liga", "à", "mãe", "todos", "os", "dias")),
+            Sentence("Я живу тут уже пів року", listOf("Eu", "moro", "aqui", "há", "meio", "ano")),
+            Sentence("Ми працюємо сорок годин на тиждень", listOf("Nós", "trabalhamos", "quarenta", "horas", "por", "semana")),
+            Sentence("Курс триває три місяці", listOf("O", "curso", "dura", "três", "meses")),
+            Sentence("Тиждень тому я переїхав", listOf("Há", "uma", "semana", "eu", "mudei", "de", "casa")),
+            Sentence("Через місяць у мене відпустка", listOf("Daqui", "a", "um", "mês", "estou", "de", "férias")),
+            Sentence("Двічі на день я гуляю з собакою", listOf("Duas", "vezes", "por", "dia", "passeio", "o", "cão")),
+            Sentence("Автобус ходить кожні п'ятнадцять хвилин", listOf("Há", "um", "autocarro", "de", "quinze", "em", "quinze", "minutos"))
         )
     }
 }

@@ -93,7 +93,72 @@ object Lesson10 {
             Sentence("Хто тобі це сказав?", listOf("Quem", "te", "disse", "isso?")),
             Sentence("Чому ти мені не подзвонив?", listOf("Porque", "não", "me", "ligaste?")),
             Sentence("Ви допоможете нам з перекладом? (ввічливо)", listOf("Você", "vai", "ajudar-nos", "com", "a", "tradução?")),
-            Sentence("Я вже все йому розповів", listOf("Eu", "já", "lhe", "contei", "tudo"))
+            Sentence("Я вже все йому розповів", listOf("Eu", "já", "lhe", "contei", "tudo")),
+
+            // ЩЕ КОГО?
+            Sentence("Я кохаю тебе більше за все", listOf("Eu", "amo-te", "mais", "do", "que", "tudo")),
+            Sentence("Ти мене знаєш? Я твій новий сусід", listOf("Tu", "conheces-me?", "Sou", "o", "teu", "novo", "vizinho")),
+            Sentence("Я чекаю тебе біля школи", listOf("Eu", "espero-te", "à", "porta", "da", "escola")),
+            Sentence("Мама кличе вас вечеряти (множина)", listOf("A", "mãe", "chama-vos", "para", "jantar")),
+            Sentence("Ми запрошуємо тебе на день народження", listOf("Nós", "convidamos-te", "para", "o", "aniversário")),
+            Sentence("Я не знаю його особисто", listOf("Eu", "não", "o", "conheço", "pessoalmente")),
+            Sentence("Діти її обожнюють, вона дуже добра", listOf("As", "crianças", "adoram-na,", "ela", "é", "muito", "querida")),
+            Sentence("Я купив хліб і з'їв його", listOf("Eu", "comprei", "o", "pão", "e", "comi-o")),
+            Sentence("Де мої окуляри? Ти їх бачила?", listOf("Onde", "estão", "os", "meus", "óculos?", "Tu", "viste-os?")),
+            Sentence("Вони вітають нас щоранку (чоловіки)", listOf("Eles", "cumprimentam-nos", "todas", "as", "manhãs")),
+            Sentence("Ніхто нас не бачив у парку", listOf("Ninguém", "nos", "viu", "no", "parque")),
+            Sentence("Я відвезу тебе додому", listOf("Eu", "levo-te", "a", "casa")),
+
+            // ЩЕ КОМУ?
+            Sentence("Я пишу тобі з Лісабона", listOf("Eu", "escrevo-te", "de", "Lisboa")),
+            Sentence("Можеш позичити мені ручку?", listOf("Podes", "emprestar-me", "uma", "caneta?")),
+            Sentence("Він приносить їй квіти щоп'ятниці", listOf("Ele", "traz-lhe", "flores", "todas", "as", "sextas-feiras")),
+            Sentence("Скажи йому, що я запізнюся", listOf("Diz-lhe", "que", "vou", "chegar", "atrasado")),
+            Sentence("Офіціант дав нам рахунок", listOf("O", "empregado", "deu-nos", "a", "conta")),
+            Sentence("Учителька пояснює їм граматику", listOf("A", "professora", "explica-lhes", "a", "gramática")),
+            Sentence("Що тобі подарували на Різдво?", listOf("O", "que", "te", "deram", "no", "Natal?")),
+            Sentence("Я не скажу тобі секрету", listOf("Eu", "não", "te", "digo", "o", "segredo")),
+            Sentence("Покажіть мені, будь ласка, де вихід (ввічливо)", listOf("Mostre-me,", "por", "favor,", "onde", "é", "a", "saída")),
+            Sentence("Хто вам допомагає з дітьми? (множина)", listOf("Quem", "vos", "ajuda", "com", "as", "crianças?")),
+            Sentence("Я передзвоню Вам завтра вранці (ввічливо)", listOf("Eu", "ligo-lhe", "amanhã", "de", "manhã")),
+            Sentence("Він ніколи не каже мені правди", listOf("Ele", "nunca", "me", "diz", "a", "verdade")),
+
+            // ЩЕ ЧИЙ?
+            Sentence("Це твоя куртка чи моя?", listOf("Este", "casaco", "é", "teu", "ou", "meu?")),
+            Sentence("Мої батьки живуть в Україні", listOf("Os", "meus", "pais", "vivem", "na", "Ucrânia")),
+            Sentence("Наша квартира на другому поверсі", listOf("O", "nosso", "apartamento", "é", "no", "primeiro", "andar")),
+            Sentence("Твої діти дуже виховані", listOf("Os", "teus", "filhos", "são", "muito", "educados")),
+            Sentence("Де ваша машина? (множина)", listOf("Onde", "está", "o", "vosso", "carro?")),
+            Sentence("Її сестра живе в Порту", listOf("A", "irmã", "dela", "mora", "no", "Porto")),
+            Sentence("Їхній син вчиться в університеті", listOf("O", "filho", "deles", "estuda", "na", "universidade")),
+            Sentence("Його телефон не працює", listOf("O", "telemóvel", "dele", "não", "funciona")),
+            Sentence("Це Ваш паспорт? (ввічливо)", listOf("Este", "é", "o", "seu", "passaporte?")),
+            Sentence("Моя робота дуже цікава", listOf("O", "meu", "trabalho", "é", "muito", "interessante")),
+            Sentence("Наші друзі приїжджають у суботу", listOf("Os", "nossos", "amigos", "chegam", "no", "sábado")),
+            Sentence("Ця сумка не моя, а її", listOf("Esta", "mala", "não", "é", "minha,", "é", "dela")),
+
+            // ЩЕ З КИМ? ДЛЯ КОГО?
+            Sentence("Хочеш піти зі мною в кіно?", listOf("Queres", "ir", "comigo", "ao", "cinema?")),
+            Sentence("Я поговорю з тобою пізніше", listOf("Eu", "falo", "contigo", "mais", "tarde")),
+            Sentence("Вона живе з нами вже рік", listOf("Ela", "mora", "connosco", "há", "um", "ano")),
+            Sentence("Цей лист для Вас (ввічливо)", listOf("Esta", "carta", "é", "para", "si")),
+            Sentence("Ми думаємо про вас (множина)", listOf("Nós", "pensamos", "em", "vocês")),
+            Sentence("Я купив квіти для неї", listOf("Eu", "comprei", "flores", "para", "ela")),
+            Sentence("Без тебе тут сумно", listOf("Sem", "ti", "isto", "é", "triste")),
+            Sentence("Він працює з ними десять років", listOf("Ele", "trabalha", "com", "eles", "há", "dez", "anos")),
+            Sentence("Можна з Вами поговорити хвилинку? (ввічливо)", listOf("Posso", "falar", "consigo", "um", "minuto?")),
+
+            // ЩЕ ЗАЙМЕННИКИ В БАЗОВІЙ СХЕМІ
+            Sentence("Я бачу тебе, а ти бачиш мене", listOf("Eu", "vejo-te", "e", "tu", "vês-me")),
+            Sentence("Учора я бачив тебе в метро", listOf("Ontem", "eu", "vi-te", "no", "metro")),
+            Sentence("Завтра я тобі допоможу", listOf("Amanhã", "eu", "vou", "ajudar-te")),
+            Sentence("Ти мені не віриш?", listOf("Tu", "não", "acreditas", "em", "mim?")),
+            Sentence("Я ніколи тобі не брешу", listOf("Eu", "nunca", "te", "minto")),
+            Sentence("Вони не бачили нас учора (чоловіки)", listOf("Eles", "não", "nos", "viram", "ontem")),
+            Sentence("Ти подзвониш мені завтра?", listOf("Tu", "vais", "ligar-me", "amanhã?")),
+            Sentence("Ми вже її запросили", listOf("Nós", "já", "a", "convidamos")),
+            Sentence("Хто вас запросив на вечірку? (множина)", listOf("Quem", "vos", "convidou", "para", "a", "festa?")),
+            Sentence("Я не дам тобі мою машину", listOf("Eu", "não", "te", "dou", "o", "meu", "carro"))
         )
     }
 }

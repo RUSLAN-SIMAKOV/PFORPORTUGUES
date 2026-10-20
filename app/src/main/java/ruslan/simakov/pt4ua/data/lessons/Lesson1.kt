@@ -160,7 +160,28 @@ object Lesson1 {
             Sentence("Вам подобається ваша нова школа? (множина)", listOf("Vocês", "gostam", "da", "vossa", "nova", "escola?")),
             Sentence("Їм подобається ходити в кіно (чоловіки)", listOf("Eles", "gostam", "de", "ir", "ao", "cinema")),
             Sentence("Їм подобається готувати разом (жінки)", listOf("Elas", "gostam", "de", "cozinhar", "juntas")),
-            Sentence("Що тобі подобається робити у вихідні?", listOf("O", "que", "gostas", "de", "fazer", "ao", "fim", "de", "semana?"))
+            Sentence("Що тобі подобається робити у вихідні?", listOf("O", "que", "gostas", "de", "fazer", "ao", "fim", "de", "semana?")),
+            Sentence("Мені подобається гуляти містом", listOf("Eu", "gosto", "de", "passear", "pela", "cidade")),
+            Sentence("Тобі не подобається дощ?", listOf("Tu", "não", "gostas", "da", "chuva?")),
+
+            // ЩЕ ДІЄСЛОВА НА -AR
+            Sentence("Я вивчаю португальську щодня", listOf("Eu", "estudo", "português", "todos", "os", "dias")),
+            Sentence("Ти готуєш вечерю сьогодні?", listOf("Tu", "cozinhas", "o", "jantar", "hoje?")),
+            Sentence("Ми вечеряємо о восьмій", listOf("Nós", "jantamos", "às", "oito")),
+            Sentence("Вона слухає музику в машині", listOf("Ela", "escuta", "música", "no", "carro")),
+            Sentence("Він чекає на автобус щоранку", listOf("Ele", "espera", "pelo", "autocarro", "todas", "as", "manhãs")),
+            Sentence("Ви платите карткою? (ввічливо)", listOf("Você", "paga", "com", "cartão?")),
+            Sentence("Діти граються в парку", listOf("As", "crianças", "brincam", "no", "parque")),
+            Sentence("Я не палю вже три роки", listOf("Eu", "não", "fumo", "há", "três", "anos")),
+            Sentence("Ми не працюємо по неділях", listOf("Nós", "não", "trabalhamos", "ao", "domingo")),
+            Sentence("Ти дзвониш батькам щотижня?", listOf("Tu", "ligas", "aos", "pais", "todas", "as", "semanas?")),
+            Sentence("Вони танцюють на святі (жінки)", listOf("Elas", "dançam", "na", "festa")),
+            Sentence("Ви розмовляєте англійською на роботі? (множина)", listOf("Vocês", "falam", "inglês", "no", "trabalho?")),
+            Sentence("Я шукаю роботу в Лісабоні", listOf("Eu", "procuro", "trabalho", "em", "Lisboa")),
+            Sentence("Він прибирає квартиру в суботу", listOf("Ele", "limpa", "a", "casa", "ao", "sábado")),
+            Sentence("Ми гуляємо з собакою ввечері", listOf("Nós", "passeamos", "o", "cão", "à", "noite")),
+            Sentence("Ти дуже гарно малюєш", listOf("Tu", "desenhas", "muito", "bem")),
+            Sentence("Вона відпочиває після роботи", listOf("Ela", "descansa", "depois", "do", "trabalho"))
         )
     }
 }

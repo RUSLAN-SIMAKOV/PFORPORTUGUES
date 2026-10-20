@@ -75,6 +75,19 @@ object Lesson13 {
                 listOf("nós", "trouxemos", "trazemos", "traremos"),
                 listOf("vocês, eles, elas", "trouxeram", "trazem", "trarão")
             )
+        ),
+        RuleTable(
+            "SAIR, LER, OUVIR, PEDIR, DORMIR (форма eu)",
+            listOf(
+                header,
+                listOf("sair – виходити", "saí", "saio", "sairei"),
+                listOf("ler – читати", "li", "leio", "lerei"),
+                listOf("ouvir – чути", "ouvi", "ouço", "ouvirei"),
+                listOf("pedir – просити", "pedi", "peço", "pedirei"),
+                listOf("dormir – спати", "dormi", "durmo", "dormirei")
+            ),
+            note = "Неправильна переважно форма eu в теперішньому, решта звичайні: sais, ouves, pedes, dormes. " +
+                "LER: leio, lês, lê, lemos, leem. SAIR: saio, sais, sai, saímos, saem."
         )
     )
 
@@ -144,7 +157,65 @@ object Lesson13 {
             Sentence("Я не взяв із собою парасольку", listOf("Eu", "não", "trouxe", "o", "guarda-chuva")),
             Sentence("Завтра я принесу книжку на урок", listOf("Amanhã", "eu", "trarei", "o", "livro", "para", "a", "aula")),
             Sentence("Ти привезеш фотографії з подорожі?", listOf("Tu", "trarás", "as", "fotografias", "da", "viagem?")),
-            Sentence("Вони не візьмуть дітей на вечірку (жінки)", listOf("Elas", "não", "trarão", "as", "crianças", "para", "a", "festa"))
+            Sentence("Вони не візьмуть дітей на вечірку (жінки)", listOf("Elas", "não", "trarão", "as", "crianças", "para", "a", "festa")),
+
+            // SAIR – виходити
+            Sentence("Я виходжу з дому о восьмій", listOf("Eu", "saio", "de", "casa", "às", "oito")),
+            Sentence("Ти виходиш сьогодні ввечері?", listOf("Tu", "sais", "hoje", "à", "noite?")),
+            Sentence("Вона не виходить, коли йде дощ", listOf("Ela", "não", "sai", "quando", "chove")),
+            Sentence("Ми вийшли з кіно опівночі", listOf("Nós", "saímos", "do", "cinema", "à", "meia-noite")),
+            Sentence("Ви вже вийшли з роботи? (ввічливо)", listOf("Você", "já", "saiu", "do", "trabalho?")),
+            Sentence("Вони цілий день не виходили з дому (чоловіки)", listOf("Eles", "não", "saíram", "de", "casa", "o", "dia", "todo")),
+            Sentence("Я вийду на наступній зупинці", listOf("Eu", "sairei", "na", "próxima", "paragem")),
+            Sentence("Ти завтра раніше підеш з роботи?", listOf("Tu", "sairás", "mais", "cedo", "do", "trabalho", "amanhã?")),
+            Sentence("Ми не виходитимемо вночі", listOf("Nós", "não", "sairemos", "à", "noite")),
+
+            // LER – читати
+            Sentence("Я читаю новини в телефоні", listOf("Eu", "leio", "as", "notícias", "no", "telemóvel")),
+            Sentence("Ти читаєш португальською?", listOf("Tu", "lês", "em", "português?")),
+            Sentence("Він не читає книжок", listOf("Ele", "não", "lê", "livros")),
+            Sentence("Учора я прочитав цікаву статтю", listOf("Ontem", "eu", "li", "um", "artigo", "interessante")),
+            Sentence("Ви прочитали договір? (ввічливо)", listOf("Você", "leu", "o", "contrato?")),
+            Sentence("Ми не прочитали інструкцію", listOf("Nós", "não", "lemos", "as", "instruções")),
+            Sentence("Я прочитаю цю книжку у відпустці", listOf("Eu", "lerei", "este", "livro", "nas", "férias")),
+            Sentence("Ти прочитаєш мого листа?", listOf("Tu", "lerás", "a", "minha", "carta?")),
+            Sentence("Вони не читатимуть такий довгий текст (жінки)", listOf("Elas", "não", "lerão", "um", "texto", "tão", "longo")),
+
+            // OUVIR – чути, слухати
+            Sentence("Я слухаю радіо в машині", listOf("Eu", "ouço", "rádio", "no", "carro")),
+            Sentence("Ти чуєш цей шум?", listOf("Tu", "ouves", "este", "barulho?")),
+            Sentence("Бабуся погано чує", listOf("A", "avó", "não", "ouve", "bem")),
+            Sentence("Ми чули музику з вулиці", listOf("Nós", "ouvimos", "música", "da", "rua")),
+            Sentence("Ви чули новину? (множина)", listOf("Vocês", "ouviram", "a", "notícia?")),
+            Sentence("Я не почув будильника", listOf("Eu", "não", "ouvi", "o", "despertador")),
+            Sentence("Завтра ви почуєте відповідь (множина)", listOf("Amanhã", "vocês", "ouvirão", "a", "resposta")),
+            Sentence("Діти почують дзвінок?", listOf("As", "crianças", "ouvirão", "a", "campainha?")),
+            Sentence("Ми не слухатимемо його порад", listOf("Nós", "não", "ouviremos", "os", "conselhos", "dele")),
+
+            // PEDIR – просити, замовляти
+            Sentence("Я завжди прошу чек з податковим номером", listOf("Eu", "peço", "sempre", "fatura", "com", "contribuinte")),
+            Sentence("Що ти зазвичай замовляєш?", listOf("O", "que", "costumas", "pedir?")),
+            Sentence("Він ніколи не просить допомоги", listOf("Ele", "nunca", "pede", "ajuda")),
+            Sentence("Ми замовили піцу додому", listOf("Nós", "pedimos", "uma", "pizza", "para", "casa")),
+            Sentence("Ви попросили знижку в магазині? (ввічливо)", listOf("Você", "pediu", "desconto", "na", "loja?")),
+            Sentence("Вони не замовляли десерту (жінки)", listOf("Elas", "não", "pediram", "sobremesa")),
+            Sentence("Я попрошу відпустку на серпень", listOf("Eu", "pedirei", "férias", "para", "agosto")),
+            Sentence("Ти попросиш допомоги в сусідів?", listOf("Tu", "pedirás", "ajuda", "aos", "vizinhos?")),
+            Sentence("Ми не проситимемо грошей у батьків", listOf("Nós", "não", "pediremos", "dinheiro", "aos", "pais")),
+
+            // DORMIR – спати
+            Sentence("Я сплю вісім годин на ніч", listOf("Eu", "durmo", "oito", "horas", "por", "noite")),
+            Sentence("Ти добре спиш у новій квартирі?", listOf("Tu", "dormes", "bem", "no", "apartamento", "novo?")),
+            Sentence("Малюк не спить уночі", listOf("O", "bebé", "não", "dorme", "à", "noite")),
+            Sentence("Учора я спав до обіду", listOf("Ontem", "eu", "dormi", "até", "ao", "almoço")),
+            Sentence("Ви добре спали в готелі? (ввічливо)", listOf("Você", "dormiu", "bem", "no", "hotel?")),
+            Sentence("Ми не спали всю ніч", listOf("Nós", "não", "dormimos", "a", "noite", "toda")),
+            Sentence("Сьогодні діти ночуватимуть у бабусі", listOf("Hoje", "as", "crianças", "dormirão", "em", "casa", "da", "avó")),
+            Sentence("Ти спатимеш у потязі?", listOf("Tu", "dormirás", "no", "comboio?")),
+            Sentence("Я не спатиму вдень", listOf("Eu", "não", "dormirei", "durante", "o", "dia")),
+
+            // ТРИ ЧАСИ В ОДНОМУ РЕЧЕННІ
+            Sentence("Учора я читав, сьогодні слухаю музику, а завтра довго спатиму", listOf("Ontem", "li,", "hoje", "ouço", "música", "e", "amanhã", "dormirei", "muito"))
         )
     }
 }

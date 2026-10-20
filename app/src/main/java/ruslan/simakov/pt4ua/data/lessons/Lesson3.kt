@@ -108,7 +108,66 @@ object Lesson3 {
             Sentence("Вони бачать нас щоранку (чоловіки)", listOf("Eles", "veem-nos", "todas", "as", "manhãs")),
             Sentence("Вони бачать нас з вікна кухні (жінки)", listOf("Elas", "veem-nos", "da", "janela", "da", "cozinha")),
             Sentence("Що ти бачиш на цій фотографії?", listOf("O", "que", "vês", "nesta", "fotografia?")),
-            Sentence("Чому ти мене не бачиш? Я тут", listOf("Porque", "não", "me", "vês?", "Eu", "estou", "aqui"))
+            Sentence("Чому ти мене не бачиш? Я тут", listOf("Porque", "não", "me", "vês?", "Eu", "estou", "aqui")),
+
+            // ЩЕ SER
+            Sentence("Мій тато водій автобуса", listOf("O", "meu", "pai", "é", "motorista", "de", "autocarro")),
+            Sentence("Моя мама кухарка в ресторані", listOf("A", "minha", "mãe", "é", "cozinheira", "num", "restaurante")),
+            Sentence("Ми з України, з Києва", listOf("Nós", "somos", "da", "Ucrânia,", "de", "Kyiv")),
+            Sentence("Ти португалець чи бразилець?", listOf("Tu", "és", "português", "ou", "brasileiro?")),
+            Sentence("Ця книжка дуже цікава", listOf("Este", "livro", "é", "muito", "interessante")),
+            Sentence("Квартира велика, але дорога", listOf("O", "apartamento", "é", "grande,", "mas", "caro")),
+            Sentence("Лісабон – дуже гарне місто", listOf("Lisboa", "é", "uma", "cidade", "muito", "bonita")),
+            Sentence("Мої сусіди дуже привітні", listOf("Os", "meus", "vizinhos", "são", "muito", "simpáticos")),
+            Sentence("Ви не з Португалії? (ввічливо)", listOf("Você", "não", "é", "de", "Portugal?")),
+            Sentence("Вона висока і світловолоса", listOf("Ela", "é", "alta", "e", "loira")),
+            Sentence("Сьогодні неділя, а завтра робочий день", listOf("Hoje", "é", "domingo", "e", "amanhã", "é", "dia", "de", "trabalho")),
+            Sentence("Це мій чоловік, він лікар", listOf("Este", "é", "o", "meu", "marido,", "ele", "é", "médico")),
+            Sentence("Ми не брати, ми друзі (чоловіки)", listOf("Nós", "não", "somos", "irmãos,", "somos", "amigos")),
+
+            // ЩЕ ESTAR
+            Sentence("Я втомлений після роботи (чоловік)", listOf("Eu", "estou", "cansado", "depois", "do", "trabalho")),
+            Sentence("Ти хворий? Ти дуже блідий", listOf("Tu", "estás", "doente?", "Estás", "muito", "pálido")),
+            Sentence("Кава вже холодна", listOf("O", "café", "já", "está", "frio")),
+            Sentence("Сьогодні дуже жарко", listOf("Hoje", "está", "muito", "calor")),
+            Sentence("Двері відчинені", listOf("A", "porta", "está", "aberta")),
+            Sentence("Магазин зачинений у неділю", listOf("A", "loja", "está", "fechada", "ao", "domingo")),
+            Sentence("Ми зараз у відпустці в Алгарве", listOf("Nós", "estamos", "de", "férias", "no", "Algarve")),
+            Sentence("Вона щаслива, бо має нову роботу", listOf("Ela", "está", "feliz", "porque", "tem", "um", "trabalho", "novo")),
+            Sentence("Діти в школі до п'ятої", listOf("As", "crianças", "estão", "na", "escola", "até", "às", "cinco")),
+            Sentence("Ви готові? Ми вже йдемо (множина)", listOf("Vocês", "estão", "prontos?", "Já", "vamos")),
+            Sentence("Мій телефон розрядився", listOf("O", "meu", "telemóvel", "está", "sem", "bateria")),
+            Sentence("Я не в Лісабоні, я в Порту", listOf("Eu", "não", "estou", "em", "Lisboa,", "estou", "no", "Porto")),
+            Sentence("Як твоя мама? Їй уже краще?", listOf("Como", "está", "a", "tua", "mãe?", "Já", "está", "melhor?")),
+
+            // ЩЕ TER
+            Sentence("Я маю двох братів і одну сестру", listOf("Eu", "tenho", "dois", "irmãos", "e", "uma", "irmã")),
+            Sentence("Ти маєш дітей чи онуків?", listOf("Tu", "tens", "filhos", "ou", "netos?")),
+            Sentence("Він має нову роботу в банку", listOf("Ele", "tem", "um", "trabalho", "novo", "no", "banco")),
+            Sentence("Ми маємо квартиру біля метро", listOf("Nós", "temos", "um", "apartamento", "perto", "do", "metro")),
+            Sentence("Ви вже маєте податковий номер? (ввічливо)", listOf("Você", "já", "tem", "número", "de", "contribuinte?")),
+            Sentence("Моїй мамі шістдесят років", listOf("A", "minha", "mãe", "tem", "sessenta", "anos")),
+            Sentence("Скільки років твоєму синові?", listOf("Quantos", "anos", "tem", "o", "teu", "filho?")),
+            Sentence("Я голодний, а ти?", listOf("Eu", "tenho", "fome,", "e", "tu?")),
+            Sentence("Діти хочуть пити", listOf("As", "crianças", "têm", "sede")),
+            Sentence("Мені холодно, де мій светр?", listOf("Tenho", "frio,", "onde", "está", "a", "minha", "camisola?")),
+            Sentence("Ми не маємо машини в Португалії", listOf("Nós", "não", "temos", "carro", "em", "Portugal")),
+            Sentence("Вона боїться собак", listOf("Ela", "tem", "medo", "de", "cães")),
+            Sentence("Ти маєш рацію, це дуже дорого", listOf("Tu", "tens", "razão,", "isso", "é", "muito", "caro")),
+
+            // ЩЕ VER
+            Sentence("Я бачу море з вікна спальні", listOf("Eu", "vejo", "o", "mar", "da", "janela", "do", "quarto")),
+            Sentence("Ти бачиш автобус? Він уже їде", listOf("Tu", "vês", "o", "autocarro?", "Já", "vem", "aí")),
+            Sentence("Він погано бачить уночі", listOf("Ele", "vê", "mal", "à", "noite")),
+            Sentence("Ми бачимо друзів щосуботи", listOf("Nós", "vemos", "os", "amigos", "todos", "os", "sábados")),
+            Sentence("Ви бачите той човен? (множина)", listOf("Vocês", "veem", "aquele", "barco?")),
+            Sentence("Вони дивляться футбол у кафе (чоловіки)", listOf("Eles", "veem", "o", "futebol", "no", "café")),
+            Sentence("Я не бачу свого телефона", listOf("Eu", "não", "vejo", "o", "meu", "telemóvel")),
+            Sentence("Що ви бачите на картині? (множина)", listOf("O", "que", "vocês", "veem", "no", "quadro?")),
+            Sentence("Ти бачиш мене щодня в офісі", listOf("Tu", "vês-me", "todos", "os", "dias", "no", "escritório")),
+            Sentence("Ми бачимо тебе, ти біля дверей", listOf("Nós", "vemos-te,", "estás", "perto", "da", "porta")),
+            Sentence("Вона бачить нас з балкона", listOf("Ela", "vê-nos", "da", "varanda")),
+            Sentence("Ви бачите ціну на етикетці? (ввічливо)", listOf("Você", "vê", "o", "preço", "na", "etiqueta?"))
         )
     }
 }

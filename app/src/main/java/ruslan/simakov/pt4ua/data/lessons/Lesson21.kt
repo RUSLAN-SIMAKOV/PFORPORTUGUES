@@ -95,7 +95,70 @@ object Lesson21 {
             Sentence("Ми переїжджаємо в нову квартиру в березні", listOf("Vamos", "mudar", "de", "casa", "em", "março")),
             Sentence("Я хочу розірвати договір оренди", listOf("Quero", "rescindir", "o", "contrato", "de", "arrendamento")),
             Sentence("Орендодавець має повернути заставу", listOf("O", "senhorio", "tem", "de", "devolver", "a", "caução")),
-            Sentence("Нарешті ми почуваємося тут як удома", listOf("Finalmente", "sentimo-nos", "em", "casa", "aqui"))
+            Sentence("Нарешті ми почуваємося тут як удома", listOf("Finalmente", "sentimo-nos", "em", "casa", "aqui")),
+
+            // ЩЕ ОРЕНДА
+            Sentence("Я шукаю кімнату в оренду", listOf("Procuro", "um", "quarto", "para", "arrendar")),
+            Sentence("Скільки коштує кімната?", listOf("Quanto", "custa", "o", "quarto?")),
+            Sentence("Квартира близько до метро?", listOf("O", "apartamento", "fica", "perto", "do", "metro?")),
+            Sentence("Там є пральна машина?", listOf("Tem", "máquina", "de", "lavar?")),
+            Sentence("Чи можна тут жити з дітьми?", listOf("Posso", "viver", "aqui", "com", "crianças?")),
+            Sentence("Можна з домашніми тваринами?", listOf("Aceitam", "animais", "de", "estimação?")),
+            Sentence("На скільки часу договір?", listOf("O", "contrato", "é", "por", "quanto", "tempo?")),
+            Sentence("Чи можна зареєструвати тут адресу?", listOf("Posso", "registar", "a", "morada", "aqui?")),
+            Sentence("Ви даєте квитанції за оренду? (ввічливо)", listOf("Passa", "recibos", "de", "renda?")),
+            Sentence("Оренду платять до восьмого числа", listOf("A", "renda", "paga-se", "até", "ao", "dia", "oito")),
+            Sentence("У квартирі є опалення?", listOf("O", "apartamento", "tem", "aquecimento?")),
+            Sentence("Скільки приблизно коштують рахунки на місяць?", listOf("Quanto", "são", "as", "despesas", "por", "mês,", "mais", "ou", "menos?")),
+            Sentence("Квартиру нещодавно відремонтували", listOf("O", "apartamento", "foi", "renovado", "recentemente")),
+            Sentence("Хто живе в сусідніх квартирах?", listOf("Quem", "mora", "nos", "apartamentos", "ao", "lado?")),
+            Sentence("Мені подобається ця квартира, я її беру", listOf("Gosto", "deste", "apartamento,", "fico", "com", "ele")),
+
+            // ЩЕ РАХУНКИ
+            Sentence("Як змінити постачальника електроенергії?", listOf("Como", "mudo", "de", "fornecedor", "de", "eletricidade?")),
+            Sentence("Рахунок за воду приходить раз на два місяці", listOf("A", "conta", "da", "água", "chega", "de", "dois", "em", "dois", "meses")),
+            Sentence("Я хотів би укласти договір на газ", listOf("Queria", "fazer", "contrato", "do", "gás")),
+            Sentence("Інтернет дуже повільний", listOf("A", "internet", "está", "muito", "lenta")),
+            Sentence("Роутер не працює", listOf("O", "router", "não", "funciona")),
+            Sentence("Коли прийде технік з інтернету?", listOf("Quando", "vem", "o", "técnico", "da", "internet?")),
+            Sentence("Мені треба оплатити рахунок у банкоматі", listOf("Tenho", "de", "pagar", "a", "conta", "no", "multibanco")),
+            Sentence("Узимку ми витрачаємо забагато електрики", listOf("Gastamos", "eletricidade", "demais", "no", "inverno")),
+            Sentence("Вимикай світло, коли виходиш", listOf("Apaga", "a", "luz", "quando", "sais")),
+            Sentence("Я забув заплатити за газ", listOf("Esqueci-me", "de", "pagar", "o", "gás")),
+            Sentence("Лічильник на сходах", listOf("O", "contador", "está", "nas", "escadas")),
+            Sentence("На кухні немає світла", listOf("Não", "há", "luz", "na", "cozinha")),
+
+            // ЩЕ ПОЛОМКИ І РЕМОНТ
+            Sentence("Протікає дах", listOf("O", "telhado", "tem", "infiltrações")),
+            Sentence("На стелі пляма від води", listOf("Há", "uma", "mancha", "de", "água", "no", "teto")),
+            Sentence("Холодильник не охолоджує", listOf("O", "frigorífico", "não", "arrefece")),
+            Sentence("Духовка не вмикається", listOf("O", "forno", "não", "liga")),
+            Sentence("Двері не замикаються на ключ", listOf("A", "porta", "não", "fecha", "à", "chave")),
+            Sentence("Я загубив ключі від квартири", listOf("Perdi", "as", "chaves", "de", "casa")),
+            Sentence("Мені потрібен слюсар", listOf("Preciso", "de", "um", "serralheiro")),
+            Sentence("Злив у душі засмічений", listOf("O", "ralo", "do", "duche", "está", "entupido")),
+            Sentence("У квартирі таргани", listOf("Há", "baratas", "no", "apartamento")),
+            Sentence("Можете полагодити це до п'ятниці? (ввічливо)", listOf("Pode", "arranjar", "isto", "até", "sexta-feira?")),
+            Sentence("Скільки коштуватиме ремонт?", listOf("Quanto", "vai", "custar", "a", "reparação?")),
+            Sentence("Я сам пофарбую стіни", listOf("Eu", "próprio", "pinto", "as", "paredes")),
+            Sentence("Треба поміняти замок", listOf("É", "preciso", "mudar", "a", "fechadura")),
+            Sentence("Вікно розбите", listOf("A", "janela", "está", "partida")),
+
+            // ЩЕ СУСІДИ ТА ПОБУТ
+            Sentence("Ми нові сусіди з третього поверху", listOf("Somos", "os", "novos", "vizinhos", "do", "segundo", "andar")),
+            Sentence("Будь ласка, не шуміть після десятої (множина)", listOf("Por", "favor,", "não", "façam", "barulho", "depois", "das", "dez")),
+            Sentence("Ліфт не працює вже тиждень", listOf("O", "elevador", "está", "avariado", "há", "uma", "semana")),
+            Sentence("Хто прибирає сходи?", listOf("Quem", "limpa", "as", "escadas?")),
+            Sentence("Можна залишити велосипед біля входу в будинок?", listOf("Posso", "deixar", "a", "bicicleta", "à", "entrada", "do", "prédio?")),
+            Sentence("Пластик – у жовтий контейнер", listOf("O", "plástico", "vai", "para", "o", "contentor", "amarelo")),
+            Sentence("Папір – у синій контейнер", listOf("O", "papel", "vai", "para", "o", "contentor", "azul")),
+            Sentence("Великі речі вивозять у визначений день", listOf("Os", "monos", "são", "recolhidos", "num", "dia", "marcado")),
+            Sentence("Я перу одяг щодня", listOf("Lavo", "roupa", "todos", "os", "dias")),
+            Sentence("Де можна розвісити білизну?", listOf("Onde", "posso", "estender", "a", "roupa?")),
+            Sentence("Я прасую сорочки в неділю", listOf("Passo", "as", "camisas", "a", "ferro", "ao", "domingo")),
+            Sentence("Треба помити посуд", listOf("É", "preciso", "lavar", "a", "loiça")),
+            Sentence("Ми купили нові меблі для вітальні", listOf("Nós", "compramos", "móveis", "novos", "para", "a", "sala")),
+            Sentence("Вітаю з новосіллям!", listOf("Parabéns", "pela", "casa", "nova!"))
         )
     }
 }

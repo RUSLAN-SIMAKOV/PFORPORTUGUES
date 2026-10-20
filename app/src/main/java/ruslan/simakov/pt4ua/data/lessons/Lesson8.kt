@@ -143,7 +143,63 @@ object Lesson8 {
             Sentence("Вони не збираються переїжджати (чоловіки)", listOf("Eles", "não", "vão", "mudar", "de", "casa")),
             Sentence("Вона збирається відкрити своє кафе", listOf("Ela", "vai", "abrir", "o", "seu", "próprio", "café")),
             Sentence("Ви збираєтеся замовити рибу? (ввічливо)", listOf("Você", "vai", "pedir", "peixe?")),
-            Sentence("Я не збираюся чекати так довго", listOf("Eu", "não", "vou", "esperar", "tanto", "tempo"))
+            Sentence("Я не збираюся чекати так довго", listOf("Eu", "não", "vou", "esperar", "tanto", "tempo")),
+            Sentence("Сьогодні ввечері ми збираємося дивитися фільм", listOf("Hoje", "à", "noite", "nós", "vamos", "ver", "um", "filme")),
+
+            // ЩЕ SER
+            Sentence("Ми українці, ми з Одеси", listOf("Nós", "somos", "ucranianos,", "somos", "de", "Odessa")),
+            Sentence("Це твій новий телефон?", listOf("Este", "é", "o", "teu", "telemóvel", "novo?")),
+            Sentence("Я не з Лісабона, я з Порту", listOf("Eu", "não", "sou", "de", "Lisboa,", "sou", "do", "Porto")),
+            Sentence("Учора був дуже гарний день", listOf("Ontem", "foi", "um", "dia", "muito", "bonito")),
+            Sentence("Концерт був хороший?", listOf("O", "concerto", "foi", "bom?")),
+            Sentence("Це була не моя ідея", listOf("Não", "foi", "ideia", "minha")),
+            Sentence("Наступного понеділка буде свято", listOf("Na", "próxima", "segunda-feira", "será", "feriado")),
+            Sentence("Вечірка буде в тебе вдома?", listOf("A", "festa", "será", "em", "tua", "casa?")),
+            Sentence("Подорож не буде дорогою", listOf("A", "viagem", "não", "será", "cara")),
+
+            // ЩЕ ESTAR
+            Sentence("Ключі на столі в кухні", listOf("As", "chaves", "estão", "em", "cima", "da", "mesa", "da", "cozinha")),
+            Sentence("Ви сьогодні вдома? (ввічливо)", listOf("Você", "está", "em", "casa", "hoje?")),
+            Sentence("Я не втомлена, я щойно прокинулася (жінка)", listOf("Eu", "não", "estou", "cansada,", "acabei", "de", "acordar")),
+            Sentence("Минулого тижня ми були в Мадриді", listOf("Na", "semana", "passada", "nós", "estivemos", "em", "Madrid")),
+            Sentence("Ти був удома вчора ввечері?", listOf("Tu", "estiveste", "em", "casa", "ontem", "à", "noite?")),
+            Sentence("Він не був на роботі в понеділок", listOf("Ele", "não", "esteve", "no", "trabalho", "na", "segunda-feira")),
+            Sentence("Я буду в Україні в серпні", listOf("Eu", "estarei", "na", "Ucrânia", "em", "agosto")),
+            Sentence("Магазин буде відчинений у неділю?", listOf("A", "loja", "estará", "aberta", "no", "domingo?")),
+            Sentence("Ми не будемо вдома в суботу", listOf("Nós", "não", "estaremos", "em", "casa", "no", "sábado")),
+
+            // ЩЕ TER
+            Sentence("Вона має гарний голос", listOf("Ela", "tem", "uma", "voz", "bonita")),
+            Sentence("У Вас є вільні кімнати на вихідні? (ввічливо)", listOf("Tem", "quartos", "livres", "para", "o", "fim", "de", "semana?")),
+            Sentence("У них немає дітей (чоловіки)", listOf("Eles", "não", "têm", "filhos")),
+            Sentence("У нас була чудова відпустка", listOf("Nós", "tivemos", "umas", "férias", "ótimas")),
+            Sentence("У тебе були проблеми на кордоні?", listOf("Tu", "tiveste", "problemas", "na", "fronteira?")),
+            Sentence("Я не мав часу поснідати", listOf("Eu", "não", "tive", "tempo", "para", "tomar", "o", "pequeno-almoço")),
+            Sentence("Завтра в тебе буде новий учитель", listOf("Amanhã", "tu", "terás", "um", "professor", "novo")),
+            Sentence("У нас буде достатньо часу?", listOf("Nós", "teremos", "tempo", "suficiente?")),
+            Sentence("У серпні в них не буде уроків (жінки)", listOf("Elas", "não", "terão", "aulas", "em", "agosto")),
+
+            // ЩЕ IR
+            Sentence("Ми ходимо до церкви щонеділі", listOf("Nós", "vamos", "à", "igreja", "todos", "os", "domingos")),
+            Sentence("Ви їдете до Порту потягом? (множина)", listOf("Vocês", "vão", "para", "o", "Porto", "de", "comboio?")),
+            Sentence("Я сьогодні не йду на роботу", listOf("Eu", "não", "vou", "ao", "trabalho", "hoje")),
+            Sentence("Учора я ходив до банку", listOf("Ontem", "eu", "fui", "ao", "banco")),
+            Sentence("Ти їздив до Фатіми?", listOf("Tu", "foste", "a", "Fátima?")),
+            Sentence("Вона не ходила до школи, бо хворіла", listOf("Ela", "não", "foi", "à", "escola", "porque", "estava", "doente")),
+            Sentence("Наступного року ми поїдемо до Бразилії", listOf("No", "próximo", "ano", "nós", "iremos", "ao", "Brasil")),
+            Sentence("Ти підеш на концерт у суботу?", listOf("Tu", "irás", "ao", "concerto", "no", "sábado?")),
+            Sentence("Вони не підуть на пляж через дощ (чоловіки)", listOf("Eles", "não", "irão", "à", "praia", "por", "causa", "da", "chuva")),
+
+            // ЩЕ FAZER
+            Sentence("Ми робимо покупки по суботах", listOf("Nós", "fazemos", "compras", "ao", "sábado")),
+            Sentence("Ви робите знижку студентам? (ввічливо)", listOf("Você", "faz", "desconto", "aos", "estudantes?")),
+            Sentence("Він не робить домашніх завдань", listOf("Ele", "não", "faz", "os", "trabalhos", "de", "casa")),
+            Sentence("Я зробив усе, що міг", listOf("Eu", "fiz", "tudo", "o", "que", "pude")),
+            Sentence("Що ви робили у вихідні? (множина)", listOf("O", "que", "vocês", "fizeram", "no", "fim", "de", "semana?")),
+            Sentence("Вони не робили ремонту (жінки)", listOf("Elas", "não", "fizeram", "obras")),
+            Sentence("Завтра я приготую сніданок для всіх", listOf("Amanhã", "eu", "farei", "o", "pequeno-almoço", "para", "todos")),
+            Sentence("Ти зробиш це до понеділка?", listOf("Tu", "farás", "isso", "até", "segunda-feira?")),
+            Sentence("Ми не робитимемо ремонт цього року", listOf("Nós", "não", "faremos", "obras", "este", "ano"))
         )
     }
 }

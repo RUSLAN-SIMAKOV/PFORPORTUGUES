@@ -28,7 +28,8 @@ object Lesson7 {
                 listOf("nós", "abrimos", "abrimos", "abriremos"),
                 listOf("vocês, eles, elas", "abriram", "abrem", "abrirão")
             ),
-            note = "Майбутній час для всіх дієслів: інфінітив + -ei, -ás, -á, -emos, -ão."
+            note = "Майбутній час для всіх дієслів: інфінітив + -ei, -ás, -á, -emos, -ão. " +
+                "CONHECER: eu conheço (ç перед -o). ASSISTIR A + артикль: assisto ao jogo, à aula."
         )
     )
 
@@ -98,7 +99,65 @@ object Lesson7 {
             Sentence("Вони ще не вирішили, де жити (чоловіки)", listOf("Eles", "ainda", "não", "decidiram", "onde", "morar")),
             Sentence("Лікар вирішить це завтра вранці", listOf("O", "médico", "decidirá", "isso", "amanhã", "de", "manhã")),
             Sentence("Ти вирішиш до п'ятниці?", listOf("Tu", "decidirás", "até", "sexta-feira?")),
-            Sentence("Ми нічого не вирішуватимемо без тебе", listOf("Nós", "não", "decidiremos", "nada", "sem", "ti"))
+            Sentence("Ми нічого не вирішуватимемо без тебе", listOf("Nós", "não", "decidiremos", "nada", "sem", "ti")),
+
+            // CONHECER – знати (когось), знайомитися
+            Sentence("Я знаю цього лікаря", listOf("Eu", "conheço", "este", "médico")),
+            Sentence("Ти знаєш мою сестру?", listOf("Tu", "conheces", "a", "minha", "irmã?")),
+            Sentence("Ми не знаємо нікого в цьому місті", listOf("Nós", "não", "conhecemos", "ninguém", "nesta", "cidade")),
+            Sentence("Я познайомився з дружиною в Києві", listOf("Eu", "conheci", "a", "minha", "mulher", "em", "Kyiv")),
+            Sentence("Ви познайомилися з новим учителем? (множина)", listOf("Vocês", "conheceram", "o", "novo", "professor?")),
+            Sentence("Вона ще не бувала в Порту", listOf("Ela", "ainda", "não", "conheceu", "o", "Porto")),
+            Sentence("Завтра ти познайомишся з моїми батьками", listOf("Amanhã", "tu", "conhecerás", "os", "meus", "pais")),
+            Sentence("Ви побуваєте в Алгарве цього літа? (ввічливо)", listOf("Você", "conhecerá", "o", "Algarve", "este", "verão?")),
+            Sentence("Діти не знатимуть нікого в новій школі", listOf("As", "crianças", "não", "conhecerão", "ninguém", "na", "nova", "escola")),
+
+            // RECEBER – отримувати
+            Sentence("Я отримую зарплату наприкінці місяця", listOf("Eu", "recebo", "o", "salário", "no", "fim", "do", "mês")),
+            Sentence("Ти отримуєш мої повідомлення?", listOf("Tu", "recebes", "as", "minhas", "mensagens?")),
+            Sentence("Вона не отримує листів поштою", listOf("Ela", "não", "recebe", "cartas", "pelo", "correio")),
+            Sentence("Учора ми отримали посилку з України", listOf("Ontem", "nós", "recebemos", "uma", "encomenda", "da", "Ucrânia")),
+            Sentence("Ви отримали мого листа? (ввічливо)", listOf("Você", "recebeu", "a", "minha", "carta?")),
+            Sentence("Вони ще не отримали документів (жінки)", listOf("Elas", "ainda", "não", "receberam", "os", "documentos")),
+            Sentence("Ти отримаєш відповідь через тиждень", listOf("Tu", "receberás", "a", "resposta", "daqui", "a", "uma", "semana")),
+            Sentence("Ми отримаємо знижку для дітей?", listOf("Nós", "receberemos", "desconto", "para", "as", "crianças?")),
+            Sentence("Я не прийматиму гостей цього тижня", listOf("Eu", "não", "receberei", "visitas", "esta", "semana")),
+
+            // CORRER – бігати
+            Sentence("Я бігаю в парку щоранку", listOf("Eu", "corro", "no", "parque", "todas", "as", "manhãs")),
+            Sentence("Ти бігаєш по суботах?", listOf("Tu", "corres", "aos", "sábados?")),
+            Sentence("Він не бігає, бо в нього болить нога", listOf("Ele", "não", "corre", "porque", "lhe", "dói", "a", "perna")),
+            Sentence("Учора ми пробігли п'ять кілометрів", listOf("Ontem", "nós", "corremos", "cinco", "quilómetros")),
+            Sentence("Ви бігли, щоб встигнути на потяг? (множина)", listOf("Vocês", "correram", "para", "apanhar", "o", "comboio?")),
+            Sentence("Вона не бігала цього тижня", listOf("Ela", "não", "correu", "esta", "semana")),
+            Sentence("Наступного року я пробіжу марафон", listOf("No", "próximo", "ano", "eu", "correrei", "a", "maratona")),
+            Sentence("Ти бігатимеш з нами завтра?", listOf("Tu", "correrás", "connosco", "amanhã?")),
+            Sentence("Вони не бігатимуть під дощем (чоловіки)", listOf("Eles", "não", "correrão", "à", "chuva")),
+
+            // ASSISTIR A – дивитися (матч, концерт), бути присутнім
+            Sentence("Я дивлюся футбол по суботах", listOf("Eu", "assisto", "ao", "futebol", "aos", "sábados")),
+            Sentence("Ти відвідуєш уроки португальської?", listOf("Tu", "assistes", "às", "aulas", "de", "português?")),
+            Sentence("Вона не дивиться телевізор", listOf("Ela", "não", "assiste", "à", "televisão")),
+            Sentence("Ми дивилися концерт на площі", listOf("Nós", "assistimos", "ao", "concerto", "na", "praça")),
+            Sentence("Ви були на зборах учора? (ввічливо)", listOf("Você", "assistiu", "à", "reunião", "ontem?")),
+            Sentence("Вони не дивилися фінал (чоловіки)", listOf("Eles", "não", "assistiram", "à", "final")),
+            Sentence("Я буду на весіллі сестри", listOf("Eu", "assistirei", "ao", "casamento", "da", "minha", "irmã")),
+            Sentence("Ви будете на уроці завтра? (множина)", listOf("Vocês", "assistirão", "à", "aula", "amanhã?")),
+            Sentence("Ми не дивитимемося цей фільм", listOf("Nós", "não", "assistiremos", "a", "este", "filme")),
+
+            // PARTIR – від'їжджати
+            Sentence("Потяг до Порту відправляється о восьмій", listOf("O", "comboio", "para", "o", "Porto", "parte", "às", "oito")),
+            Sentence("Ти їдеш завтра рано?", listOf("Tu", "partes", "amanhã", "cedo?")),
+            Sentence("Ми не їдемо цього тижня", listOf("Nós", "não", "partimos", "esta", "semana")),
+            Sentence("Вони поїхали вчора ввечері (чоловіки)", listOf("Eles", "partiram", "ontem", "à", "noite")),
+            Sentence("Автобус уже поїхав?", listOf("O", "autocarro", "já", "partiu?")),
+            Sentence("Я не поїхав, бо захворів", listOf("Eu", "não", "parti", "porque", "fiquei", "doente")),
+            Sentence("Ми вирушимо о шостій ранку", listOf("Nós", "partiremos", "às", "seis", "da", "manhã")),
+            Sentence("Ви поїдете до суботи? (ввічливо)", listOf("Você", "partirá", "antes", "de", "sábado?")),
+            Sentence("Літак не вилетить через туман", listOf("O", "avião", "não", "partirá", "por", "causa", "do", "nevoeiro")),
+
+            // ТРИ ЧАСИ В ОДНОМУ РЕЧЕННІ
+            Sentence("Учора я їв рибу, сьогодні їм м'ясо, а завтра їстиму суп", listOf("Ontem", "comi", "peixe,", "hoje", "como", "carne", "e", "amanhã", "comerei", "sopa"))
         )
     }
 }

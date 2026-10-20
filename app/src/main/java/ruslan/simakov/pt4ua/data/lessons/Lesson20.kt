@@ -94,7 +94,70 @@ object Lesson20 {
             Sentence("Пляж за двадцять хвилин потягом від Лісабона", listOf("A", "praia", "fica", "a", "vinte", "minutos", "de", "comboio", "de", "Lisboa")),
             Sentence("Старе місто дуже гарне, але там багато підйомів", listOf("A", "zona", "antiga", "é", "muito", "bonita,", "mas", "tem", "muitas", "subidas")),
             Sentence("Я їжджу на роботу на велосипеді", listOf("Vou", "para", "o", "trabalho", "de", "bicicleta")),
-            Sentence("Ми запізнилися на останній потяг", listOf("Perdemos", "o", "último", "comboio"))
+            Sentence("Ми запізнилися на останній потяг", listOf("Perdemos", "o", "último", "comboio")),
+
+            // ЩЕ ГРОМАДСЬКИЙ ТРАНСПОРТ
+            Sentence("Як часто ходить цей автобус?", listOf("De", "quanto", "em", "quanto", "tempo", "passa", "este", "autocarro?")),
+            Sentence("Останній автобус о пів на першу ночі", listOf("O", "último", "autocarro", "é", "à", "meia-noite", "e", "meia")),
+            Sentence("Цей потяг зупиняється в Сінтрі?", listOf("Este", "comboio", "para", "em", "Sintra?")),
+            Sentence("Мені треба робити пересадку?", listOf("Tenho", "de", "mudar", "de", "comboio?")),
+            Sentence("Де пересадка на синю лінію?", listOf("Onde", "se", "muda", "para", "a", "linha", "azul?")),
+            Sentence("Скільки коштує студентський проїзний?", listOf("Quanto", "custa", "o", "passe", "de", "estudante?")),
+            Sentence("Діти до чотирьох років їздять безкоштовно", listOf("As", "crianças", "até", "aos", "quatro", "anos", "não", "pagam")),
+            Sentence("Я загубив транспортну картку", listOf("Perdi", "o", "cartão", "de", "transportes")),
+            Sentence("Потяг скасували через страйк", listOf("O", "comboio", "foi", "cancelado", "por", "causa", "da", "greve")),
+            Sentence("Сьогодні в метро страйк", listOf("Hoje", "há", "greve", "no", "metro")),
+            Sentence("Цей автобус їде до аеропорту?", listOf("Este", "autocarro", "vai", "para", "o", "aeroporto?")),
+            Sentence("Де купити квиток на автобус до Фару?", listOf("Onde", "compro", "o", "bilhete", "de", "autocarro", "para", "Faro?")),
+            Sentence("Це місце вільне?", listOf("Este", "lugar", "está", "livre?")),
+            Sentence("Перепрошую, це моє місце", listOf("Desculpe,", "este", "lugar", "é", "meu")),
+            Sentence("Наступна зупинка – Росіу", listOf("A", "próxima", "paragem", "é", "o", "Rossio")),
+            Sentence("Потяг прибуває на третю платформу", listOf("O", "comboio", "chega", "à", "linha", "três")),
+            Sentence("Я їжджу на роботу на метро", listOf("Vou", "para", "o", "trabalho", "de", "metro")),
+            Sentence("Скільки їхати до центру?", listOf("Quanto", "tempo", "demora", "até", "ao", "centro?")),
+
+            // ЩЕ ЯК ПРОЙТИ
+            Sentence("Як дійти до площі Комерсіу?", listOf("Como", "chego", "à", "Praça", "do", "Comércio?")),
+            Sentence("Ідіть цією вулицею до кінця (ввічливо)", listOf("Siga", "por", "esta", "rua", "até", "ao", "fim")),
+            Sentence("Це друга вулиця праворуч", listOf("É", "a", "segunda", "rua", "à", "direita")),
+            Sentence("Це на розі, поруч із кафе", listOf("Fica", "na", "esquina,", "ao", "lado", "do", "café")),
+            Sentence("Перейдіть міст і поверніть ліворуч (ввічливо)", listOf("Atravesse", "a", "ponte", "e", "vire", "à", "esquerda")),
+            Sentence("Спустіться до річки (ввічливо)", listOf("Desça", "até", "ao", "rio")),
+            Sentence("Підніміться сходами до замку (ввічливо)", listOf("Suba", "as", "escadas", "até", "ao", "castelo")),
+            Sentence("Банк між аптекою і пекарнею", listOf("O", "banco", "fica", "entre", "a", "farmácia", "e", "a", "padaria")),
+            Sentence("Вокзал біля метро", listOf("A", "estação", "fica", "ao", "pé", "do", "metro")),
+            Sentence("Скільки кілометрів до Коїмбри?", listOf("Quantos", "quilómetros", "são", "até", "Coimbra?")),
+            Sentence("Я шукаю цю адресу, можете допомогти? (ввічливо)", listOf("Procuro", "esta", "morada,", "pode", "ajudar-me?")),
+            Sentence("Ви йдете не в той бік (ввічливо)", listOf("Está", "a", "ir", "no", "sentido", "errado")),
+            Sentence("Поверніться назад і йдіть прямо (ввічливо)", listOf("Volte", "para", "trás", "e", "siga", "em", "frente")),
+            Sentence("Вхід з іншого боку будинку", listOf("A", "entrada", "é", "do", "outro", "lado", "do", "prédio")),
+
+            // ЩЕ ТАКСІ ТА МАШИНА
+            Sentence("Скільки коштує таксі до вокзалу?", listOf("Quanto", "custa", "um", "táxi", "até", "à", "estação?")),
+            Sentence("У таксі можна заплатити карткою?", listOf("Posso", "pagar", "com", "cartão", "no", "táxi?")),
+            Sentence("Відкрийте багажник, будь ласка (ввічливо)", listOf("Pode", "abrir", "a", "mala,", "por", "favor?")),
+            Sentence("Я поспішаю, можна швидше? (ввічливо)", listOf("Estou", "com", "pressa,", "pode", "ir", "mais", "depressa?")),
+            Sentence("Мені потрібна машина з автоматичною коробкою", listOf("Preciso", "de", "um", "carro", "automático")),
+            Sentence("Страховка включена?", listOf("O", "seguro", "está", "incluído?")),
+            Sentence("Де повернути машину?", listOf("Onde", "devolvo", "o", "carro?")),
+            Sentence("У мене пробите колесо", listOf("Tenho", "um", "pneu", "furado")),
+            Sentence("Машина не заводиться", listOf("O", "carro", "não", "pega")),
+            Sentence("Я отримав штраф за паркування", listOf("Levei", "uma", "multa", "de", "estacionamento")),
+            Sentence("Тут обмеження швидкості – п'ятдесят", listOf("Aqui", "o", "limite", "de", "velocidade", "é", "cinquenta")),
+            Sentence("Як платити за платні дороги?", listOf("Como", "se", "pagam", "as", "portagens?")),
+            Sentence("Я складатиму на права в Португалії", listOf("Vou", "tirar", "a", "carta", "em", "Portugal")),
+
+            // ЩЕ МІСТО
+            Sentence("Де найближча трамвайна зупинка?", listOf("Onde", "fica", "a", "paragem", "do", "elétrico", "mais", "próxima?")),
+            Sentence("О котрій відкривається музей?", listOf("A", "que", "horas", "abre", "o", "museu?")),
+            Sentence("У неділю вхід до музею безкоштовний", listOf("A", "entrada", "no", "museu", "é", "gratuita", "ao", "domingo")),
+            Sentence("Де туристичний офіс?", listOf("Onde", "é", "o", "posto", "de", "turismo?")),
+            Sentence("Можна взяти мапу міста?", listOf("Posso", "levar", "um", "mapa", "da", "cidade?")),
+            Sentence("Ця вулиця дуже крута", listOf("Esta", "rua", "é", "muito", "íngreme")),
+            Sentence("Набережна гарна надвечір", listOf("A", "marginal", "é", "bonita", "ao", "fim", "da", "tarde")),
+            Sentence("Біля мого дому відкрили новий супермаркет", listOf("Abriram", "um", "supermercado", "novo", "perto", "da", "minha", "casa")),
+            Sentence("У центрі важко знайти паркування", listOf("No", "centro", "é", "difícil", "encontrar", "estacionamento")),
+            Sentence("Я люблю гуляти старим містом", listOf("Gosto", "de", "passear", "pela", "zona", "antiga"))
         )
     }
 }

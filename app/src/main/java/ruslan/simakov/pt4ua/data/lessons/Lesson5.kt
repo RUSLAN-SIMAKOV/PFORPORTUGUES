@@ -94,7 +94,91 @@ object Lesson5 {
             Sentence("Я п'ю каву щоранку перед роботою", listOf("Eu", "bebo", "café", "todas", "as", "manhãs", "antes", "do", "trabalho")),
             Sentence("Ми їмо хліб із сиром на вечерю", listOf("Nós", "comemos", "pão", "com", "queijo", "ao", "jantar")),
             Sentence("Він відчиняє двері своїм ключем", listOf("Ele", "abre", "a", "porta", "com", "a", "sua", "chave")),
-            Sentence("Вони вже від'їхали до аеропорту", listOf("Eles", "já", "partiram", "para", "o", "aeroporto"))
+            Sentence("Вони вже від'їхали до аеропорту", listOf("Eles", "já", "partiram", "para", "o", "aeroporto")),
+
+            // BEBER – минулий час
+            Sentence("Я випив дві склянки води", listOf("Eu", "bebi", "dois", "copos", "de", "água")),
+            Sentence("Ти вже випив каву?", listOf("Tu", "já", "bebeste", "o", "café?")),
+            Sentence("Вона випила чай з лимоном", listOf("Ela", "bebeu", "um", "chá", "com", "limão")),
+            Sentence("Ми пили вино за вечерею", listOf("Nós", "bebemos", "vinho", "ao", "jantar")),
+            Sentence("Вони нічого не пили в дорозі", listOf("Eles", "não", "beberam", "nada", "na", "viagem")),
+
+            // PARTIR – минулий час
+            Sentence("Я від'їхав о шостій ранку", listOf("Eu", "parti", "às", "seis", "da", "manhã")),
+            Sentence("Ти поїхав без мене?", listOf("Tu", "partiste", "sem", "mim?")),
+            Sentence("Потяг відправився вчасно", listOf("O", "comboio", "partiu", "a", "horas")),
+            Sentence("Ми виїхали з Києва в березні", listOf("Nós", "partimos", "de", "Kyiv", "em", "março")),
+            Sentence("Діти розбили вазу", listOf("As", "crianças", "partiram", "a", "jarra")),
+
+            // VIVER – жити
+            Sentence("Я живу в Португалії з родиною", listOf("Eu", "vivo", "em", "Portugal", "com", "a", "família")),
+            Sentence("Ти живеш близько до моря?", listOf("Tu", "vives", "perto", "do", "mar?")),
+            Sentence("Вона живе сама в маленькому будинку", listOf("Ela", "vive", "sozinha", "numa", "casa", "pequena")),
+            Sentence("Ми живемо на другому поверсі", listOf("Nós", "vivemos", "no", "primeiro", "andar")),
+            Sentence("Ви живете в Сінтрі? (множина)", listOf("Vocês", "vivem", "em", "Sintra?")),
+            Sentence("Вони живуть разом уже десять років (чоловіки)", listOf("Eles", "vivem", "juntos", "há", "dez", "anos")),
+            Sentence("Я жив у Харкові до війни", listOf("Eu", "vivi", "em", "Kharkiv", "antes", "da", "guerra")),
+            Sentence("Ти жив за кордоном?", listOf("Tu", "viveste", "no", "estrangeiro?")),
+            Sentence("Мій дідусь прожив дев'яносто років", listOf("O", "meu", "avô", "viveu", "noventa", "anos")),
+            Sentence("Ми жили там два роки", listOf("Nós", "vivemos", "lá", "dois", "anos")),
+
+            // ESCREVER – писати
+            Sentence("Я пишу листа бабусі", listOf("Eu", "escrevo", "uma", "carta", "à", "avó")),
+            Sentence("Ти пишеш дуже гарно", listOf("Tu", "escreves", "muito", "bem")),
+            Sentence("Він пише книжку про Португалію", listOf("Ele", "escreve", "um", "livro", "sobre", "Portugal")),
+            Sentence("Ми пишемо диктант на уроці", listOf("Nós", "escrevemos", "um", "ditado", "na", "aula")),
+            Sentence("Вони весь час пишуть повідомлення (жінки)", listOf("Elas", "escrevem", "mensagens", "o", "tempo", "todo")),
+            Sentence("Я написав тут своє ім'я", listOf("Eu", "escrevi", "o", "meu", "nome", "aqui")),
+            Sentence("Ти написав мамі?", listOf("Tu", "escreveste", "à", "mãe?")),
+            Sentence("Вона написала нам з Парижа", listOf("Ela", "escreveu-nos", "de", "Paris")),
+            Sentence("Ми написали листа в банк", listOf("Nós", "escrevemos", "uma", "carta", "ao", "banco")),
+            Sentence("Вони написали гарну пісню (чоловіки)", listOf("Eles", "escreveram", "uma", "canção", "bonita")),
+
+            // APRENDER – вчити, навчатися
+            Sentence("Я вчу нові слова щодня", listOf("Eu", "aprendo", "palavras", "novas", "todos", "os", "dias")),
+            Sentence("Ти дуже швидко вчиш мову", listOf("Tu", "aprendes", "a", "língua", "muito", "depressa")),
+            Sentence("Вона вчиться грати на піаніно", listOf("Ela", "aprende", "a", "tocar", "piano")),
+            Sentence("Ми вчимося готувати португальські страви", listOf("Nós", "aprendemos", "a", "cozinhar", "pratos", "portugueses")),
+            Sentence("Діти вчать португальську в школі", listOf("As", "crianças", "aprendem", "português", "na", "escola")),
+            Sentence("Я навчився плавати влітку", listOf("Eu", "aprendi", "a", "nadar", "no", "verão")),
+            Sentence("Що ти вивчив сьогодні?", listOf("O", "que", "aprendeste", "hoje?")),
+            Sentence("Він навчився водити в Португалії", listOf("Ele", "aprendeu", "a", "conduzir", "em", "Portugal")),
+            Sentence("Ми вивчили багато нових слів", listOf("Nós", "aprendemos", "muitas", "palavras", "novas")),
+            Sentence("Вони швидко вивчили правила (жінки)", listOf("Elas", "aprenderam", "as", "regras", "depressa")),
+
+            // VENDER – продавати
+            Sentence("Я продаю свою стару машину", listOf("Eu", "vendo", "o", "meu", "carro", "velho")),
+            Sentence("Ви продаєте тут квитки? (ввічливо)", listOf("Você", "vende", "bilhetes", "aqui?")),
+            Sentence("Цей магазин продає українські продукти", listOf("Esta", "loja", "vende", "produtos", "ucranianos")),
+            Sentence("Вони продають фрукти на ринку (чоловіки)", listOf("Eles", "vendem", "fruta", "no", "mercado")),
+            Sentence("Ми продали квартиру в Україні", listOf("Nós", "vendemos", "o", "apartamento", "na", "Ucrânia")),
+            Sentence("Ти продав свій велосипед?", listOf("Tu", "vendeste", "a", "tua", "bicicleta?")),
+            Sentence("Вона продала все за тиждень", listOf("Ela", "vendeu", "tudo", "numa", "semana")),
+            Sentence("Вони не продали будинок (жінки)", listOf("Elas", "não", "venderam", "a", "casa")),
+
+            // PERCEBER – розуміти
+            Sentence("Я розумію, коли ти говориш повільно", listOf("Eu", "percebo", "quando", "falas", "devagar")),
+            Sentence("Ти розумієш, що я кажу?", listOf("Tu", "percebes", "o", "que", "eu", "digo?")),
+            Sentence("Він не розуміє португальської", listOf("Ele", "não", "percebe", "português")),
+            Sentence("Ми розуміємо майже все", listOf("Nós", "percebemos", "quase", "tudo")),
+            Sentence("Ви розумієте правила? (множина)", listOf("Vocês", "percebem", "as", "regras?")),
+            Sentence("Я не зрозумів питання", listOf("Eu", "não", "percebi", "a", "pergunta")),
+            Sentence("Ти зрозумів пояснення вчителя?", listOf("Tu", "percebeste", "a", "explicação", "do", "professor?")),
+            Sentence("Вони одразу все зрозуміли (чоловіки)", listOf("Eles", "perceberam", "tudo", "logo")),
+
+            // DECIDIR – вирішувати
+            Sentence("Я сам вирішую, що купити", listOf("Eu", "decido", "sozinho", "o", "que", "comprar")),
+            Sentence("Хто вирішує у твоїй родині?", listOf("Quem", "decide", "na", "tua", "família?")),
+            Sentence("Ми разом вирішуємо, куди їхати", listOf("Nós", "decidimos", "juntos", "para", "onde", "ir")),
+            Sentence("Я вирішив залишитися в Португалії", listOf("Eu", "decidi", "ficar", "em", "Portugal")),
+            Sentence("Вона вирішила вивчати медицину", listOf("Ela", "decidiu", "estudar", "medicina")),
+            Sentence("Ви вже вирішили, коли переїжджати? (множина)", listOf("Vocês", "já", "decidiram", "quando", "mudar", "de", "casa?")),
+
+            // RESPONDER – відповідати
+            Sentence("Я відповідаю на листи щоранку", listOf("Eu", "respondo", "aos", "e-mails", "todas", "as", "manhãs")),
+            Sentence("Ти не відповідаєш на дзвінки", listOf("Tu", "não", "respondes", "às", "chamadas")),
+            Sentence("Вона відповіла дуже швидко", listOf("Ela", "respondeu", "muito", "depressa")),
+            Sentence("Ми не відповіли на питання вчителя", listOf("Nós", "não", "respondemos", "à", "pergunta", "do", "professor"))
         )
     }
 }

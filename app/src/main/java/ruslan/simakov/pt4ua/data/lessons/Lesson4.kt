@@ -128,7 +128,40 @@ object Lesson4 {
             // ISSO – це
             Sentence("Що це означає португальською?", listOf("O", "que", "significa", "isso", "em", "português?")),
             Sentence("Це корисно для роботи?", listOf("Isso", "é", "útil", "para", "o", "trabalho?")),
-            Sentence("Це дуже важливо для мене", listOf("Isso", "é", "muito", "importante", "para", "mim"))
+            Sentence("Це дуже важливо для мене", listOf("Isso", "é", "muito", "importante", "para", "mim")),
+            Sentence("Хто тобі це дав?", listOf("Quem", "te", "deu", "isso?")),
+
+            // ЩЕ ПИТАННЯ
+            Sentence("Що ти хочеш на вечерю?", listOf("O", "que", "tu", "queres", "para", "o", "jantar?")),
+            Sentence("Що Ви шукаєте? (ввічливо)", listOf("O", "que", "você", "procura?")),
+            Sentence("Що вони вивчають в університеті? (чоловіки)", listOf("O", "que", "eles", "estudam", "na", "universidade?")),
+            Sentence("Що це за шум?", listOf("Que", "barulho", "é", "este?")),
+            Sentence("Хто живе в цій квартирі?", listOf("Quem", "mora", "neste", "apartamento?")),
+            Sentence("Хто готує вечерю сьогодні?", listOf("Quem", "faz", "o", "jantar", "hoje?")),
+            Sentence("З ким ти живеш?", listOf("Com", "quem", "tu", "moras?")),
+            Sentence("Де найближчий банкомат?", listOf("Onde", "fica", "o", "multibanco", "mais", "próximo?")),
+            Sentence("Куди ти йдеш?", listOf("Para", "onde", "tu", "vais?")),
+            Sentence("Звідки Ви? (ввічливо)", listOf("De", "onde", "é", "você?")),
+            Sentence("Де ви купуєте рибу? (множина)", listOf("Onde", "vocês", "compram", "peixe?")),
+            Sentence("Коли починається урок?", listOf("Quando", "começa", "a", "aula?")),
+            Sentence("Коли ти їдеш в Україну?", listOf("Quando", "tu", "vais", "à", "Ucrânia?")),
+            Sentence("Коли відкривається аптека?", listOf("Quando", "abre", "a", "farmácia?")),
+            Sentence("Коли в тебе день народження?", listOf("Quando", "é", "o", "teu", "aniversário?")),
+            Sentence("Скільки коштують ці яблука?", listOf("Quanto", "custam", "estas", "maçãs?")),
+            Sentence("Скільки в тебе братів?", listOf("Quantos", "irmãos", "tu", "tens?")),
+            Sentence("Скільки годин ти працюєш?", listOf("Quantas", "horas", "tu", "trabalhas?")),
+            Sentence("Скільки людей живе в Лісабоні?", listOf("Quantas", "pessoas", "moram", "em", "Lisboa?")),
+            Sentence("Як ти почуваєшся сьогодні?", listOf("Como", "tu", "te", "sentes", "hoje?")),
+            Sentence("Як звати твою вчительку?", listOf("Como", "se", "chama", "a", "tua", "professora?")),
+            Sentence("Як це сказати португальською?", listOf("Como", "se", "diz", "isto", "em", "português?")),
+            Sentence("Як вона добирається на роботу?", listOf("Como", "ela", "chega", "ao", "trabalho?")),
+            Sentence("Чому ти вчиш португальську?", listOf("Porque", "tu", "estudas", "português?")),
+            Sentence("Чому дитина плаче?", listOf("Porque", "a", "criança", "chora?")),
+            Sentence("Чому магазин зачинений?", listOf("Porque", "a", "loja", "está", "fechada?")),
+            Sentence("Чому ви не їсте м'ясо? (множина)", listOf("Porque", "vocês", "não", "comem", "carne?")),
+            Sentence("Яка твоя адреса?", listOf("Qual", "é", "a", "tua", "morada?")),
+            Sentence("Який автобус їде до центру?", listOf("Qual", "é", "o", "autocarro", "que", "vai", "para", "o", "centro?")),
+            Sentence("Які твої улюблені фрукти?", listOf("Quais", "são", "as", "tuas", "frutas", "preferidas?"))
         )
     }
 }

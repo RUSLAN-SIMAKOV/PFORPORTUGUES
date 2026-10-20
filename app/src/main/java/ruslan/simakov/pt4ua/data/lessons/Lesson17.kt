@@ -91,7 +91,72 @@ object Lesson17 {
             Sentence("Я загубив окуляри, мені потрібен окуліст", listOf("Perdi", "os", "óculos,", "preciso", "de", "um", "oftalmologista")),
             Sentence("Моєму синові потрібні щеплення", listOf("O", "meu", "filho", "precisa", "de", "vacinas")),
             Sentence("Я погано сплю й почуваюся втомленим", listOf("Durmo", "mal", "e", "sinto-me", "cansado")),
-            Sentence("Дякую, лікарю, тепер мені набагато краще (чоловік)", listOf("Obrigado,", "doutor,", "agora", "estou", "muito", "melhor"))
+            Sentence("Дякую, лікарю, тепер мені набагато краще (чоловік)", listOf("Obrigado,", "doutor,", "agora", "estou", "muito", "melhor")),
+
+            // ЩЕ СИМПТОМИ
+            Sentence("У мене болить вухо з учорашнього вечора", listOf("Dói-me", "o", "ouvido", "desde", "ontem", "à", "noite")),
+            Sentence("У мене болять ноги після роботи", listOf("Doem-me", "as", "pernas", "depois", "do", "trabalho")),
+            Sentence("Зранку в мене паморочиться голова", listOf("De", "manhã", "tenho", "tonturas")),
+            Sentence("Мене нудить після їжі", listOf("Tenho", "náuseas", "depois", "de", "comer")),
+            Sentence("У мене висока температура, тридцять дев'ять", listOf("Tenho", "febre", "alta,", "trinta", "e", "nove", "graus")),
+            Sentence("У мене закладений ніс і болить горло", listOf("Tenho", "o", "nariz", "entupido", "e", "dói-me", "a", "garganta")),
+            Sentence("Я порізав палець ножем", listOf("Cortei", "o", "dedo", "com", "uma", "faca")),
+            Sentence("Я впав, і в мене болить коліно", listOf("Caí", "e", "dói-me", "o", "joelho")),
+            Sentence("У дитини висип на шкірі", listOf("A", "criança", "tem", "manchas", "na", "pele")),
+            Sentence("Я погано почуваюся вже три дні", listOf("Sinto-me", "mal", "há", "três", "dias")),
+            Sentence("У мене високий тиск", listOf("Tenho", "a", "tensão", "alta")),
+            Sentence("Я діабетик, мені потрібен інсулін (чоловік)", listOf("Sou", "diabético,", "preciso", "de", "insulina")),
+
+            // У РЕЄСТРАТУРІ
+            Sentence("У мене запис на десяту", listOf("Tenho", "consulta", "marcada", "para", "as", "dez")),
+            Sentence("Скільки чекати на прийом?", listOf("Quanto", "tempo", "tenho", "de", "esperar", "pela", "consulta?")),
+            Sentence("У лікаря є сьогодні вільне місце?", listOf("O", "médico", "tem", "vaga", "hoje?")),
+            Sentence("Мені потрібен перекладач", listOf("Preciso", "de", "um", "tradutor")),
+            Sentence("Я погано говорю португальською, говоріть повільно, будь ласка (ввічливо)", listOf("Não", "falo", "bem", "português,", "fale", "devagar,", "por", "favor")),
+            Sentence("Скільки коштує консультація?", listOf("Quanto", "custa", "a", "consulta?")),
+            Sentence("У мене є медична страховка", listOf("Tenho", "seguro", "de", "saúde")),
+            Sentence("Мені потрібна довідка для школи", listOf("Preciso", "de", "um", "atestado", "para", "a", "escola")),
+            Sentence("Можна записатися онлайн?", listOf("Posso", "marcar", "a", "consulta", "online?")),
+            Sentence("Де кабінет номер п'ять?", listOf("Onde", "é", "o", "gabinete", "número", "cinco?")),
+
+            // ЩЕ ЛІКАР ГОВОРИТЬ
+            Sentence("Ляжте сюди, будь ласка (ввічливо)", listOf("Deite-se", "aqui,", "por", "favor")),
+            Sentence("Де саме болить? (ввічливо)", listOf("Onde", "é", "que", "lhe", "dói", "exatamente?")),
+            Sentence("У Вас є на щось алергія? (ввічливо)", listOf("Tem", "alergia", "a", "alguma", "coisa?")),
+            Sentence("Ви палите чи вживаєте алкоголь? (ввічливо)", listOf("Fuma", "ou", "bebe", "álcool?")),
+            Sentence("Нічого серйозного, це вірус", listOf("Não", "é", "nada", "grave,", "é", "um", "vírus")),
+            Sentence("Вам треба зробити рентген (ввічливо)", listOf("Precisa", "de", "fazer", "um", "raio-X")),
+            Sentence("Результати будуть готові через тиждень", listOf("Os", "resultados", "ficam", "prontos", "daqui", "a", "uma", "semana")),
+            Sentence("Приходьте через десять днів (ввічливо)", listOf("Volte", "daqui", "a", "dez", "dias")),
+            Sentence("Нічого не їжте перед аналізом (ввічливо)", listOf("Não", "coma", "nada", "antes", "da", "análise")),
+            Sentence("Вам треба відпочивати три дні (ввічливо)", listOf("Tem", "de", "descansar", "três", "dias")),
+            Sentence("Це антибіотик, приймайте сім днів (ввічливо)", listOf("É", "um", "antibiótico,", "tome", "durante", "sete", "dias")),
+            Sentence("Вас направлять до кардіолога (ввічливо)", listOf("Vai", "ser", "encaminhado", "para", "um", "cardiologista")),
+            Sentence("Бажаю Вам швидко одужати, до побачення (ввічливо)", listOf("Desejo-lhe", "as", "melhoras,", "adeus")),
+
+            // ЩЕ В АПТЕЦІ
+            Sentence("У Вас є щось від болю в горлі? (ввічливо)", listOf("Tem", "alguma", "coisa", "para", "a", "dor", "de", "garganta?")),
+            Sentence("Мені потрібен сонцезахисний крем", listOf("Preciso", "de", "um", "protetor", "solar")),
+            Sentence("Це для дитини трьох років", listOf("É", "para", "uma", "criança", "de", "três", "anos")),
+            Sentence("Скільки таблеток в упаковці?", listOf("Quantos", "comprimidos", "tem", "a", "caixa?")),
+            Sentence("Чи є дешевший аналог?", listOf("Há", "um", "genérico", "mais", "barato?")),
+            Sentence("Мені потрібні краплі для очей", listOf("Preciso", "de", "gotas", "para", "os", "olhos")),
+            Sentence("Від цих ліків хочеться спати?", listOf("Este", "medicamento", "dá", "sono?")),
+            Sentence("Я хотіла б тест на вагітність", listOf("Queria", "um", "teste", "de", "gravidez")),
+            Sentence("Мені потрібні маски й антисептик", listOf("Preciso", "de", "máscaras", "e", "de", "álcool", "gel")),
+            Sentence("Аптека працює цілодобово?", listOf("A", "farmácia", "está", "aberta", "vinte", "e", "quatro", "horas?")),
+            Sentence("Де найближча чергова аптека?", listOf("Onde", "fica", "a", "farmácia", "de", "serviço", "mais", "próxima?")),
+            Sentence("Мені треба поновити рецепт", listOf("Preciso", "de", "renovar", "a", "receita")),
+
+            // ЩЕ СТОМАТОЛОГ ТА ІНШЕ
+            Sentence("Мені треба запломбувати зуб", listOf("Preciso", "de", "chumbar", "um", "dente")),
+            Sentence("У мене кровоточать ясна, коли я чищу зуби", listOf("As", "gengivas", "sangram", "quando", "lavo", "os", "dentes")),
+            Sentence("Мені треба перевірити зір", listOf("Preciso", "de", "fazer", "um", "exame", "à", "vista")),
+            Sentence("Мій син погано спить і плаче", listOf("O", "meu", "filho", "dorme", "mal", "e", "chora")),
+            Sentence("Я на п'ятому місяці вагітності", listOf("Estou", "grávida", "de", "cinco", "meses")),
+            Sentence("Мені треба поговорити з психологом", listOf("Preciso", "de", "falar", "com", "um", "psicólogo")),
+            Sentence("Швидка вже їде", listOf("A", "ambulância", "já", "vem", "a", "caminho")),
+            Sentence("Тримайтеся, допомога вже поруч (ввічливо)", listOf("Aguente,", "a", "ajuda", "está", "a", "chegar"))
         )
     }
 }

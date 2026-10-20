@@ -31,6 +31,19 @@ object Lesson9 {
                 listOf("vocês, eles, elas", "podem", "querem")
             ),
             note = "У кафе кажуть: «Eu vou querer um café» – «Я візьму каву»."
+        ),
+        RuleTable(
+            "Ще корисні дієслова + інфінітив",
+            listOf(
+                listOf("Дієслово", "Значення", "Приклад"),
+                listOf("DEVER", "повинен; мабуть", "Deves descansar. Deve ser caro."),
+                listOf("CONSEGUIR", "змогти, вдатися", "Não consigo dormir."),
+                listOf("COSTUMAR", "зазвичай, мати звичку", "Costumo beber café."),
+                listOf("ACABAR DE", "щойно", "Acabei de chegar."),
+                listOf("DEIXAR", "дозволяти; залишати", "Deixa-me pensar."),
+                listOf("DEIXAR DE", "перестати", "Deixei de fumar.")
+            ),
+            note = "Можна / не можна (загалом): pode-se, não se pode – Aqui não se pode estacionar."
         )
     )
 
@@ -89,7 +102,74 @@ object Lesson9 {
             Sentence("Їй не довелося платити за квиток", listOf("Ela", "não", "teve", "de", "pagar", "o", "bilhete")),
             Sentence("Завтра я муситиму прокинутися рано", listOf("Amanhã", "eu", "terei", "de", "acordar", "cedo")),
             Sentence("Нам доведеться змінити плани?", listOf("Nós", "teremos", "de", "mudar", "os", "planos?")),
-            Sentence("Вони не муситимуть працювати в суботу (жінки)", listOf("Elas", "não", "terão", "de", "trabalhar", "no", "sábado"))
+            Sentence("Вони не муситимуть працювати в суботу (жінки)", listOf("Elas", "não", "terão", "de", "trabalhar", "no", "sábado")),
+
+            // DEVER – повинен; мабуть
+            Sentence("Ти повинен більше відпочивати", listOf("Tu", "deves", "descansar", "mais")),
+            Sentence("Я повинен заплатити зараз чи пізніше?", listOf("Eu", "devo", "pagar", "agora", "ou", "mais", "tarde?")),
+            Sentence("Ви не повинні тут палити (множина)", listOf("Vocês", "não", "devem", "fumar", "aqui")),
+            Sentence("Діти повинні спати вісім годин", listOf("As", "crianças", "devem", "dormir", "oito", "horas")),
+            Sentence("Ми повинні допомагати сусідам", listOf("Nós", "devemos", "ajudar", "os", "vizinhos")),
+            Sentence("Вона, мабуть, удома", listOf("Ela", "deve", "estar", "em", "casa")),
+            Sentence("Це, мабуть, дорого", listOf("Isso", "deve", "ser", "caro")),
+            Sentence("Вам не варто через це хвилюватися (ввічливо)", listOf("Não", "deve", "preocupar-se", "com", "isso")),
+            Sentence("Скільки я Вам винен за ремонт? (ввічливо)", listOf("Quanto", "lhe", "devo", "pela", "reparação?")),
+
+            // CONSEGUIR – змогти, вдатися
+            Sentence("Я не можу відчинити двері", listOf("Eu", "não", "consigo", "abrir", "a", "porta")),
+            Sentence("Ти можеш це прочитати?", listOf("Tu", "consegues", "ler", "isto?")),
+            Sentence("Вона вже може говорити португальською", listOf("Ela", "já", "consegue", "falar", "português")),
+            Sentence("Нарешті ми знайшли квартиру", listOf("Finalmente", "conseguimos", "encontrar", "um", "apartamento")),
+            Sentence("Тобі вдалося купити квитки?", listOf("Tu", "conseguiste", "comprar", "os", "bilhetes?")),
+            Sentence("Вони не змогли знайти паркування (чоловіки)", listOf("Eles", "não", "conseguiram", "encontrar", "estacionamento")),
+            Sentence("Я не можу заснути вночі", listOf("Eu", "não", "consigo", "dormir", "à", "noite")),
+            Sentence("Ти зможеш прийти о восьмій?", listOf("Tu", "vais", "conseguir", "vir", "às", "oito?")),
+            Sentence("Ми не встигнемо на потяг", listOf("Nós", "não", "vamos", "conseguir", "apanhar", "o", "comboio")),
+
+            // COSTUMAR – зазвичай, мати звичку
+            Sentence("Я зазвичай п'ю каву о десятій", listOf("Eu", "costumo", "beber", "café", "às", "dez")),
+            Sentence("Ти зазвичай обідаєш удома?", listOf("Tu", "costumas", "almoçar", "em", "casa?")),
+            Sentence("Він зазвичай не працює в неділю", listOf("Ele", "não", "costuma", "trabalhar", "ao", "domingo")),
+            Sentence("Ми зазвичай гуляємо після вечері", listOf("Nós", "costumamos", "passear", "depois", "do", "jantar")),
+            Sentence("Ви зазвичай їздите на роботу автобусом? (множина)", listOf("Vocês", "costumam", "ir", "para", "o", "trabalho", "de", "autocarro?")),
+            Sentence("Вони зазвичай вечеряють пізно (жінки)", listOf("Elas", "costumam", "jantar", "tarde")),
+            Sentence("У Португалії зазвичай вечеряють о восьмій", listOf("Em", "Portugal", "costuma-se", "jantar", "às", "oito")),
+            Sentence("Раніше я зазвичай вставав рано", listOf("Antes", "eu", "costumava", "levantar-me", "cedo")),
+            Sentence("Я зазвичай не дивлюся телевізор", listOf("Eu", "não", "costumo", "ver", "televisão")),
+
+            // ACABAR DE – щойно
+            Sentence("Я щойно прийшов додому", listOf("Eu", "acabei", "de", "chegar", "a", "casa")),
+            Sentence("Ти щойно поїв?", listOf("Tu", "acabaste", "de", "comer?")),
+            Sentence("Вона щойно вийшла", listOf("Ela", "acabou", "de", "sair")),
+            Sentence("Ми щойно отримали новину", listOf("Nós", "acabamos", "de", "receber", "a", "notícia")),
+            Sentence("Потяг щойно поїхав", listOf("O", "comboio", "acabou", "de", "partir")),
+            Sentence("Вони щойно переїхали (чоловіки)", listOf("Eles", "acabaram", "de", "mudar", "de", "casa")),
+            Sentence("Я щойно прокинувся, подзвоню пізніше", listOf("Acabei", "de", "acordar,", "ligo", "mais", "tarde")),
+            Sentence("Ви щойно приїхали з України? (ввічливо)", listOf("Você", "acabou", "de", "chegar", "da", "Ucrânia?")),
+            Sentence("Лікар щойно подзвонив", listOf("O", "médico", "acabou", "de", "ligar")),
+
+            // DEIXAR – дозволяти, залишати
+            Sentence("Батьки не дозволяють мені виходити вночі", listOf("Os", "pais", "não", "me", "deixam", "sair", "à", "noite")),
+            Sentence("Дай мені хвилинку подумати", listOf("Deixa-me", "pensar", "um", "minuto")),
+            Sentence("Я залишив ключі вдома", listOf("Eu", "deixei", "as", "chaves", "em", "casa")),
+            Sentence("Залиште повідомлення, будь ласка (ввічливо)", listOf("Deixe", "uma", "mensagem,", "por", "favor")),
+            Sentence("Вона дозволяє дітям гратися на вулиці", listOf("Ela", "deixa", "as", "crianças", "brincar", "na", "rua")),
+            Sentence("Ти можеш залишити машину тут", listOf("Podes", "deixar", "o", "carro", "aqui")),
+            Sentence("Ми кинули палити", listOf("Nós", "deixamos", "de", "fumar")),
+            Sentence("Він перестав пити каву", listOf("Ele", "deixou", "de", "beber", "café")),
+            Sentence("Не залишай мене самого!", listOf("Não", "me", "deixes", "sozinho!")),
+
+            // У ЖИТТІ
+            Sentence("Тут можна фотографувати?", listOf("Pode-se", "tirar", "fotografias", "aqui?")),
+            Sentence("Тут не можна паркуватися", listOf("Aqui", "não", "se", "pode", "estacionar")),
+            Sentence("Мені треба йти, вже пізно", listOf("Tenho", "de", "ir,", "já", "é", "tarde")),
+            Sentence("Хочеш кави чи чаю?", listOf("Queres", "café", "ou", "chá?")),
+            Sentence("Я не знаю, що робити", listOf("Eu", "não", "sei", "o", "que", "fazer")),
+            Sentence("Ви вмієте водити вантажівку? (ввічливо)", listOf("Você", "sabe", "conduzir", "um", "camião?")),
+            Sentence("Мені не потрібна допомога, дякую (жінка)", listOf("Não", "preciso", "de", "ajuda,", "obrigada")),
+            Sentence("Ми хотіли б поговорити з директором", listOf("Nós", "queríamos", "falar", "com", "o", "diretor")),
+            Sentence("Можете дати мені склянку води? (ввічливо)", listOf("Pode", "dar-me", "um", "copo", "de", "água?")),
+            Sentence("Ти обов'язково маєш скуштувати паштел де ната", listOf("Tu", "tens", "de", "provar", "o", "pastel", "de", "nata"))
         )
     }
 }
