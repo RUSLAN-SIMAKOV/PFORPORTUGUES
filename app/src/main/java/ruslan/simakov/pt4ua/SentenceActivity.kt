@@ -21,6 +21,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.CheckCircle
+import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material3.*
@@ -141,6 +142,8 @@ fun SentencePracticeScreen(
     }
 
     BackHandler(onBack = onBack)
+    // Registered later, so while help is open Back closes help instead of the lesson
+    BackHandler(enabled = showHelp) { showHelp = false }
 
     Box {
         Scaffold(
@@ -374,7 +377,8 @@ fun SentencePracticeScreen(
                 modifier = Modifier
                     .fillMaxSize()
                     .background(Color.White)
-                    .clickable { }
+                    // Swallow taps so they don't reach the lesson underneath; only the buttons close help
+                    .clickable(interactionSource = null, indication = null) { }
             ) {
                 Column(modifier = Modifier.fillMaxSize()) {
                     Box(
@@ -399,6 +403,15 @@ fun SentencePracticeScreen(
                     ) {
                         Text("ЗРОЗУМІЛО", fontWeight = FontWeight.Bold)
                     }
+                }
+                FilledIconButton(
+                    onClick = { showHelp = false },
+                    modifier = Modifier
+                        .align(Alignment.TopEnd)
+                        .statusBarsPadding()
+                        .padding(8.dp)
+                ) {
+                    Icon(Icons.Default.Close, contentDescription = "Закрити")
                 }
             }
         }
