@@ -65,7 +65,7 @@ object Lesson1 {
             Sentence("Ми живемо в центрі міста", listOf("Nós", "moramos", "no", "centro", "da", "cidade")),
             Sentence("Ви живете далеко звідси? (множина)", listOf("Vocês", "moram", "longe", "daqui?")),
             Sentence("Вони живуть у Порту з родиною (чоловіки)", listOf("Eles", "moram", "no", "Porto", "com", "a", "família")),
-            Sentence("Вони живуть на першому поверсі (жінки)", listOf("Elas", "moram", "no", "primeiro", "andar")),
+            Sentence("Вони живуть на першому поверсі (жінки)", listOf("Elas", "moram", "no", "rés-do-chão")),
 
             // COMPRAR – купувати
             Sentence("Я купую хліб щоранку", listOf("Eu", "compro", "pão", "todas", "as", "manhãs")),

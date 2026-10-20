@@ -65,7 +65,7 @@ object Lesson12 {
             Sentence("Моїй доньці дев'ятнадцять років", listOf("A", "minha", "filha", "tem", "dezanove", "anos")),
             Sentence("Мій номер починається на дев'ятсот дванадцять", listOf("O", "meu", "número", "começa", "por", "novecentos", "e", "doze")),
             Sentence("У нашому класі шістнадцять учнів", listOf("Na", "nossa", "turma", "há", "dezasseis", "alunos")),
-            Sentence("Я живу на четвертому поверсі", listOf("Eu", "moro", "no", "quarto", "andar")),
+            Sentence("Ми живемо в будинку номер сорок вісім", listOf("Nós", "moramos", "no", "número", "quarenta", "e", "oito")),
             Sentence("У мене двоє дітей: хлопчик і дівчинка", listOf("Eu", "tenho", "dois", "filhos:", "um", "rapaz", "e", "uma", "rapariga")),
             Sentence("Дві кави й одну воду, будь ласка", listOf("Dois", "cafés", "e", "uma", "água,", "por", "favor")),
             Sentence("Цей будинок коштує двісті тисяч євро", listOf("Esta", "casa", "custa", "duzentos", "mil", "euros")),

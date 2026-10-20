@@ -29,6 +29,11 @@ object Lessons {
         LessonInfo("Lesson 13: DIZER, DAR, VIR, VER, PÔR, TRAZER", Lesson13::getSentences, rules = Lesson13.rules),
         LessonInfo("Lesson 14: Тривалі дії та імперфект", Lesson14::getSentences, rules = Lesson14.rules),
         LessonInfo("Lesson 15: Наказовий спосіб і конжунтив", Lesson15::getSentences, rules = Lesson15.rules),
-        LessonInfo("Lesson 16: Умовний спосіб і порівняння", Lesson16::getSentences, rules = Lesson16.rules)
+        LessonInfo("Lesson 16: Умовний спосіб і порівняння", Lesson16::getSentences, rules = Lesson16.rules),
+        LessonInfo("Lesson 17: У лікаря та в аптеці", Lesson17::getSentences, rules = Lesson17.rules),
+        LessonInfo("Lesson 18: Документи, банк і робота", Lesson18::getSentences, rules = Lesson18.rules),
+        LessonInfo("Lesson 19: Кафе, ресторан і магазин", Lesson19::getSentences, rules = Lesson19.rules),
+        LessonInfo("Lesson 20: Транспорт і місто", Lesson20::getSentences, rules = Lesson20.rules),
+        LessonInfo("Lesson 21: Житло та побут", Lesson21::getSentences, rules = Lesson21.rules)
     )
 }
