@@ -8,3 +8,8 @@
 .externalNativeBuild
 .cxx
 local.properties
+
+# Signing keys and signed builds must never be committed
+*.jks
+*.keystore
+/app/release/
