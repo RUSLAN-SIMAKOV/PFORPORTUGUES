@@ -37,6 +37,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.semantics.clearAndSetSemantics
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.text.font.FontWeight
@@ -109,7 +110,7 @@ class SentenceActivity : ComponentActivity(), TextToSpeech.OnInitListener {
 
 private enum class AnswerState { Editing, Correct, Wrong }
 
-enum class ChipStyle { Bank, Used, Answer, Correct, Wrong }
+enum class ChipStyle { Hidden, Bank, Used, Answer, Correct, Wrong }
 
 @OptIn(ExperimentalLayoutApi::class)
 @Composable
@@ -131,6 +132,8 @@ fun SentencePracticeScreen(
     }
     var userWords by rememberSaveable { mutableStateOf(mutableListOf<String>()) }
     var isChecked by rememberSaveable { mutableStateOf(false) }
+    // Each sentence starts with its words hidden, so the learner first tries to recall the translation
+    var wordsRevealed by rememberSaveable { mutableStateOf(false) }
     var isCorrect by rememberSaveable { mutableStateOf(false) }
     var showHelp by rememberSaveable { mutableStateOf(false) }
     var incorrectSentences by rememberSaveable { mutableStateOf(mutableListOf<Sentence>()) }
@@ -175,6 +178,7 @@ fun SentencePracticeScreen(
     fun nextSentence() {
         userWords = mutableListOf()
         isChecked = false
+        wordsRevealed = false
         when {
             currentSentenceIndex < sentences.size - 1 -> currentSentenceIndex++
             incorrectSentences.isNotEmpty() -> {
@@ -199,6 +203,7 @@ fun SentencePracticeScreen(
         currentSentenceIndex = 0
         userWords = mutableListOf()
         isChecked = false
+        wordsRevealed = false
         correctCount = 0
         mistakesCount = 0
         isRetryRound = false
@@ -269,25 +274,37 @@ fun SentencePracticeScreen(
 
             val wordBankChips: @Composable () -> Unit = {
                 if (!isChecked) {
-                    Text(
-                        text = "Оберіть слова",
+                    // While hidden, a tap anywhere on the bank (label or blank chips) shows the words
+                    Column(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(bottom = 8.dp),
-                        fontSize = 13.sp,
-                        fontWeight = FontWeight.SemiBold,
-                        color = AppColors.Muted,
-                        textAlign = TextAlign.Center
-                    )
-                    FlowRow(
-                        modifier = Modifier.fillMaxWidth(),
-                        horizontalArrangement = Arrangement.Center
+                            .clip(RoundedCornerShape(20.dp))
+                            .clickable(enabled = !wordsRevealed) { wordsRevealed = true }
                     ) {
-                        wordBank.forEach { word ->
-                            val isUsed =
-                                userWords.count { it == word } >= wordBank.count { it == word }
-                            WordChip(word, if (isUsed) ChipStyle.Used else ChipStyle.Bank) {
-                                userWords = userWords.toMutableList().apply { add(word) }
+                        Text(
+                            text = if (wordsRevealed) "Оберіть слова" else "👆 Торкніться, щоб побачити слова",
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .padding(top = 4.dp, bottom = 8.dp),
+                            fontSize = if (wordsRevealed) 13.sp else 15.sp,
+                            fontWeight = FontWeight.SemiBold,
+                            color = if (wordsRevealed) AppColors.Muted else AppColors.Indigo,
+                            textAlign = TextAlign.Center
+                        )
+                        FlowRow(
+                            modifier = Modifier.fillMaxWidth(),
+                            horizontalArrangement = Arrangement.Center
+                        ) {
+                            wordBank.forEach { word ->
+                                if (!wordsRevealed) {
+                                    WordChip(word, ChipStyle.Hidden) { wordsRevealed = true }
+                                } else {
+                                    val isUsed =
+                                        userWords.count { it == word } >= wordBank.count { it == word }
+                                    WordChip(word, if (isUsed) ChipStyle.Used else ChipStyle.Bank) {
+                                        userWords = userWords.toMutableList().apply { add(word) }
+                                    }
+                                }
                             }
                         }
                     }
@@ -509,13 +526,14 @@ private fun AnswerArea(words: List<String>, state: AnswerState, compact: Boolean
 
 @Composable
 fun WordChip(word: String, style: ChipStyle, onClick: () -> Unit) {
-    val enabled = style == ChipStyle.Bank || style == ChipStyle.Answer
+    val enabled = style == ChipStyle.Hidden || style == ChipStyle.Bank || style == ChipStyle.Answer
     val background = when (style) {
         ChipStyle.Bank, ChipStyle.Correct, ChipStyle.Wrong -> Color.White
+        ChipStyle.Hidden, ChipStyle.Answer -> AppColors.IndigoSoft
         ChipStyle.Used -> AppColors.Line.copy(alpha = 0.5f)
-        ChipStyle.Answer -> AppColors.IndigoSoft
     }
     val borderColor = when (style) {
+        ChipStyle.Hidden -> AppColors.Indigo.copy(alpha = 0.15f)
         ChipStyle.Bank -> AppColors.Line
         ChipStyle.Used -> Color.Transparent
         ChipStyle.Answer -> AppColors.Indigo.copy(alpha = 0.35f)
@@ -523,6 +541,8 @@ fun WordChip(word: String, style: ChipStyle, onClick: () -> Unit) {
         ChipStyle.Wrong -> AppColors.Error.copy(alpha = 0.5f)
     }
     val textColor = when (style) {
+        // The word keeps the chip's real width but stays invisible
+        ChipStyle.Hidden -> Color.Transparent
         ChipStyle.Bank -> AppColors.Ink
         ChipStyle.Used -> AppColors.Muted.copy(alpha = 0.4f)
         ChipStyle.Answer -> AppColors.IndigoDark
@@ -540,6 +560,11 @@ fun WordChip(word: String, style: ChipStyle, onClick: () -> Unit) {
             text = word,
             modifier = Modifier
                 .clickable(enabled = enabled, onClick = onClick)
+                // Screen readers must not read out a hidden word either
+                .then(
+                    if (style == ChipStyle.Hidden) Modifier.clearAndSetSemantics { contentDescription = "Приховане слово" }
+                    else Modifier
+                )
                 .padding(horizontal = 16.dp, vertical = 11.dp),
             fontSize = 17.sp,
             fontWeight = FontWeight.Medium,
