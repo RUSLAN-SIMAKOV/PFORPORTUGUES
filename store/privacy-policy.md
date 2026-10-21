@@ -16,7 +16,7 @@ PT4UA – застосунок для вивчення португальськ�
 
 **Зміни.** Якщо ця політика зміниться, оновлена версія буде опублікована на цій сторінці.
 
-**Контакти:** [ВАШ EMAIL]
+**Контакти:** ua667766706@gmail.com
 
 ## English
 
@@ -32,4 +32,4 @@ PT4UA is an app for learning Portuguese.
 
 **Changes.** If this policy changes, the updated version will be published on this page.
 
-**Contact:** [YOUR EMAIL]
+**Contact:** ua667766706@gmail.com

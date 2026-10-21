@@ -1,12 +1,16 @@
 package ruslan.simakov.pt4ua
 
+import android.content.ActivityNotFoundException
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -18,17 +22,19 @@ import androidx.compose.material.icons.filled.Check
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import ruslan.simakov.pt4ua.data.Developer
 import ruslan.simakov.pt4ua.data.Progress
-import ruslan.simakov.pt4ua.data.lessons.LessonSection
 import ruslan.simakov.pt4ua.data.lessons.Lessons
 import ruslan.simakov.pt4ua.ui.*
 import java.io.Serializable
@@ -106,7 +112,7 @@ fun LessonListScreen(refreshKey: Int, onLessonClick: (Int) -> Unit) {
                 )
             }
             Lessons.sections.forEachIndexed { sectionIndex, section ->
-                item(key = "section_$sectionIndex") { SectionHeader(section) }
+                item(key = "section_$sectionIndex") { SectionHeader(section.emoji, section.title, section.subtitle) }
                 items(section.lessons.toList(), key = { it }) { number ->
                     LessonCard(
                         number = number,
@@ -118,6 +124,7 @@ fun LessonListScreen(refreshKey: Int, onLessonClick: (Int) -> Unit) {
                     )
                 }
             }
+            item(key = "developer") { DeveloperMenu() }
         }
 
         // Keeps the light status bar icons readable once the header scrolls away
@@ -217,17 +224,159 @@ private fun ListHeader(
 }
 
 @Composable
-private fun SectionHeader(section: LessonSection) {
+private fun SectionHeader(emoji: String, title: String, subtitle: String) {
     Row(
         modifier = Modifier.padding(start = 20.dp, end = 20.dp, top = 24.dp, bottom = 8.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        Text(section.emoji, fontSize = 24.sp)
+        Text(emoji, fontSize = 24.sp)
         Spacer(Modifier.width(10.dp))
         Column {
-            Text(section.title, fontSize = 19.sp, fontWeight = FontWeight.Bold, color = AppColors.Ink)
-            Text(section.subtitle, fontSize = 13.sp, color = AppColors.Muted)
+            Text(title, fontSize = 19.sp, fontWeight = FontWeight.Bold, color = AppColors.Ink)
+            Text(subtitle, fontSize = 13.sp, color = AppColors.Muted)
         }
+    }
+}
+
+// One entry at the end of the lesson list; it opens a bottom sheet with the developer contacts and the donation link
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+private fun DeveloperMenu() {
+    val context = LocalContext.current
+    var showSheet by rememberSaveable { mutableStateOf(false) }
+    val versionName = remember {
+        runCatching { context.packageManager.getPackageInfo(context.packageName, 0).versionName }.getOrNull()
+    }
+
+    fun open(intent: Intent, missingAppMessage: String) {
+        showSheet = false
+        try {
+            context.startActivity(intent)
+        } catch (e: ActivityNotFoundException) {
+            Toast.makeText(context, missingAppMessage, Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    Surface(
+        onClick = { showSheet = true },
+        modifier = Modifier
+            .fillMaxWidth()
+            .padding(start = 16.dp, end = 16.dp, top = 24.dp, bottom = 6.dp),
+        shape = RoundedCornerShape(20.dp),
+        color = Color.White,
+        shadowElevation = 2.dp
+    ) {
+        Row(modifier = Modifier.padding(16.dp), verticalAlignment = Alignment.CenterVertically) {
+            EmojiBadge("👤", size = 48)
+            Spacer(Modifier.width(16.dp))
+            Column(modifier = Modifier.weight(1f)) {
+                Text("Про розробника", fontSize = 17.sp, fontWeight = FontWeight.SemiBold, color = AppColors.Ink)
+                Text("Контакти та донат", fontSize = 13.sp, color = AppColors.Muted)
+            }
+            Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, contentDescription = null, tint = AppColors.Muted)
+        }
+    }
+
+    if (showSheet) {
+        ModalBottomSheet(onDismissRequest = { showSheet = false }, containerColor = Color.White) {
+            Column(modifier = Modifier.padding(bottom = 16.dp)) {
+                Text(
+                    "Про розробника",
+                    modifier = Modifier.padding(horizontal = 24.dp),
+                    fontSize = 22.sp,
+                    fontWeight = FontWeight.Bold,
+                    color = AppColors.Ink
+                )
+                Text(
+                    "Питання, ідеї чи помилка в уроці – напишіть мені",
+                    modifier = Modifier.padding(start = 24.dp, end = 24.dp, top = 2.dp, bottom = 8.dp),
+                    fontSize = 14.sp,
+                    color = AppColors.Muted
+                )
+
+                ContactRow("✉️", "Email", Developer.EMAIL) {
+                    val intent = Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:${Developer.EMAIL}"))
+                        .putExtra(Intent.EXTRA_SUBJECT, "PT4UA")
+                    open(intent, "Немає застосунку для пошти")
+                }
+                if (Developer.LINKEDIN_URL.isNotBlank()) {
+                    val shortUrl = Developer.LINKEDIN_URL.removePrefix("https://").removePrefix("www.").trimEnd('/')
+                    ContactRow("💼", "LinkedIn", shortUrl) {
+                        open(Intent(Intent.ACTION_VIEW, Uri.parse(Developer.LINKEDIN_URL)), "Немає браузера")
+                    }
+                }
+                if (Developer.TELEGRAM_PHONE.isNotBlank()) {
+                    ContactRow("💬", "Telegram", Developer.TELEGRAM_PHONE) {
+                        val uri = Uri.parse("https://t.me/${Developer.TELEGRAM_PHONE}")
+                        open(Intent(Intent.ACTION_VIEW, uri), "Немає Telegram або браузера")
+                    }
+                }
+
+                Spacer(Modifier.height(12.dp))
+                Surface(
+                    onClick = { open(Intent(Intent.ACTION_VIEW, Uri.parse(Developer.DONATE_URL)), "Немає браузера") },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp),
+                    shape = RoundedCornerShape(18.dp),
+                    color = AppColors.NoteBackground
+                ) {
+                    Row(modifier = Modifier.padding(16.dp), verticalAlignment = Alignment.CenterVertically) {
+                        Text("🇺🇦", fontSize = 30.sp)
+                        Spacer(Modifier.width(14.dp))
+                        Column(modifier = Modifier.weight(1f)) {
+                            Text("Задонатити", fontSize = 17.sp, fontWeight = FontWeight.Bold, color = AppColors.Ink)
+                            Text("Фонд Стерненка · sternenkofund.org", fontSize = 13.sp, color = AppColors.NoteText)
+                        }
+                        Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, contentDescription = null, tint = AppColors.NoteText)
+                    }
+                }
+
+                if (versionName != null) {
+                    Text(
+                        "PT4UA · версія $versionName",
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(top = 16.dp),
+                        fontSize = 12.sp,
+                        color = AppColors.Muted,
+                        textAlign = TextAlign.Center
+                    )
+                }
+            }
+        }
+    }
+}
+
+@Composable
+private fun EmojiBadge(emoji: String, size: Int) {
+    Box(
+        modifier = Modifier
+            .size(size.dp)
+            .clip(CircleShape)
+            .background(AppColors.IndigoSoft),
+        contentAlignment = Alignment.Center
+    ) {
+        Text(emoji, fontSize = (size / 2.3).sp)
+    }
+}
+
+@Composable
+private fun ContactRow(emoji: String, label: String, value: String, onClick: () -> Unit) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clickable(onClick = onClick)
+            .padding(horizontal = 24.dp, vertical = 10.dp),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        EmojiBadge(emoji, size = 44)
+        Spacer(Modifier.width(14.dp))
+        Column(modifier = Modifier.weight(1f)) {
+            Text(label, fontSize = 12.sp, fontWeight = FontWeight.SemiBold, color = AppColors.Indigo)
+            Text(value, fontSize = 16.sp, color = AppColors.Ink, maxLines = 1, overflow = TextOverflow.Ellipsis)
+        }
+        Icon(Icons.AutoMirrored.Filled.KeyboardArrowRight, contentDescription = null, tint = AppColors.Muted)
     }
 }
 

@@ -33,7 +33,7 @@ Play Console → **Create app**: name `PT4UA – Португальська мо
 
 ## 4. Privacy policy link
 
-Commit and push `store/privacy-policy.md` first (fill in your email at the end of the file). Then use:
+Commit and push `store/privacy-policy.md` first (your contact email is already in it). Then use:
 
 `https://github.com/RUSLAN-SIMAKOV/PFORPORTUGUES/blob/master/store/privacy-policy.md`
 
@@ -52,6 +52,8 @@ Commit and push `store/privacy-policy.md` first (fill in your email at the end o
 ## 6. Store listing
 
 Paste the texts from `listing-uk.txt`, upload the icon, the feature graphic and the 5 screenshots. Category: **Education**.
+
+**Store settings → Store listing contact details:** email `ua667766706@gmail.com`; website `https://www.linkedin.com/in/rsimakov` (optional).
 
 ## 7. Testing and release
 
